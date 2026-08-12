@@ -262,14 +262,93 @@ const initSpotifyPlayer = () => {
     const pauseCurrentTrack = () => {
         audioElement.pause();
         isPlaying = false;
-        updateVoici le code corrigé pour afficher les vidéos à l'horizontale tout en réduisant leur taille. L'utilisation de **Flexbox** est la méthode la plus simple pour gérer cet affichage sur ton site.
+        updatePlayButtonStates(false, tracks[currentTrackIndex].title);
+    };
+    
+    const togglePlayPause = () => {
+        if (currentTrackIndex === -1 && tracks.length > 0) { 
+            loadTrack(0);
+            playCurrentTrack();
+        } else if (audioElement.paused) {
+            playCurrentTrack();
+        } else {
+            pauseCurrentTrack();
+        }
+    };
 
-**HTML**
-Assure-toi que tes vidéos sont regroupées dans une balise contenant une classe spécifique, par exemple `<div class="video-container">` :
+    document.querySelectorAll('.track-card').forEach((card, index) => {
+        card.addEventListener('click', (e) => { 
+            if (index === currentTrackIndex) {
+                togglePlayPause();
+            } else {
+                loadTrack(index);
+                playCurrentTrack();
+            }
+            spotifyPlayerContainer.classList.add('active'); 
+            spotifyPlayerContainer.setAttribute('aria-hidden', 'false');
+            miniPlayerContainer.classList.add('active');
+        });
+    });
 
-```html
-<div class="video-container">
-    <video src="chemin/vers/ta-video1.mp4" controls></video>
-    <video src="chemin/vers/ta-video2.mp4" controls></video>
-    <video src="chemin/vers/ta-video3.mp4" controls></video>
-</div>
+    closeBtn.addEventListener('click', () => {
+        spotifyPlayerContainer.classList.remove('active');
+        spotifyPlayerContainer.setAttribute('aria-hidden', 'true');
+    });
+
+    playerPlayPauseBtn.addEventListener('click', togglePlayPause);
+    miniPlayerPlayPauseBtn.addEventListener('click', togglePlayPause);
+
+    prevBtn.addEventListener('click', () => {
+        if (tracks.length === 0) return;
+        currentTrackIndex = (currentTrackIndex - 1 + tracks.length) % tracks.length;
+        loadTrack(currentTrackIndex);
+        playCurrentTrack();
+    });
+
+    nextBtn.addEventListener('click', () => {
+        if (tracks.length === 0) return;
+        currentTrackIndex = (currentTrackIndex + 1) % tracks.length;
+        loadTrack(currentTrackIndex);
+        playCurrentTrack();
+    });
+
+    audioElement.addEventListener('ended', () => {
+        if (currentTrackIndex < tracks.length - 1) {
+            nextBtn.click(); 
+        } else {
+            pauseCurrentTrack();
+        }
+    });
+
+    audioElement.addEventListener('play', () => {
+        isPlaying = true;
+        if(currentTrackIndex !== -1) updatePlayButtonStates(true, tracks[currentTrackIndex].title);
+    });
+    audioElement.addEventListener('pause', () => {
+        isPlaying = false;
+        if(currentTrackIndex !== -1) updatePlayButtonStates(false, tracks[currentTrackIndex].title);
+    });
+    
+    miniPlayerContainer.addEventListener('click', (event) => {
+        if (!miniPlayerPlayPauseBtn.contains(event.target) && event.target !== miniPlayerPlayPauseBtn) {
+            spotifyPlayerContainer.classList.add('active');
+            spotifyPlayerContainer.setAttribute('aria-hidden', 'false');
+        }
+    });
+};
+
+// Initialisation globale
+document.addEventListener('DOMContentLoaded', () => {
+    initLoader();
+    initSmoothScrolling();
+    initHeaderScrollEffect();
+    initCountdown();
+    initBurgerMenu();
+    initSpotifyPlayer();
+
+    const copyrightSmall = document.querySelector('footer .copyright small');
+    if (copyrightSmall) {
+        const currentYear = new Date().getFullYear();
+        copyrightSmall.textContent = `© ${currentYear} Deygo Josy | Propulsé par Horizon Dwell / Dizame. Tous droits réservés.`;
+    }
+});
