@@ -41,6 +41,7 @@
                     <li><a href="#accueil">Accueil</a></li>
                     <li><a href="#musique">Discographie</a></li>
                     <li><a href="#videos">Vidéos</a></li>
+                    <li><a href="#concerts">Concerts</a></li>
                     <li><a href="#apropos">À propos</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
@@ -65,7 +66,6 @@
         <section id="musique" class="music-section" aria-labelledby="music-heading">
             <h2 id="music-heading">DISCOGRAPHIE</h2>
             
-            <!-- Projet SINNO -->
             <div class="project-header">
                 <h3>Pré-album : SINNO</h3>
             </div>
@@ -120,25 +120,48 @@
             </div>
         </section>
 
-        <!-- Nouvelle Section Vidéos avec Grille -->
+        <!-- Section Vidéos -->
         <section id="videos" class="videos-section" aria-labelledby="videos-heading">
             <h2 id="videos-heading">CLIPS OFFICIELS</h2>
             
-            <!-- Vidéo principale (Clip SINNO) -->
             <div class="videos-grid main-video">
                 <div class="video-container">
                     <iframe width="100%" height="315" src="https://www.youtube.com/embed/QknBESlMKNU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
 
-            <!-- Vidéos secondaires (Autres clips) -->
             <div class="secondary-videos-grid">
                 <div class="video-container">
-                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/FziGh_SKuiw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/VOTRE_ID_VIDEO_2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <div class="video-container">
-                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/_hMY9DqIVg4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/VOTRE_ID_VIDEO_3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
+            </div>
+        </section>
+
+        <!-- NOUVELLE SECTION : CONCERTS & TOURNÉE (Bandsintown) -->
+        <section id="concerts" class="concerts-section" aria-labelledby="concerts-heading">
+            <h2 id="concerts-heading">EN CONCERT</h2>
+            <div class="concerts-container">
+                <!-- Widget Bandsintown officiel -->
+                <script charset="utf-8" src="https://widget.bandsintown.com/main.min.js"></script>
+                <a class="bit-widget-initializer" 
+                   data-artist-name="Deygo Josy" 
+                   data-background-color="rgba(0,0,0,1)" 
+                   data-separator-color="rgba(255, 204, 0, 0.2)" 
+                   data-text-color="#ffffff" 
+                   data-font="Montserrat" 
+                   data-link-color="#ffcc00" 
+                   data-popup-background-color="rgba(10,10,10,0.95)" 
+                   data-popup-text-color="#ffffff" 
+                   data-popup-link-color="#ffcc00" 
+                   data-display-local-dates="true" 
+                   data-display-past-dates="false" 
+                   data-auto-style="true" 
+                   data-language="fr">
+                   Prochaines dates de concert
+                </a>
             </div>
         </section>
 
