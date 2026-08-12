@@ -14,7 +14,7 @@
     <meta property="og:type" content="website">
 
     <!-- Favicon -->
-    <link rel="icon" href="icons/Instagram.svg" type="image/svg+xml">
+    <link rel="icon" href="images/favicon.webp" type="image/webp">
 
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap">
@@ -48,7 +48,7 @@
     </header>
 
     <main>
-        <!-- Section Accueil Officiel -->
+        <!-- Section Accueil -->
         <section id="accueil" class="hero" aria-labelledby="main-heading">
             <div class="hero-content">
                 <h1 id="main-heading">DEYGO JOSY</h1>
@@ -60,7 +60,7 @@
             </div>
         </section>
 
-        <!-- Section Musique / Discographie -->
+        <!-- Section Discographie -->
         <section id="musique" class="music-section" aria-labelledby="music-heading">
             <h2 id="music-heading">DISCOGRAPHIE</h2>
             
@@ -138,7 +138,7 @@
             </div>
         </section>
 
-        <!-- Section Concerts & Tournée (Bandsintown) -->
+        <!-- Section Concerts -->
         <section id="concerts" class="concerts-section" aria-labelledby="concerts-heading">
             <h2 id="concerts-heading">EN CONCERT</h2>
             <div class="concerts-container">
@@ -162,7 +162,7 @@
             </div>
         </section>
 
-        <!-- Section Biographie -->
+        <!-- Section À Propos -->
         <section id="apropos" class="about-section" aria-labelledby="about-heading">
             <div class="about-container">
                 <div class="artist-photo-wrapper">
@@ -193,27 +193,26 @@
         </div>
         
         <div class="social-links">
-            <a href="https://www.instagram.com/deygojosy.officiel" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Deygo Josy">
+            <a href="https://www.instagram.com/deygojosy.officiel" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                 <img src="icons/Instagram.svg" alt="Instagram" width="40" height="40" loading="lazy">
             </a>
-            <a href="https://www.youtube.com/@deygojosy.officiel" target="_blank" rel="noopener noreferrer" aria-label="YouTube de Deygo Josy">
+            <a href="https://www.youtube.com/@deygojosy.officiel" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
                 <img src="icons/Youtube.svg" alt="YouTube" width="40" height="40" loading="lazy">
             </a>
-            <a href="https://www.deezer.com/fr/artist/182358707" target="_blank" rel="noopener noreferrer" aria-label="Deezer de Deygo Josy">
+            <a href="https://www.deezer.com/fr/artist/182358707" target="_blank" rel="noopener noreferrer" aria-label="Deezer">
                 <img src="icons/Deezer.svg" alt="Deezer" width="40" height="40" loading="lazy">
             </a>
-            <a href="https://www.tiktok.com/@deygojosy.officiel" target="_blank" rel="noopener noreferrer" aria-label="TikTok de Deygo Josy">
+            <a href="https://www.tiktok.com/@deygojosy.officiel" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
                 <img src="icons/TikTok.svg" alt="TikTok" width="40" height="40" loading="lazy">
             </a>
-            <a href="https://open.spotify.com/intl-fr/artist/56LWg6shOK2ZEKnKNmWatl" target="_blank" rel="noopener noreferrer" aria-label="Spotify de Deygo Josy">
+            <a href="https://open.spotify.com/intl-fr/artist/56LWg6shOK2ZEKnKNmWatl" target="_blank" rel="noopener noreferrer" aria-label="Spotify">
                 <img src="icons/Spotify.svg" alt="Spotify" width="40" height="40" loading="lazy">
             </a>
-            <a href="https://music.apple.com/us/artist/deygo-josy/1643652809" target="_blank" rel="noopener noreferrer" aria-label="Apple Music de Deygo Josy">
+            <a href="https://music.apple.com/us/artist/deygo-josy/1643652809" target="_blank" rel="noopener noreferrer" aria-label="Apple Music">
                 <img src="icons/Apple Music.svg" alt="Apple Music" width="40" height="40" loading="lazy">
             </a>
         </div>
 
-        <!-- Répertoires et Bases de Données Officielles -->
         <div class="official-directories" style="margin-bottom: 2rem; font-size: 0.9rem;">
             <p style="opacity: 0.7; margin-bottom: 0.5rem;">Répertoires & Métadonnées :</p>
             <div style="display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;">
@@ -231,9 +230,9 @@
     <!-- Lecteurs Audio -->
     <div class="mini-player" id="miniPlayer" role="region" aria-label="Mini lecteur audio">
         <div class="track-info">
-            <img id="miniPlayerTrackImage" src="images/album-cover.webp" alt="Pochette de l'album" class="track-cover">
+            <img id="miniPlayerTrackImage" src="images/album-cover.webp" alt="Pochette" class="track-cover">
             <div>
-                <h4 id="miniPlayerTrackTitle">Titre de la piste</h4>
+                <h4 id="miniPlayerTrackTitle">Titre</h4>
                 <p id="miniPlayerTrackArtist">Deygo Josy</p>
             </div>
         </div>
@@ -242,21 +241,19 @@
 
     <div class="spotify-player" id="spotifyPlayer" role="dialog" aria-modal="true" aria-labelledby="playerTrackTitle" aria-hidden="true">
         <div class="player-content">
-            <button class="close-player" aria-label="Fermer le lecteur">×</button>
+            <button class="close-player" aria-label="Fermer">×</button>
             <div class="track-info">
-                <img id="playerTrackImage" src="images/album-cover.webp" alt="Pochette de l'album en grand" class="track-cover">
+                <img id="playerTrackImage" src="images/album-cover.webp" alt="Pochette" class="track-cover">
                 <div>
-                    <h3 id="playerTrackTitle">Titre de la piste</h3>
+                    <h3 id="playerTrackTitle">Titre</h3>
                     <p id="playerTrackArtist">Deygo Josy</p>
                 </div>
             </div>
-            <audio id="playerAudio">
-                Votre navigateur ne supporte pas l'élément audio.
-            </audio>
+            <audio id="playerAudio">Votre navigateur ne supporte pas l'audio.</audio>
             <div class="player-controls">
-                <button class="control-btn prev-btn" aria-label="Piste précédente">⏮</button>
+                <button class="control-btn prev-btn" aria-label="Précédent">⏮</button>
                 <button class="control-btn play-pause-btn main-play-pause-btn" aria-label="Lire">▶</button>
-                <button class="control-btn next-btn" aria-label="Piste suivante">⏭</button>
+                <button class="control-btn next-btn" aria-label="Suivant">⏭</button>
             </div>
         </div>
     </div>
