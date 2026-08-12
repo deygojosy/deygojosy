@@ -29,7 +29,6 @@ html.js .loader { /* Style initial du loader si JS est activé (peut être masqu
     /* Vous pouvez ajouter des styles spécifiques ici si nécessaire avant que JS ne prenne le relais */
 }
 
-
 body {
     font-family: var(--font-main);
     background-color: var(--bg-color);
@@ -56,7 +55,6 @@ textarea:focus-visible,
 /* Pour les navigateurs ne supportant pas :focus-visible, utilisez :focus */
 /* Mais cela peut être trop intrusif pour les clics souris. :focus-visible est préférable. */
 
-
 /* Classe utilitaire pour lecteurs d'écran seulement */
 .sr-only {
     position: absolute;
@@ -69,7 +67,6 @@ textarea:focus-visible,
     white-space: nowrap;
     border-width: 0;
 }
-
 
 /* ===== LOADER ===== */
 .loader {
@@ -130,7 +127,6 @@ header.scrolled {
     transition: height 0.3s ease;
 }
 /* header.scrolled .logo img { height: var(--logo-scrolled-height, 40px); } */
-
 
 /* ===== MENU BURGER ===== */
 .burger-menu { /* Conteneur pour le bouton burger et la nav sur mobile */
@@ -229,7 +225,6 @@ header.scrolled {
     visibility: visible;
 }
 
-
 /* ===== HERO SECTION ===== */
 .hero {
     min-height: 100vh;
@@ -312,6 +307,22 @@ header.scrolled {
     color: var(--primary-color);
 }
 
+.project-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.project-header h3 {
+    font-family: var(--font-main);
+    color: var(--text-color);
+    font-size: 1.5rem;
+    display: inline-block;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
 .track-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Taille min un peu plus grande */
@@ -367,6 +378,52 @@ header.scrolled {
     transform: scale(1.05);
 }
 
+/* ===== VIDEOS SECTION ===== */
+.videos-section {
+    padding: 4rem 5%;
+    background: linear-gradient(to bottom, #111111, #000000); /* Fond distinct pour séparer les sections */
+}
+
+.videos-section h2 {
+    text-align: center;
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin-bottom: 3rem;
+    color: var(--primary-color);
+}
+
+.videos-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 900px; /* Largeur max pour que la vidéo ne soit pas trop grande sur PC */
+    margin: 0 auto;
+}
+
+.video-container {
+    width: 100%;
+    position: relative;
+    padding-bottom: 56.25%; /* Ratio 16:9 indispensable pour l'intégration YouTube responsive */
+    height: 0;
+    overflow: hidden;
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+    border: 2px solid rgba(255, 204, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.video-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(255, 204, 0, 0.15);
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
 
 /* ===== ABOUT SECTION ===== */
 .about-section {
@@ -481,6 +538,28 @@ footer {
     padding: 3rem 5%;
     text-align: center;
     border-top: 1px solid rgba(255,204,0,0.1); /* Fine ligne de séparation */
+}
+
+.contact-info {
+    margin-bottom: 2.5rem;
+}
+
+.contact-info h3 {
+    font-family: var(--font-heading);
+    color: var(--primary-color);
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+}
+
+.contact-info a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+.contact-info a:hover, .contact-info a:focus-visible {
+    color: var(--primary-color);
 }
 
 .social-links {
@@ -598,7 +677,6 @@ footer {
     color: #fff; /* Changement de couleur au survol */
 }
 
-
 /* --- LECTEUR COMPLET STYLE SPOTIFY --- */
 .spotify-player {
     position: fixed;
@@ -709,7 +787,6 @@ footer {
 /* Pour Firefox et autres si besoin */
 /* #playerAudio::-moz-media-controls { display: none !important; } */
 
-
 .spotify-player .player-controls {
     display: flex;
     justify-content: center;
@@ -787,7 +864,6 @@ footer {
         display: block; /* Pour que le padding s'applique bien */
     }
 
-
     /* Hero mobile */
     .hero h1 { font-size: clamp(2rem, 10vw, 3rem); }
     .subtitle { font-size: clamp(0.9rem, 4vw, 1.1rem); }
@@ -797,6 +873,10 @@ footer {
     /* Music section mobile */
     .music-section h2 { font-size: clamp(1.8rem, 6vw, 2.5rem); }
     .track-grid { grid-template-columns: 1fr; gap: 1.5rem; } /* Une colonne sur mobile */
+
+    /* Videos section mobile */
+    .videos-section { padding: 3rem 5%; }
+    .videos-section h2 { font-size: clamp(1.8rem, 6vw, 2.5rem); }
 
     /* About section mobile */
     .about-section { padding: 3rem 5%; }
