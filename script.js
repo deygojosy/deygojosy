@@ -125,25 +125,27 @@ const initCountdown = () => {
     }
 };
 
-// Menu Burger
+// Menu Burger corrigé pour mobile
 const initBurgerMenu = () => {
     const burgerBtn = document.querySelector('.burger-btn');
     const mainNav = document.querySelector('.main-nav');
     
     if (!burgerBtn || !mainNav) return;
 
-    const navOverlay = document.createElement('div');
-    navOverlay.className = 'nav-overlay';
-    document.body.appendChild(navOverlay);
+    let navOverlay = document.querySelector('.nav-overlay');
+    if (!navOverlay) {
+        navOverlay = document.createElement('div');
+        navOverlay.className = 'nav-overlay';
+        document.body.appendChild(navOverlay);
+    }
 
-    burgerBtn.addEventListener('click', function() {
-        const isExpanded = this.getAttribute('aria-expanded') === 'true';
-        this.setAttribute('aria-expanded', !isExpanded);
-        mainNav.setAttribute('aria-hidden', String(isExpanded)); 
-        navOverlay.classList.toggle('active', !isExpanded);
-        document.body.style.overflow = isExpanded ? '' : 'hidden';
-        this.setAttribute('aria-label', isExpanded ? 'Ouvrir le menu' : 'Fermer le menu');
-    });
+    const openMenu = () => {
+        burgerBtn.setAttribute('aria-expanded', 'true');
+        mainNav.setAttribute('aria-hidden', 'false'); 
+        navOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        burgerBtn.setAttribute('aria-label', 'Fermer le menu');
+    };
 
     const closeMenu = () => {
         burgerBtn.setAttribute('aria-expanded', 'false');
@@ -153,9 +155,20 @@ const initBurgerMenu = () => {
         burgerBtn.setAttribute('aria-label', 'Ouvrir le menu');
     };
 
+    burgerBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const isExpanded = this.getAttribute('aria-expanded') === 'true';
+        if (isExpanded) {
+            closeMenu();
+        } else {
+            openMenu();
+        }
+    });
+
     document.querySelectorAll('.main-nav a').forEach(link => {
         link.addEventListener('click', closeMenu);
     });
+    
     navOverlay.addEventListener('click', closeMenu);
 };
 
@@ -349,6 +362,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const copyrightSmall = document.querySelector('footer .copyright small');
     if (copyrightSmall) {
         const currentYear = new Date().getFullYear();
-        copyrightSmall.textContent = `© ${currentYear} Deygo Josy | Propulsé par Horizon Dwell / Dizame. Tous droits réservés.`;
+        copyrightSmall.textContent = `© ${currentYear} Deygo Josy | Propulsé par Dizame. Tous droits réservés.`;
     }
 });
