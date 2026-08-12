@@ -4,14 +4,12 @@
     --text-color: #fff;
     --bg-color: #000;
     --header-bg: rgba(0, 0, 0, 0.8);
-    /* Suggestion: Spécifiez les propriétés pour la transition au lieu de 'all' pour de meilleures performances */
-    /* Exemple: --transition: opacity 0.3s ease, transform 0.3s ease; */
     --transition: all 0.3s ease; 
     --font-main: "Montserrat", sans-serif;
     --font-heading: "Playfair Display", serif;
     --border-radius: 10px;
     --box-shadow: 0 10px 30px rgba(255, 204, 0, 0.2);
-    --focus-outline-color: var(--primary-color); /* Pour les indicateurs de focus */
+    --focus-outline-color: var(--primary-color);
 }
 
 /* ===== BASE ===== */
@@ -25,9 +23,6 @@
 html {
     scroll-behavior: smooth;
 }
-html.js .loader { /* Style initial du loader si JS est activé (peut être masqué plus tard) */
-    /* Vous pouvez ajouter des styles spécifiques ici si nécessaire avant que JS ne prenne le relais */
-}
 
 body {
     font-family: var(--font-main);
@@ -35,13 +30,12 @@ body {
     color: var(--text-color);
     line-height: 1.6;
     overflow-x: hidden;
-    padding-top: 80px; /* Espace pour le header fixe */
-    padding-bottom: 70px; /* Espace pour le mini-player. Ajustez si la hauteur du mini-player change. */
+    padding-top: 80px; 
+    padding-bottom: 70px; 
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale; /* Pour Firefox */
+    -moz-osx-font-smoothing: grayscale; 
 }
 
-/* Suggestion Accessibilité: Styles de focus visibles */
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
@@ -50,12 +44,9 @@ textarea:focus-visible,
 [tabindex]:not([tabindex="-1"]):focus-visible {
     outline: 3px solid var(--focus-outline-color);
     outline-offset: 2px;
-    box-shadow: 0 0 0 5px rgba(255, 204, 0, 0.3); /* Optionnel pour plus de visibilité */
+    box-shadow: 0 0 0 5px rgba(255, 204, 0, 0.3); 
 }
-/* Pour les navigateurs ne supportant pas :focus-visible, utilisez :focus */
-/* Mais cela peut être trop intrusif pour les clics souris. :focus-visible est préférable. */
 
-/* Classe utilitaire pour lecteurs d'écran seulement */
 .sr-only {
     position: absolute;
     width: 1px;
@@ -77,11 +68,11 @@ textarea:focus-visible,
     height: 100%;
     background: var(--bg-color);
     display: flex;
-    flex-direction: column; /* Pour aligner le spinner et le texte sr-only */
+    flex-direction: column; 
     justify-content: center;
     align-items: center;
     z-index: 9999;
-    transition: opacity 0.5s ease, visibility 0.5s ease; /* Transition plus spécifique */
+    transition: opacity 0.5s ease, visibility 0.5s ease; 
 }
 
 .loader-spinner {
@@ -103,35 +94,26 @@ header {
     position: fixed;
     top: 0;
     width: 100%;
-    /* Le padding est géré par JS actuellement. Si vous passez à une classe CSS .scrolled : */
-    /* padding: var(--header-default-padding, 1rem 5%); */
-    padding: 1rem 5%; /* Valeur par défaut si JS ne modifie pas */
+    padding: 1rem 5%; 
     display: flex;
-    justify-content: space-between; /* S'il y a un logo à gauche et le menu à droite */
+    justify-content: space-between; 
     align-items: center;
     background: var(--header-bg);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     z-index: 1000;
-    transition: padding 0.3s ease; /* Transition pour le padding si géré par JS ou classe */
+    transition: padding 0.3s ease; 
 }
-/* Si vous utilisez une classe .scrolled pour le header:
-header.scrolled {
-    padding: var(--header-scrolled-padding, 0.5rem 5%);
-}
-*/
 
-/* Styles pour un logo si vous en ajoutez un dans le HTML avec la classe .logo */
 .logo img {
-    height: var(--logo-height, 50px); /* var(--logo-height) n'est pas défini globalement */
+    height: var(--logo-height, 50px); 
     transition: height 0.3s ease;
 }
-/* header.scrolled .logo img { height: var(--logo-scrolled-height, 40px); } */
 
 /* ===== MENU BURGER ===== */
-.burger-menu { /* Conteneur pour le bouton burger et la nav sur mobile */
-    display: flex; /* Reste flex pour aligner le bouton à droite si besoin */
-    margin-left: auto; /* Pousse le menu à droite */
+.burger-menu { 
+    display: flex; 
+    margin-left: auto; 
     align-items: center;
 }
 
@@ -139,14 +121,14 @@ header.scrolled {
     background: transparent;
     border: none;
     cursor: pointer;
-    display: none; /* Affiché via media query pour mobile */
+    display: none; 
     flex-direction: column;
-    justify-content: space-around; /* Espace mieux les lignes */
+    justify-content: space-around; 
     width: 25px;
-    height: 20px; /* Légèrement plus haut pour un meilleur espacement */
+    height: 20px; 
     padding: 0;
-    position: relative; /* Pour z-index si besoin par rapport à d'autres éléments du header */
-    z-index: 1005; /* Au-dessus du main-nav et de l'overlay */
+    position: relative; 
+    z-index: 1005; 
 }
 
 .burger-line {
@@ -154,12 +136,12 @@ header.scrolled {
     width: 100%;
     height: 2px;
     background: var(--text-color);
-    transition: transform 0.3s ease, opacity 0.3s ease; /* transitions spécifiques */
+    transition: transform 0.3s ease, opacity 0.3s ease; 
     transform-origin: center;
 }
 
 .main-nav {
-    z-index: 1004; /* Sous le bouton burger mais au-dessus de l'overlay de base */
+    z-index: 1004; 
 }
 .main-nav ul {
     display: flex;
@@ -173,7 +155,7 @@ header.scrolled {
     font-weight: 600;
     position: relative;
     padding: 0.5rem 0;
-    transition: color 0.3s ease; /* transition pour la couleur */
+    transition: color 0.3s ease; 
 }
 
 .main-nav a::after {
@@ -188,24 +170,22 @@ header.scrolled {
 }
 
 .main-nav a:hover, .main-nav a:focus-visible {
-    color: var(--primary-color); /* Changement de couleur au survol/focus */
+    color: var(--primary-color); 
 }
 .main-nav a:hover::after, .main-nav a:focus-visible::after {
     width: 100%;
 }
 
-/* État ouvert du menu burger */
 .burger-btn[aria-expanded="true"] .burger-line:nth-child(1) {
-    transform: translateY(7px) rotate(45deg); /* Ajusté pour height de 20px */
+    transform: translateY(7px) rotate(45deg); 
 }
 .burger-btn[aria-expanded="true"] .burger-line:nth-child(2) {
     opacity: 0;
 }
 .burger-btn[aria-expanded="true"] .burger-line:nth-child(3) {
-    transform: translateY(-7px) rotate(-45deg); /* Ajusté */
+    transform: translateY(-7px) rotate(-45deg); 
 }
 
-/* Overlay pour le menu mobile, créé par JS */
 .nav-overlay {
     position: fixed;
     top: 0;
@@ -215,7 +195,7 @@ header.scrolled {
     background: rgba(0, 0, 0, 0.7);
     backdrop-filter: blur(3px);
     -webkit-backdrop-filter: blur(3px);
-    z-index: 1003; /* Sous le menu et le bouton burger */
+    z-index: 1003; 
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
@@ -234,18 +214,18 @@ header.scrolled {
     text-align: center;
     position: relative;
     background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-        url("images/background.webp") no-repeat center center/cover; /* center center pour être sûr */
+        url("images/background.webp") no-repeat center center/cover; 
     padding: 2rem 5%;
 }
 
 .hero h1 {
     font-family: var(--font-heading);
-    font-size: clamp(2.5rem, 6vw, 4.5rem); /* Un peu plus grand sur les grands écrans */
-    color: var(--text-color); /* Assurer la couleur du texte */
+    font-size: clamp(2.5rem, 6vw, 4.5rem); 
+    color: var(--text-color); 
     margin-bottom: 1rem;
     letter-spacing: 3px;
     line-height: 1.2;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Optionnel: lisibilité */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5); 
 }
 
 .subtitle {
@@ -253,8 +233,8 @@ header.scrolled {
     opacity: 0.9;
     margin-bottom: 1.5rem;
 }
-#countdown { /* Pour s'assurer qu'il est bien stylé */
-    display: inline-block; /* Pour éviter des sauts de ligne inattendus */
+#countdown { 
+    display: inline-block; 
 }
 
 .cta-buttons {
@@ -271,10 +251,10 @@ header.scrolled {
     border-radius: 50px;
     font-weight: 700;
     cursor: pointer;
-    transition: var(--transition); /* Utilise la variable globale */
+    transition: var(--transition); 
     text-decoration: none;
     text-align: center;
-    border: 2px solid transparent; /* Pour éviter le décalage au survol si une bordure apparaît */
+    border: 2px solid transparent; 
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -291,7 +271,7 @@ header.scrolled {
     box-shadow: 0 5px 15px rgba(255, 204, 0, 0.4);
 }
 .btn-preorder:hover, .btn-preorder:focus-visible {
-    background: #e6b800; /* Couleur légèrement plus foncée au survol */
+    background: #e6b800; 
     border-color: #e6b800;
 }
 
@@ -299,7 +279,7 @@ header.scrolled {
 .music-section {
     padding: 4rem 5%;
 }
-.music-section h2 { /* Style pour le titre de section */
+.music-section h2 { 
     text-align: center;
     font-family: var(--font-heading);
     font-size: clamp(2rem, 5vw, 3rem);
@@ -325,24 +305,24 @@ header.scrolled {
 
 .track-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Taille min un peu plus grande */
-    gap: 2rem; /* Un peu plus d'espace */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 2rem; 
 }
 
 .track-card {
     background: rgba(255, 255, 255, 0.05);
     padding: 1.5rem;
     border-radius: var(--border-radius);
-    transition: transform 0.3s ease, background-color 0.3s ease; /* transitions spécifiques */
+    transition: transform 0.3s ease, background-color 0.3s ease; 
     cursor: pointer;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centrer le contenu de la carte */
+    align-items: center; 
     text-align: center;
 }
 
-.track-card:hover, .track-card:focus-within { /* focus-within pour quand le bouton intérieur a le focus */
-    transform: translateY(-5px) scale(1.02); /* Ajout d'un léger scale */
+.track-card:hover, .track-card:focus-within { 
+    transform: translateY(-5px) scale(1.02); 
     background: rgba(255, 255, 255, 0.1);
 }
 .track-card .track-number {
@@ -362,12 +342,12 @@ header.scrolled {
     background: var(--primary-color);
     color: var(--secondary-color);
     border: none;
-    padding: 0.7rem 1.8rem; /* Ajustement du padding */
+    padding: 0.7rem 1.8rem; 
     border-radius: 50px;
     font-weight: 600;
     cursor: pointer;
-    transition: opacity 0.3s ease, transform 0.3s ease; /* transitions spécifiques */
-    margin-top: auto; /* Pousse le bouton en bas si la carte a une hauteur variable */
+    transition: opacity 0.3s ease, transform 0.3s ease; 
+    margin-top: auto; 
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -381,7 +361,7 @@ header.scrolled {
 /* ===== VIDEOS SECTION ===== */
 .videos-section {
     padding: 4rem 5%;
-    background: linear-gradient(to bottom, #111111, #000000); /* Fond distinct pour séparer les sections */
+    background: linear-gradient(to bottom, #111111, #000000);
 }
 
 .videos-section h2 {
@@ -392,18 +372,28 @@ header.scrolled {
     color: var(--primary-color);
 }
 
-.videos-grid {
+/* Vidéo Principale */
+.videos-grid.main-video {
     display: flex;
     justify-content: center;
     align-items: center;
-    max-width: 900px; /* Largeur max pour que la vidéo ne soit pas trop grande sur PC */
+    max-width: 900px; 
+    margin: 0 auto 2rem auto; 
+}
+
+/* Vidéos Secondaires (Grille) */
+.secondary-videos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
 .video-container {
     width: 100%;
     position: relative;
-    padding-bottom: 56.25%; /* Ratio 16:9 indispensable pour l'intégration YouTube responsive */
+    padding-bottom: 56.25%; 
     height: 0;
     overflow: hidden;
     border-radius: var(--border-radius);
@@ -428,9 +418,9 @@ header.scrolled {
 /* ===== ABOUT SECTION ===== */
 .about-section {
     padding: 5rem 5%;
-    background: linear-gradient(to bottom, #0a0a0a, #1a1a1a); /* Légèrement différent pour le dégradé */
+    background: linear-gradient(to bottom, #0a0a0a, #1a1a1a); 
     position: relative;
-    overflow: hidden; /* Important pour les éléments positionnés absolument */
+    overflow: hidden; 
 }
 
 .about-container {
@@ -446,21 +436,21 @@ header.scrolled {
 .artist-photo-wrapper {
     position: relative;
     flex: 1;
-    max-width: 400px; /* Garder une taille max */
+    max-width: 400px; 
 }
 
 .artist-photo {
     width: 100%;
-    border-radius: 15px; /* Conserver */
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6); /* Ombre plus prononcée */
+    border-radius: 15px; 
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6); 
     position: relative;
     z-index: 2;
     border: 3px solid var(--primary-color);
     transform: rotate(-3deg);
-    transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1); /* Transition plus personnalisée */
+    transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1); 
 }
 
-.artist-photo:hover, .artist-photo-wrapper:focus-within .artist-photo { /* Effet au survol ou focus dans le wrapper */
+.artist-photo:hover, .artist-photo-wrapper:focus-within .artist-photo { 
     transform: rotate(0deg) scale(1.03);
 }
 
@@ -470,19 +460,19 @@ header.scrolled {
     height: 100%;
     background: radial-gradient(
         circle,
-        rgba(255, 204, 0, 0.25) 0%, /* Légèrement plus visible */
+        rgba(255, 204, 0, 0.25) 0%, 
         rgba(255, 204, 0, 0) 70%
     );
-    top: 50%; /* Centrer la lueur */
+    top: 50%; 
     left: 50%;
-    transform: translate(-50%, -50%); /* Centrer la lueur */
+    transform: translate(-50%, -50%); 
     border-radius: 15px;
-    animation: pulse 3s infinite alternate ease-in-out; /* Animation plus douce */
-    z-index: 1; /* Derrière la photo */
+    animation: pulse 3s infinite alternate ease-in-out; 
+    z-index: 1; 
 }
 
 .about-content {
-    flex: 1.2; /* Donner un peu plus d'espace au contenu */
+    flex: 1.2; 
     color: white;
 }
 
@@ -498,7 +488,7 @@ header.scrolled {
     width: 100px;
     height: 3px;
     background: var(--primary-color);
-    margin: 1rem 0 1.5rem; /* Espacement ajusté */
+    margin: 1rem 0 1.5rem; 
 }
 
 .artist-origin {
@@ -516,14 +506,14 @@ header.scrolled {
 
 .bio-text strong {
     color: var(--primary-color);
-    font-weight: 700; /* S'assurer qu'il est bien en gras */
+    font-weight: 700; 
 }
 
 .cultural-pattern {
     margin-top: 2rem;
     height: 10px;
     background: repeating-linear-gradient(
-        45deg, /* Angle pour le motif */
+        45deg, 
         var(--primary-color),
         var(--primary-color) 10px,
         transparent 10px,
@@ -534,10 +524,10 @@ header.scrolled {
 
 /* ===== FOOTER ===== */
 footer {
-    background: #050505; /* Noir un peu moins profond pour le footer */
+    background: #050505; 
     padding: 3rem 5%;
     text-align: center;
-    border-top: 1px solid rgba(255,204,0,0.1); /* Fine ligne de séparation */
+    border-top: 1px solid rgba(255,204,0,0.1); 
 }
 
 .contact-info {
@@ -565,27 +555,27 @@ footer {
 .social-links {
     display: flex;
     justify-content: center;
-    gap: 1.5rem; /* Augmenter un peu l'espace */
-    margin-bottom: 1.5rem; /* Plus de marge en bas */
+    gap: 1.5rem; 
+    margin-bottom: 1.5rem; 
 }
 
-.social-links a { /* Pour les styles de focus sur les liens d'icônes */
-    display: inline-block; /* Permet transform et outline correct */
-    border-radius: 50%; /* Pour un effet de focus circulaire si souhaité */
+.social-links a { 
+    display: inline-block; 
+    border-radius: 50%; 
 }
 .social-links img {
     width: 40px;
     height: 40px;
-    transition: transform 0.3s ease, opacity 0.3s ease; /* transitions spécifiques */
+    transition: transform 0.3s ease, opacity 0.3s ease; 
 }
 
 .social-links a:hover img, .social-links a:focus-visible img {
-    transform: scale(1.15); /* Agrandissement plus marqué */
+    transform: scale(1.15); 
     opacity: 0.8;
 }
 
 .copyright {
-    font-size: 0.85rem; /* Légèrement plus grand */
+    font-size: 0.85rem; 
     opacity: 0.7;
 }
 
@@ -595,52 +585,50 @@ footer {
     bottom: 0;
     left: 0;
     width: 100%;
-    /* Vous pouvez ajuster la hauteur ici si vous rendez la pochette plus grande */
     height: 70px; 
-    background: rgba(10, 10, 10, 0.95); /* Fond légèrement différent */
+    background: rgba(10, 10, 10, 0.95); 
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     z-index: 1002;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 1rem; /* Padding horizontal */
+    padding: 0 1rem; 
     border-top: 1px solid var(--primary-color);
-    transition: opacity 0.4s ease, transform 0.4s ease; /* Ajout de transform pour l'apparition */
+    transition: opacity 0.4s ease, transform 0.4s ease; 
     opacity: 0;
-    transform: translateY(100%); /* Initialement caché en bas */
+    transform: translateY(100%); 
     pointer-events: none;
     cursor: pointer;
 }
 
 .mini-player.active {
     opacity: 1;
-    transform: translateY(0); /* Apparaît en glissant vers le haut */
+    transform: translateY(0); 
     pointer-events: all;
 }
 
 .mini-player .track-info {
-    display: flex; /* Ajouté pour aligner image et texte */
-    align-items: center; /* Centrer verticalement */
+    display: flex; 
+    align-items: center; 
     flex-grow: 1;
     gap: 10px;
-    overflow: hidden; /* Pour que le text-overflow fonctionne */
+    overflow: hidden; 
 }
 
 .mini-player .track-cover {
-    /* Ajustez width et height ici pour la taille de la pochette dans le mini-lecteur */
     width: 50px; 
     height: 50px;
-    border-radius: 4px; /* Rayon de bordure plus doux */
-    object-fit: cover; /* Assure que l'image couvre sans déformation */
-    flex-shrink: 0; /* Empêche l'image de rétrécir */
+    border-radius: 4px; 
+    object-fit: cover; 
+    flex-shrink: 0; 
 }
 
-.mini-player .track-info div { /* Conteneur pour titre et artiste */
+.mini-player .track-info div { 
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Centrer le texte verticalement */
-    overflow: hidden; /* Pour text-overflow sur le titre */
+    justify-content: center; 
+    overflow: hidden; 
 }
 
 .mini-player h4 {
@@ -650,13 +638,12 @@ footer {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    /* max-width: 150px;  Retiré, flex gérera mieux la largeur */
 }
 
 .mini-player p {
     margin: 0;
     font-size: 0.75em;
-    color: rgba(255, 255, 255, 0.7); /* Opacité ajustée */
+    color: rgba(255, 255, 255, 0.7); 
     white-space: nowrap;
 }
 
@@ -666,32 +653,32 @@ footer {
     color: var(--primary-color);
     font-size: 2rem;
     cursor: pointer;
-    margin-left: 1rem; /* Espace à gauche du bouton */
-    padding: 0.5rem; /* Zone de clic plus grande */
+    margin-left: 1rem; 
+    padding: 0.5rem; 
     transition: transform 0.2s ease, color 0.2s ease;
-    line-height: 1; /* Assurer l'alignement vertical du texte du bouton */
+    line-height: 1; 
 }
 
 .mini-player .play-pause-btn:hover, .mini-player .play-pause-btn:focus-visible {
     transform: scale(1.1);
-    color: #fff; /* Changement de couleur au survol */
+    color: #fff; 
 }
 
 /* --- LECTEUR COMPLET STYLE SPOTIFY --- */
 .spotify-player {
     position: fixed;
-    top: 0; /* Couvre tout l'écran dès le début */
+    top: 0; 
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.97); /* Fond très opaque */
-    backdrop-filter: blur(20px); /* Flou plus prononcé */
+    background: rgba(0, 0, 0, 0.97); 
+    backdrop-filter: blur(20px); 
     -webkit-backdrop-filter: blur(20px);
-    padding: 2rem; /* Padding global */
+    padding: 2rem; 
     z-index: 1003;
-    transition: opacity 0.4s ease-out, transform 0.4s ease-out; /* Transition pour l'apparition */
+    transition: opacity 0.4s ease-out, transform 0.4s ease-out; 
     opacity: 0;
-    transform: scale(1.1); /* Effet de zoom pour l'apparition */
+    transform: scale(1.1); 
     pointer-events: none;
     display: flex;
     flex-direction: column;
@@ -706,9 +693,9 @@ footer {
 }
 
 .spotify-player .player-content {
-    max-width: 500px; /* Largeur max du contenu du lecteur */
-    width: 90%; /* Prend 90% de la largeur disponible */
-    background: rgba(20, 20, 20, 0.5); /* Léger fond pour le contenu */
+    max-width: 500px; 
+    width: 90%; 
+    background: rgba(20, 20, 20, 0.5); 
     padding: 2rem;
     border-radius: var(--border-radius);
     box-shadow: 0 10px 40px rgba(0,0,0,0.5);
@@ -716,7 +703,7 @@ footer {
     flex-direction: column;
     gap: 1.5rem;
     align-items: center;
-    position: relative; /* Pour le bouton de fermeture */
+    position: relative; 
 }
 
 .spotify-player .close-player {
@@ -729,8 +716,8 @@ footer {
     right: 1rem;
     cursor: pointer;
     transition: transform 0.3s ease, color 0.3s ease;
-    z-index: 10; /* Au-dessus du reste du contenu du lecteur */
-    padding: 0.5rem; /* Zone de clic plus grande */
+    z-index: 10; 
+    padding: 0.5rem; 
     line-height: 1;
 }
 
@@ -744,55 +731,50 @@ footer {
     flex-direction: column;
     align-items: center;
     gap: 1rem;
-    margin-bottom: 1rem; /* Espace réduit */
+    margin-bottom: 1rem; 
     text-align: center;
 }
 
 .spotify-player .track-cover {
-    /* Ajustez width et height ici pour la taille de la pochette dans le lecteur complet */
-    width: 1500px; 
-    height: 1500px;
+    width: 150px; 
+    height: 150px;
     border-radius: var(--border-radius);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5); /* Ombre ajustée */
-    object-fit: cover; /* Assure que l'image couvre sans déformation */
-    margin-bottom: 1rem; /* Espace sous la pochette */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5); 
+    object-fit: cover; 
+    margin-bottom: 1rem; 
 }
 
-.spotify-player .track-info h3 { /* Titre de la piste */
+.spotify-player .track-info h3 { 
     font-size: clamp(1.5rem, 4vw, 2em);
-    margin-top: 0; /* Pas de marge en haut, gérée par le gap */
+    margin-top: 0; 
     color: var(--text-color);
 }
 
-.spotify-player .track-info p { /* Artiste */
+.spotify-player .track-info p { 
     font-size: clamp(1rem, 3vw, 1.2em);
     color: rgba(255, 255, 255, 0.8);
-    margin-top: -0.5rem; /* Rapprocher de titre */
+    margin-top: -0.5rem; 
 }
 
-#playerAudio { /* La balise audio elle-même, sera invisible grâce aux styles suivants */
+#playerAudio { 
     width: 100%;
-    max-width: 400px; /* Largeur max si visible */
+    max-width: 400px; 
     margin-top: 1rem;
-    /* filter: invert(1); Retiré car les contrôles sont cachés */
 }
 
-/* Cache les contrôles audio natifs */
 #playerAudio::-webkit-media-controls-panel,
 #playerAudio::-webkit-media-controls-enclosure,
 #playerAudio::-webkit-media-controls {
     display: none !important;
     -webkit-appearance: none;
 }
-/* Pour Firefox et autres si besoin */
-/* #playerAudio::-moz-media-controls { display: none !important; } */
 
 .spotify-player .player-controls {
     display: flex;
     justify-content: center;
-    align-items: center; /* Centrer verticalement les boutons */
-    gap: 2rem; /* Espace entre les boutons (prev, play, next) */
-    margin-top: 1rem; /* Espace au-dessus des contrôles */
+    align-items: center; 
+    gap: 2rem; 
+    margin-top: 1rem; 
     width: 100%;
 }
 
@@ -800,101 +782,87 @@ footer {
     background: none;
     border: none;
     color: white;
-    font-size: 1.8rem; /* Taille des boutons prev/next */
+    font-size: 1.8rem; 
     cursor: pointer;
     transition: color 0.3s ease, transform 0.3s ease;
-    padding: 0.5rem; /* Zone de clic */
+    padding: 0.5rem; 
     line-height: 1;
 }
 .spotify-player .control-btn:hover, .spotify-player .control-btn:focus-visible {
     color: var(--primary-color);
 }
 
-.spotify-player .play-pause-btn {  /* Bouton Play/Pause principal */
-    font-size: 3.5rem; /* Taille du bouton Play/Pause */
+.spotify-player .play-pause-btn {  
+    font-size: 3.5rem; 
     color: var(--primary-color);
 }
 .spotify-player .play-pause-btn:hover, .spotify-player .play-pause-btn:focus-visible {
-    transform: scale(1.1); /* Agrandir au survol/focus */
-    /* La couleur est déjà var(--primary-color) */
+    transform: scale(1.1); 
 }
-
 
 /* ===== MEDIA QUERIES ===== */
 @media (max-width: 768px) {
     body {
-        padding-top: 70px; /* Hauteur du header mobile si différente */
-        padding-bottom: 60px; /* Hauteur du mini-player mobile */
-    }
-
-    /* Header mobile */
-    header {
-        /* Si le padding du header change sur mobile, ajustez ici ou via la classe .scrolled */
+        padding-top: 70px; 
+        padding-bottom: 60px; 
     }
 
     .burger-btn {
-        display: flex; /* Afficher le bouton burger */
+        display: flex; 
     }
 
-    .main-nav { /* Styles du menu coulissant */
+    .main-nav { 
         position: fixed;
         top: 0;
-        right: -100%; /* Initialement hors écran */
-        width: min(80vw, 300px); /* Largeur du menu, max 300px */
+        right: -100%; 
+        width: min(80vw, 300px); 
         height: 100vh;
-        background: var(--header-bg); /* Utilise le même fond que le header */
-        backdrop-filter: blur(15px); /* Flou plus prononcé pour le menu */
+        background: var(--header-bg); 
+        backdrop-filter: blur(15px); 
         -webkit-backdrop-filter: blur(15px);
-        padding: 6rem 2rem 2rem; /* Espace en haut pour ne pas être sous le header */
+        padding: 6rem 2rem 2rem; 
         transition: right 0.4s ease-in-out;
-        /* z-index déjà défini plus haut */
     }
-    .main-nav[aria-hidden="false"] { /* Quand le menu est visible */
+    .main-nav[aria-hidden="false"] { 
         right: 0;
-        box-shadow: -5px 0 15px rgba(0,0,0,0.2); /* Ombre pour le menu ouvert */
+        box-shadow: -5px 0 15px rgba(0,0,0,0.2); 
     }
     .main-nav ul {
         flex-direction: column;
         gap: 1.5rem;
-        align-items: flex-start; /* Aligner les liens à gauche */
+        align-items: flex-start; 
     }
     .main-nav a {
         font-size: 1.2rem;
-        padding: 0.5rem; /* Zone de clic plus grande */
-        display: block; /* Pour que le padding s'applique bien */
+        padding: 0.5rem; 
+        display: block; 
     }
 
-    /* Hero mobile */
     .hero h1 { font-size: clamp(2rem, 10vw, 3rem); }
     .subtitle { font-size: clamp(0.9rem, 4vw, 1.1rem); }
     .cta-buttons { flex-direction: column; align-items: center; }
     .btn { width: 100%; max-width: 300px; padding: 0.8rem 1.5rem; }
 
-    /* Music section mobile */
     .music-section h2 { font-size: clamp(1.8rem, 6vw, 2.5rem); }
-    .track-grid { grid-template-columns: 1fr; gap: 1.5rem; } /* Une colonne sur mobile */
+    .track-grid { grid-template-columns: 1fr; gap: 1.5rem; } 
 
-    /* Videos section mobile */
     .videos-section { padding: 3rem 5%; }
     .videos-section h2 { font-size: clamp(1.8rem, 6vw, 2.5rem); }
 
-    /* About section mobile */
     .about-section { padding: 3rem 5%; }
     .about-container { flex-direction: column; gap: 2.5rem; }
-    .artist-photo-wrapper { max-width: 280px; /* Photo un peu plus grande sur mobile */ }
+    .artist-photo-wrapper { max-width: 280px; }
     .about-content { text-align: center; }
     .about-content h2 { font-size: clamp(2rem, 7vw, 2.5rem); }
     .gold-divider { margin: 1rem auto; }
 
-    /* Mini-lecteur mobile */
     .mini-player { height: 60px; padding: 0 0.8rem; }
     .mini-player .track-cover { width: 40px; height: 40px; }
     .mini-player h4 { font-size: 0.8em; }
     .mini-player p { font-size: 0.7em; }
     .mini-player .play-pause-btn { font-size: 1.8rem; }
 
-    /* Lecteur complet mobile */
-    .spotify-player { padding: 1rem; } /* Moins de padding sur mobile */
+    .spotify-player { padding: 1rem; } 
     .spotify-player .player-content { padding: 1.5rem; gap: 1rem; width: 100%; }
     .spotify-player .close-player { font-size: 2rem; top: 0.8rem; right: 0.8rem; }
     .spotify-player .track-cover { width: clamp(120px, 50vw, 180px); height: clamp(120px, 50vw, 180px); }
@@ -906,27 +874,19 @@ footer {
 }
 
 @media (max-width: 480px) {
-    body { padding-top: 60px; } /* Ajustement si le header est plus petit */
-    .hero { padding-top: 4rem; /* Plus d'espace si le header est fixe */ }
+    body { padding-top: 60px; } 
+    .hero { padding-top: 4rem; }
     .hero h1 { letter-spacing: 2px; }
 
     .about-content h2 { font-size: clamp(1.8rem, 6vw, 2.2rem); }
     .bio-text p { font-size: 0.95rem; }
-    .artist-photo-wrapper { max-width: min(220px, 70vw); } /* Encore plus petit */
-    .artist-photo { transform: none !important; border-width: 2px; } /* Simplifier l'effet sur très petits écrans */
+    .artist-photo-wrapper { max-width: min(220px, 70vw); } 
+    .artist-photo { transform: none !important; border-width: 2px; } 
     .cultural-pattern { height: 5px; }
-
-    /* Optionnel: Cacher la lueur sur les très petits écrans ou si performances iOS sont un souci */
-    /* @supports (-webkit-touch-callout: none) or (max-width: 480px) { */
-    .photo-glow {
-        /* display: none; */ /* Décommentez pour cacher si besoin */
-    }
-    /* } */
 }
 
-/* Keyframes pour animations */
 @keyframes pulse {
-    0% { opacity: 0.3; transform: scale(0.95); } /* Ajout de scale pour un effet plus subtil */
+    0% { opacity: 0.3; transform: scale(0.95); } 
     50% { opacity: 0.7; transform: scale(1.05); }
     100% { opacity: 0.3; transform: scale(0.95); }
 }
