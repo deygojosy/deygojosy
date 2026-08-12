@@ -4,13 +4,12 @@ document.documentElement.classList.add('js');
 
 // Configuration
 const CONFIG = {
-    RELEASE_DATE: '2023-12-15', // Note: Cette date est passée. Le script gère l'affichage "DISPONIBLE MAINTENANT !".
+    RELEASE_DATE: '2023-12-15', 
     SCROLL_THRESHOLD: 100,
     LOADER_DURATION: 1000,
-    HEADER: { // Utilisé si vous manipulez le style du header directement via JS
+    HEADER: { 
         DEFAULT_PADDING: '1rem 5%',
         SCROLLED_PADDING: '0.5rem 5%',
-        // Note: La partie LOGO n'est pas utilisée avec l'HTML actuel car il n'y a pas d'élément .logo img
         LOGO: {
             DEFAULT_HEIGHT: '50px',
             SCROLLED_HEIGHT: '40px'
@@ -24,8 +23,6 @@ const initLoader = () => {
     const loader = document.querySelector('.loader');
     if (!loader) return;
 
-    // Initialement, le loader est visible, donc aria-hidden est false.
-    // Une fois le chargement terminé et le loader masqué, on mettra aria-hidden à true.
     loader.setAttribute('aria-hidden', 'false');
 
     window.addEventListener('load', () => {
@@ -33,7 +30,7 @@ const initLoader = () => {
             loader.style.opacity = '0';
             loader.style.visibility = 'hidden';
             loader.style.pointerEvents = 'none';
-            loader.setAttribute('aria-hidden', 'true'); // Le loader est maintenant caché
+            loader.setAttribute('aria-hidden', 'true'); 
         }, CONFIG.LOADER_DURATION);
     });
 };
@@ -58,7 +55,6 @@ const initSmoothScrolling = () => {
                         location.hash = targetId;
                     }
                 } catch (err) {
-                    // Si pushState n'est pas autorisé (par ex. iframe sandboxed ou file://)
                     location.hash = targetId;
                 }
             }
@@ -69,16 +65,9 @@ const initSmoothScrolling = () => {
 // Header scroll effect
 const initHeaderScrollEffect = () => {
     const header = document.querySelector('header');
-    // Note: Le sélecteur '.logo img' ne trouvera rien dans l'HTML actuel.
-    // Si vous ajoutez un logo, assurez-vous que le sélecteur est correct.
     const logoImg = document.querySelector('.logo img');
 
     if (!header) return;
-
-    // Suggestion : Pour une meilleure séparation des préoccupations et potentiellement de meilleures performances,
-    // envisagez d'ajouter/supprimer une classe CSS au header lors du scroll,
-    // et de gérer les changements de style (padding, hauteur du logo) directement en CSS.
-    // Exemple : header.classList.add('scrolled'); ou header.classList.remove('scrolled');
 
     let isScrolling;
     window.addEventListener('scroll', () => {
@@ -92,14 +81,14 @@ const initHeaderScrollEffect = () => {
                 header.style.padding = CONFIG.HEADER.DEFAULT_PADDING;
                 if (logoImg) logoImg.style.height = CONFIG.HEADER.LOGO.DEFAULT_HEIGHT;
             }
-        }, 50); // Délai pour éviter trop de recalculs (throttling)
+        }, 50); 
     }, { passive: true });
 };
 
 // Countdown
 const initCountdown = () => {
     const countdownElement = document.getElementById('countdown');
-    if (!countdownElement) return; // Sécurité : si l'élément n'existe plus dans le nouvel HTML, le script s'arrête proprement ici.
+    if (!countdownElement) return; 
 
     const updateCountdown = () => {
         const releaseDate = new Date(CONFIG.RELEASE_DATE).getTime();
@@ -109,7 +98,7 @@ const initCountdown = () => {
         if (distance < 0) {
             countdownElement.textContent = "DISPONIBLE MAINTENANT !";
             countdownElement.setAttribute('aria-label', "Le pré-album est disponible maintenant.");
-            return false; // Arrêter le compte à rebours
+            return false; 
         }
 
         const days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -117,14 +106,14 @@ const initCountdown = () => {
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 
         let countdownText = `Sortie dans ${days} jour${days > 1 ? 's' : ''}`;
-        if (days < 1) { // Si moins d'un jour, afficher heures et minutes
+        if (days < 1) { 
              countdownText = `Sortie dans ${hours} heure${hours > 1 ? 's' : ''} et ${minutes} minute${minutes > 1 ? 's' : ''}`;
-        } else if (days < 7) { // Si moins de 7 jours, afficher jours et heures
+        } else if (days < 7) { 
             countdownText = `Sortie dans ${days} jour${days > 1 ? 's' : ''} et ${hours} heure${hours > 1 ? 's' : ''}`;
         }
         countdownElement.textContent = countdownText;
         countdownElement.setAttribute('aria-label', countdownText.replace('Sortie dans', 'Sortie prévue dans'));
-        return true; // Continuer le compte à rebours
+        return true; 
     };
 
     if (updateCountdown()) {
@@ -132,7 +121,7 @@ const initCountdown = () => {
             if (!updateCountdown()) {
                 clearInterval(countdownInterval);
             }
-        }, 60000); // Mettre à jour toutes les minutes, ou 1000ms pour secondes
+        }, 60000); 
     }
 };
 
@@ -147,14 +136,10 @@ const initBurgerMenu = () => {
     navOverlay.className = 'nav-overlay';
     document.body.appendChild(navOverlay);
 
-    // Suggestion Accessibilité : Pour une meilleure expérience, implémentez un "focus trap"
-    // lorsque le menu est ouvert, afin que la navigation au clavier reste dans le menu.
-    // Le focus devrait aussi retourner au bouton burger à la fermeture du menu.
-
     burgerBtn.addEventListener('click', function() {
         const isExpanded = this.getAttribute('aria-expanded') === 'true';
         this.setAttribute('aria-expanded', !isExpanded);
-        mainNav.setAttribute('aria-hidden', String(isExpanded)); // Convertir en chaîne pour l'attribut
+        mainNav.setAttribute('aria-hidden', String(isExpanded)); 
         navOverlay.classList.toggle('active', !isExpanded);
         document.body.style.overflow = isExpanded ? '' : 'hidden';
         this.setAttribute('aria-label', isExpanded ? 'Ouvrir le menu' : 'Fermer le menu');
@@ -166,7 +151,6 @@ const initBurgerMenu = () => {
         navOverlay.classList.remove('active');
         document.body.style.overflow = '';
         burgerBtn.setAttribute('aria-label', 'Ouvrir le menu');
-        // burgerBtn.focus(); // Retour du focus au bouton (nécessite une gestion plus fine)
     };
 
     document.querySelectorAll('.main-nav a').forEach(link => {
@@ -175,12 +159,12 @@ const initBurgerMenu = () => {
     navOverlay.addEventListener('click', closeMenu);
 };
 
-// Logique du Lecteur Audio (Complet et Mini)
+// Logique du Lecteur Audio
 const initSpotifyPlayer = () => {
     const spotifyPlayerContainer = document.getElementById('spotifyPlayer');
     const audioElement = document.getElementById('playerAudio');
     const closeBtn = spotifyPlayerContainer.querySelector('.close-player');
-    const playerPlayPauseBtn = spotifyPlayerContainer.querySelector('.main-play-pause-btn'); // Sélecteur mis à jour
+    const playerPlayPauseBtn = spotifyPlayerContainer.querySelector('.main-play-pause-btn'); 
     const prevBtn = spotifyPlayerContainer.querySelector('.prev-btn');
     const nextBtn = spotifyPlayerContainer.querySelector('.next-btn');
     const playerTrackTitleDisplay = document.getElementById('playerTrackTitle');
@@ -201,12 +185,12 @@ const initSpotifyPlayer = () => {
     const tracks = [];
     document.querySelectorAll('.track-card .play-btn').forEach((btn) => {
         tracks.push({
-            id: btn.getAttribute('data-audio'), // Utiliser une ID unique si possible
+            id: btn.getAttribute('data-audio'), 
             title: btn.getAttribute('data-title'),
             audio: btn.getAttribute('data-audio'),
             image: btn.getAttribute('data-cover') || CONFIG.DEFAULT_COVER,
             artist: btn.getAttribute('data-artist') || 'Deygo Josy',
-            originalButton: btn // Garder une référence au bouton original
+            originalButton: btn 
         });
     });
 
@@ -259,7 +243,7 @@ const initSpotifyPlayer = () => {
         miniPlayerTrackImageDisplay.src = track.image;
         miniPlayerTrackImageDisplay.alt = `Mini pochette de ${track.title}`;
 
-        updatePlayButtonStates(isPlaying, track.title); // Met à jour les boutons en fonction de l'état actuel
+        updatePlayButtonStates(isPlaying, track.title); 
     };
 
     const playCurrentTrack = () => {
@@ -282,7 +266,7 @@ const initSpotifyPlayer = () => {
     };
     
     const togglePlayPause = () => {
-        if (currentTrackIndex === -1 && tracks.length > 0) { // Si aucune piste n'est chargée, charger la première
+        if (currentTrackIndex === -1 && tracks.length > 0) { 
             loadTrack(0);
             playCurrentTrack();
         } else if (audioElement.paused) {
@@ -293,15 +277,14 @@ const initSpotifyPlayer = () => {
     };
 
     document.querySelectorAll('.track-card').forEach((card, index) => {
-        card.addEventListener('click', (e) => { // Clic sur la carte entière
-             // Si le clic vient du bouton lui-même ou de la carte, on gère
+        card.addEventListener('click', (e) => { 
             if (index === currentTrackIndex) {
                 togglePlayPause();
             } else {
                 loadTrack(index);
                 playCurrentTrack();
             }
-            spotifyPlayerContainer.classList.add('active'); // Toujours ouvrir le lecteur complet au clic sur une carte
+            spotifyPlayerContainer.classList.add('active'); 
             spotifyPlayerContainer.setAttribute('aria-hidden', 'false');
             miniPlayerContainer.classList.add('active');
         });
@@ -310,8 +293,6 @@ const initSpotifyPlayer = () => {
     closeBtn.addEventListener('click', () => {
         spotifyPlayerContainer.classList.remove('active');
         spotifyPlayerContainer.setAttribute('aria-hidden', 'true');
-        // La musique continue dans le mini-lecteur si elle jouait
-        // L'état des boutons des cartes est géré par updatePlayButtonStates
     });
 
     playerPlayPauseBtn.addEventListener('click', togglePlayPause);
@@ -333,14 +314,9 @@ const initSpotifyPlayer = () => {
 
     audioElement.addEventListener('ended', () => {
         if (currentTrackIndex < tracks.length - 1) {
-            nextBtn.click(); // Simuler un clic sur suivant
+            nextBtn.click(); 
         } else {
-            // Fin de la playlist
             pauseCurrentTrack();
-            // Optionnel: réinitialiser sur la première piste ou fermer le lecteur
-            // loadTrack(0); // Pour revenir à la première piste sans la jouer
-            // spotifyPlayerContainer.classList.remove('active');
-            // miniPlayerContainer.classList.remove('active');
         }
     });
 
@@ -370,7 +346,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initBurgerMenu();
     initSpotifyPlayer();
 
-    // Mise à jour de l'année du copyright dynamiquement (Activé pour le nouveau design)
     const copyrightSmall = document.querySelector('footer .copyright small');
     if (copyrightSmall) {
         const currentYear = new Date().getFullYear();
