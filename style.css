@@ -372,7 +372,6 @@ header {
     color: var(--primary-color);
 }
 
-/* Vidéo Principale */
 .videos-grid.main-video {
     display: flex;
     justify-content: center;
@@ -381,12 +380,11 @@ header {
     margin: 0 auto 2rem auto; 
 }
 
-/* Vidéos Secondaires (Grille horizontale et plus petite) */
 .secondary-videos-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Force 2 vidéos côte à côte */
+    grid-template-columns: 1fr 1fr; 
     gap: 2rem;
-    max-width: 750px; /* Plus petite largeur maximale */
+    max-width: 750px; 
     margin: 0 auto;
 }
 
@@ -413,6 +411,29 @@ header {
     left: 0;
     width: 100%;
     height: 100%;
+}
+
+/* ===== CONCERTS SECTION ===== */
+.concerts-section {
+    padding: 5rem 5%;
+    background: #000000;
+}
+
+.concerts-section h2 {
+    text-align: center;
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin-bottom: 3rem;
+    color: var(--primary-color);
+}
+
+.concerts-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.02);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(255, 204, 0, 0.1);
 }
 
 /* ===== ABOUT SECTION ===== */
@@ -849,7 +870,6 @@ footer {
     .videos-section { padding: 3rem 5%; }
     .videos-section h2 { font-size: clamp(1.8rem, 6vw, 2.5rem); }
 
-    /* Sur mobile, les vidéos secondaires repassent en vertical l'une sous l'autre pour ne pas être écrasées */
     .secondary-videos-grid {
         grid-template-columns: 1fr; 
         gap: 1.5rem;
