@@ -3,25 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>SINNO | Deygo Josy - Pré-album Exclusif</title>
-    <meta name="description" content="Découvrez le pré-album exclusif SINNO de Deygo Josy, artiste sénégalais de Fouta Kanel.">
+    <title>Deygo Josy | Site Officiel</title>
+    <meta name="description" content="Site officiel de Deygo Josy, figure montante du rap foutanké originaire de Kanel au Sénégal. Découvrez sa musique, ses clips et son actualité.">
     <meta name="theme-color" content="#000000">
 
-    <meta property="og:title" content="SINNO | Deygo Josy - Pré-album Exclusif">
-    <meta property="og:description" content="Découvrez le pré-album exclusif SINNO de Deygo Josy, artiste sénégalais de Fouta Kanel.">
-    <meta property="og:image" content="https://deygojosysinno.fr/images/partage.jpg"> <meta property="og:url" content="https://deygojosysinno.fr"> <meta property="og:type" content="website">
+    <meta property="og:title" content="Deygo Josy | Site Officiel">
+    <meta property="og:description" content="Site officiel de Deygo Josy. Découvrez sa discographie, dont son pré-album SINNO et l'album Vaccin, ainsi que ses derniers clips.">
+    <meta property="og:image" content="https://deygojosy.com/images/partage.jpg"> 
+    <meta property="og:url" content="https://deygojosy.com"> 
+    <meta property="og:type" content="website">
 
     <link rel="preload" href="style.css" as="style">
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap" as="style">
-    <link rel="preload" href="images/deygo-josy.webp" as="image"> <link rel="icon" href="images/favicon.webp" type="image/webp">
+    <link rel="preload" href="images/deygo-josy.webp" as="image"> 
+    <link rel="icon" href="images/favicon.webp" type="image/webp">
     <link rel="apple-touch-icon" href="images/apple-touch-icon.webp">
 
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap">
 </head>
 <body>
-    <div class="loader" aria-hidden="false" role="status" aria-live="polite"> <div class="loader-spinner"></div>
-        <span class="sr-only">Chargement en cours...</span> </div>
+    <div class="loader" aria-hidden="false" role="status" aria-live="polite"> 
+        <div class="loader-spinner"></div>
+        <span class="sr-only">Chargement en cours...</span> 
+    </div>
 
     <header>
         <div class="burger-menu">
@@ -34,27 +39,36 @@
             <nav class="main-nav" id="mainNav" aria-label="Navigation principale" aria-hidden="true">
                 <ul>
                     <li><a href="#accueil">Accueil</a></li>
-                    <li><a href="#musique">Musique</a></li>
+                    <li><a href="#musique">Discographie</a></li>
+                    <li><a href="#videos">Vidéos</a></li>
                     <li><a href="#apropos">À propos</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <main>
+        <!-- Section Accueil Officiel -->
         <section id="accueil" class="hero" aria-labelledby="main-heading">
             <div class="hero-content">
-                <h1 id="main-heading">SINNO</h1>
-                <p class="subtitle">Pré-album exclusif • <span id="countdown" aria-live="polite">Sortie le 15/12/2023</span></p>
+                <h1 id="main-heading">DEYGO JOSY</h1>
+                <p class="subtitle">La voix du Rap Foutanké</p>
 
                 <div class="cta-buttons">
-                    <a href="https://linktr.ee/deygo_josy" class="btn btn-preorder" target="_blank" rel="noopener">Écouter maintenant</a>
+                    <a href="#musique" class="btn btn-preorder">Découvrir le projet SINNO</a>
                 </div>
             </div>
         </section>
 
+        <!-- Section Musique / Discographie -->
         <section id="musique" class="music-section" aria-labelledby="music-heading">
-            <h2 id="music-heading">EXTRAITS EXCLUSIFS</h2>
+            <h2 id="music-heading">DISCOGRAPHIE</h2>
+            
+            <!-- Projet SINNO -->
+            <div class="project-header">
+                <h3>Pré-album : SINNO</h3>
+            </div>
             <div class="track-grid">
                 <article class="track-card">
                     <div class="track-number">01</div>
@@ -106,6 +120,18 @@
             </div>
         </section>
 
+        <!-- Nouvelle Section Vidéos -->
+        <section id="videos" class="videos-section" aria-labelledby="videos-heading">
+            <h2 id="videos-heading">CLIPS OFFICIELS</h2>
+            <div class="videos-grid">
+                <!-- Remplacer "VOTRE_ID_VIDEO" par l'ID d'une vidéo YouTube de Deygo Josy -->
+                <div class="video-container">
+                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/VOTRE_ID_VIDEO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Biographie -->
         <section id="apropos" class="about-section" aria-labelledby="about-heading">
             <div class="about-container">
                 <div class="artist-photo-wrapper">
@@ -119,8 +145,8 @@
                     <p class="artist-origin">Fouta, Kanel, Sénégal</p>
 
                     <div class="bio-text">
-                        <p>Voix montante du rap foutanké, Deygo Josy marque la scène musicale avec son album "Vaccin" (2022) et son nouveau pré-album exclusif <strong>"SINNO"</strong>.</p>
-                        <p>Une œuvre authentique mêlant engagement, émotions pures et richesses culturelles du Fouta, disponible en avant-première sur cette plateforme.</p>
+                        <p>Voix montante du rap foutanké, Deygo Josy marque la scène musicale avec son premier album <strong>"Vaccin"</strong> (2022) et son projet <strong>"SINNO"</strong>.</p>
+                        <p>Une œuvre authentique mêlant engagement, émotions pures et richesses culturelles du Fouta. À travers ses textes, il porte l'héritage de sa région tout en explorant des sonorités urbaines et modernes.</p>
                     </div>
                     <div class="cultural-pattern"></div>
                 </div>
@@ -128,7 +154,13 @@
         </section>
     </main>
 
+    <!-- Footer & Contact -->
     <footer id="contact">
+        <div class="contact-info">
+            <h3>Booking & Management</h3>
+            <p><a href="mailto:contact@deygojosy.com">contact@deygojosy.com</a></p>
+        </div>
+        
         <div class="social-links">
             <a href="https://www.instagram.com/deygojosy.officiel" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Deygo Josy">
                 <img src="icons/instagram.svg" alt="Instagram" width="40" height="40" loading="lazy">
@@ -150,9 +182,11 @@
             </a>
         </div>
         <div class="copyright">
-            <small>© 2025 Dizame. Tous droits réservés.</small> </div>
+            <small>© 2026 Deygo Josy | Propulsé par Horizon Dwell / Dizame. Tous droits réservés.</small> 
+        </div>
     </footer>
 
+    <!-- Lecteurs Audio (Inchangés pour compatibilité JS) -->
     <div class="mini-player" id="miniPlayer" role="region" aria-label="Mini lecteur audio">
         <div class="track-info">
             <img id="miniPlayerTrackImage" src="images/album-cover.webp" alt="Pochette de l'album" class="track-cover">
