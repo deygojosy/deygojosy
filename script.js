@@ -28,7 +28,6 @@ const initLoader = () => {
     // Une fois le chargement terminé et le loader masqué, on mettra aria-hidden à true.
     loader.setAttribute('aria-hidden', 'false');
 
-
     window.addEventListener('load', () => {
         setTimeout(() => {
             loader.style.opacity = '0';
@@ -100,7 +99,7 @@ const initHeaderScrollEffect = () => {
 // Countdown
 const initCountdown = () => {
     const countdownElement = document.getElementById('countdown');
-    if (!countdownElement) return;
+    if (!countdownElement) return; // Sécurité : si l'élément n'existe plus dans le nouvel HTML, le script s'arrête proprement ici.
 
     const updateCountdown = () => {
         const releaseDate = new Date(CONFIG.RELEASE_DATE).getTime();
@@ -116,7 +115,6 @@ const initCountdown = () => {
         const days = Math.floor(distance / (1000 * 60 * 60 * 24));
         const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-
 
         let countdownText = `Sortie dans ${days} jour${days > 1 ? 's' : ''}`;
         if (days < 1) { // Si moins d'un jour, afficher heures et minutes
@@ -256,7 +254,6 @@ const initSpotifyPlayer = () => {
         playerTrackImageDisplay.src = track.image;
         playerTrackImageDisplay.alt = `Pochette de ${track.title}`;
 
-
         miniPlayerTrackTitleDisplay.textContent = track.title;
         miniPlayerTrackArtistDisplay.textContent = track.artist;
         miniPlayerTrackImageDisplay.src = track.image;
@@ -373,12 +370,10 @@ document.addEventListener('DOMContentLoaded', () => {
     initBurgerMenu();
     initSpotifyPlayer();
 
-    // Optionnel: Mettre à jour l'année du copyright dynamiquement
-    // const copyrightSmall = document.querySelector('footer .copyright small');
-    // if (copyrightSmall) {
-    //    const currentYear = new Date().getFullYear();
-    //    if (copyrightSmall.textContent.includes('2025')) { // Ou une autre année de base
-    //        copyrightSmall.textContent = `© ${currentYear} Dizame. Tous droits réservés.`;
-    //    }
-    // }
+    // Mise à jour de l'année du copyright dynamiquement (Activé pour le nouveau design)
+    const copyrightSmall = document.querySelector('footer .copyright small');
+    if (copyrightSmall) {
+        const currentYear = new Date().getFullYear();
+        copyrightSmall.textContent = `© ${currentYear} Deygo Josy | Propulsé par Horizon Dwell / Dizame. Tous droits réservés.`;
+    }
 });
