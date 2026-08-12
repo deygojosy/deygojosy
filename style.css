@@ -386,7 +386,7 @@ header {
     display: grid;
     grid-template-columns: 1fr 1fr; /* Force 2 vidéos côte à côte */
     gap: 2rem;
-    max-width: 750px; /* Plus petite largeur maximale (avant: 1200px) */
+    max-width: 750px; /* Plus petite largeur maximale */
     margin: 0 auto;
 }
 
