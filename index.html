@@ -120,13 +120,24 @@
             </div>
         </section>
 
-        <!-- Nouvelle Section Vidéos -->
+        <!-- Nouvelle Section Vidéos avec Grille -->
         <section id="videos" class="videos-section" aria-labelledby="videos-heading">
             <h2 id="videos-heading">CLIPS OFFICIELS</h2>
-            <div class="videos-grid">
-                <!-- Remplacer "VOTRE_ID_VIDEO" par l'ID d'une vidéo YouTube de Deygo Josy -->
+            
+            <!-- Vidéo principale (Clip SINNO) -->
+            <div class="videos-grid main-video">
                 <div class="video-container">
                     <iframe width="100%" height="315" src="https://www.youtube.com/embed/QknBESlMKNU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <!-- Vidéos secondaires (Autres clips) -->
+            <div class="secondary-videos-grid">
+                <div class="video-container">
+                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/VOTRE_ID_VIDEO_2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="video-container">
+                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/VOTRE_ID_VIDEO_3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
         </section>
@@ -186,7 +197,7 @@
         </div>
     </footer>
 
-    <!-- Lecteurs Audio (Inchangés pour compatibilité JS) -->
+    <!-- Lecteurs Audio -->
     <div class="mini-player" id="miniPlayer" role="region" aria-label="Mini lecteur audio">
         <div class="track-info">
             <img id="miniPlayerTrackImage" src="images/album-cover.webp" alt="Pochette de l'album" class="track-cover">
