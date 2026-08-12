@@ -198,11 +198,13 @@ header {
     z-index: 1003; 
     opacity: 0;
     visibility: hidden;
+    pointer-events: none; /* CORRECTION : Empêche le voile noir de bloquer les clics quand il est fermé */
     transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 .nav-overlay.active {
     opacity: 1;
     visibility: visible;
+    pointer-events: auto; /* Réactive les clics uniquement quand le menu est ouvert */
 }
 
 /* ===== HERO SECTION ===== */
@@ -896,7 +898,7 @@ footer {
     .spotify-player .track-info p { font-size: clamp(0.9em, 4vw, 1.1em); }
     .spotify-player .player-controls { gap: 1.5rem; margin-top: 1rem; }
     .spotify-player .control-btn { font-size: 1.6rem; }
-    .spotify-player .play-pause-btn { font-size: 3rem; }
+    .spotify-player .play-pause-dfn { font-size: 3rem; }
 }
 
 @media (max-width: 480px) {
