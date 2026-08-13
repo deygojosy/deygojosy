@@ -373,6 +373,116 @@ header {
     height: 100%;
 }
 
+/* ===== GALERIE SECTION ===== */
+.gallery-section {
+    padding: 4rem 5%;
+    background: var(--bg-color);
+}
+
+.gallery-section h2 {
+    text-align: center;
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin-bottom: 3rem;
+    color: var(--primary-color);
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.gallery-item {
+    position: relative;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    cursor: pointer;
+    aspect-ratio: 1 / 1;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.gallery-overlay {
+    position: absolute;
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    opacity: 0; 
+    transition: opacity 0.3s ease;
+}
+
+.gallery-overlay span {
+    color: var(--primary-color); 
+    font-size: 3rem; 
+    font-weight: 300;
+}
+
+.gallery-item:hover img, .gallery-item:focus-visible img { 
+    transform: scale(1.1); 
+}
+.gallery-item:hover .gallery-overlay, .gallery-item:focus-visible .gallery-overlay { 
+    opacity: 1; 
+}
+
+/* --- LIGHTBOX GALERIE --- */
+.lightbox {
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    background: rgba(0,0,0,0.95); 
+    z-index: 2000;
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    opacity: 0; 
+    pointer-events: none; 
+    transition: opacity 0.3s ease;
+}
+
+.lightbox.active { 
+    opacity: 1; 
+    pointer-events: all; 
+}
+
+.lightbox-img { 
+    max-width: 90%; 
+    max-height: 90vh; 
+    border-radius: 5px; 
+    box-shadow: 0 5px 30px rgba(0,0,0,0.5); 
+}
+
+.lightbox-close {
+    position: absolute; 
+    top: 20px; 
+    right: 30px; 
+    background: none; 
+    border: none;
+    color: white; 
+    font-size: 3rem; 
+    cursor: pointer; 
+    transition: color 0.3s ease;
+}
+
+.lightbox-close:hover { 
+    color: var(--primary-color); 
+}
+
+
 /* ===== CONCERTS SECTION ===== */
 .concerts-section {
     padding: 5rem 5%;
