@@ -177,6 +177,39 @@ const initReadMoreBio = () => {
     }
 };
 
+// Lightbox Galerie
+const initLightbox = () => {
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const closeBtn = document.querySelector('.lightbox-close');
+
+    if (!lightbox || galleryItems.length === 0) return;
+
+    galleryItems.forEach(item => {
+        item.addEventListener('click', () => {
+            const img = item.querySelector('img');
+            lightboxImg.src = img.src;
+            lightboxImg.alt = img.alt;
+            lightbox.classList.add('active');
+            lightbox.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
+    const closeLightbox = () => {
+        lightbox.classList.remove('active');
+        lightbox.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        setTimeout(() => lightboxImg.src = '', 300); // Vide l'image après la transition
+    };
+
+    closeBtn.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) closeLightbox();
+    });
+};
+
 // Logique du Lecteur Audio
 const initSpotifyPlayer = () => {
     const spotifyPlayerContainer = document.getElementById('spotifyPlayer');
@@ -350,9 +383,9 @@ document.addEventListener('DOMContentLoaded', () => {
     initCountdown();
     initBurgerMenu();
     initReadMoreBio();
+    initLightbox(); // Initialisation de la galerie
     initSpotifyPlayer();
 
-    // ICI EST LA CORRECTION POUR LE FOOTER : innerHTML au lieu de textContent
     const copyrightSmall = document.querySelector('footer .copyright small');
     if (copyrightSmall) {
         const currentYear = new Date().getFullYear();
