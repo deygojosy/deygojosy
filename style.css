@@ -113,28 +113,63 @@ header {
 .disco-folder.active .disco-folder-content { max-height: 2000px; }
 .disco-folder-content-inner { padding: 0 1rem 1rem 1rem; }
 
-/* === NOUVEAU DESIGN COMPACT (LISTE PLAYLIST) === */
+/* Boutons globaux pour les albums */
+.project-listen-link {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+.btn-listen-all {
+    background: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.btn-listen-all:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 204, 0, 0.4);
+}
+
+/* Boutons écoute individuelle (Singles) */
+.single-listen-btn {
+    background: rgba(255, 204, 0, 0.15);
+    color: var(--primary-color);
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+.single-listen-btn:hover {
+    background: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+/* Liste des pistes épurée */
 .track-grid { 
     display: flex; 
     flex-direction: column; 
-    gap: 0.4rem; /* Espace ultra réduit entre les pistes */
+    gap: 0.4rem; 
 }
-
 .track-card { 
     display: flex; 
     flex-direction: row; 
     align-items: center;
     background: rgba(0,0,0,0.3); 
-    padding: 0.6rem 1rem; /* Marges réduites */
+    padding: 0.6rem 1rem; 
     border-radius: 4px; 
     border: 1px solid rgba(255,255,255,0.02);
     transition: background-color 0.3s ease;
 }
-
 .track-card:hover { 
     background: rgba(255, 255, 255, 0.08);
 }
-
 .track-number { 
     font-size: 0.85rem; 
     color: var(--primary-color); 
@@ -143,37 +178,14 @@ header {
     font-weight: bold;
     min-width: 20px;
 }
-
 .track-card h3 { 
     font-size: 0.95rem; 
     margin-bottom: 0; 
     text-align: left;
-    flex-grow: 1; /* Pousse les icônes tout à droite */
+    flex-grow: 1; 
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-}
-
-.streaming-links { 
-    display: flex; 
-    gap: 0.8rem; 
-    align-items: center;
-}
-
-.streaming-links img { 
-    width: 16px; /* Icônes beaucoup plus petites */
-    height: 16px; 
-}
-
-.streaming-links a { 
-    opacity: 0.6; 
-    transition: opacity 0.3s; 
-    display: flex;
-    align-items: center;
-}
-
-.streaming-links a:hover { 
-    opacity: 1; 
 }
 
 .project-header h3 { font-size: 1.2rem; border-bottom: 1px solid var(--primary-color); padding-bottom: 0.5rem; display: inline-block; }
@@ -286,7 +298,5 @@ footer { text-align: center; padding: 2rem; border-top: 1px solid rgba(255,204,0
     .gallery-grid { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; margin: 0 -5%; padding: 0 5%; gap: 1rem; scrollbar-width: none; }
     .gallery-item { flex: 0 0 80%; scroll-snap-align: center; }
 
-    /* On s'assure que les icônes de musique ne s'écrasent pas sur tout petit écran */
     .track-card h3 { font-size: 0.85rem; }
-    .streaming-links img { width: 14px; height: 14px; }
 }
