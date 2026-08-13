@@ -371,22 +371,32 @@
                     <a href="mailto:contact@deygojosy.com" class="contact-email">contact@deygojosy.com</a>
                 </div>
                 
-                <form id="contactForm" class="contact-form">
+                <!-- Le formulaire est maintenant relié avec FormSubmit vers ton adresse pro -->
+                <form action="https://formsubmit.co/contact@deygojosy.com" method="POST" id="contactForm" class="contact-form">
+                    
+                    <!-- Paramètres cachés pour FormSubmit -->
+                    <!-- Empêche le Captcha d'apparaître pour plus de fluidité -->
+                    <input type="hidden" name="_captcha" value="false">
+                    <!-- Redirige l'utilisateur vers ton site après envoi (plutôt que la page FormSubmit) -->
+                    <input type="hidden" name="_next" value="https://deygojosy.com/">
+                    <!-- Définis le sujet de l'email que TU vas recevoir -->
+                    <input type="hidden" name="_subject" value="Nouveau message depuis le site Deygo Josy !">
+                    
                     <div class="form-group">
                         <label for="name" class="sr-only">Nom</label>
-                        <input type="text" id="name" name="name" placeholder="Votre nom complet" required>
+                        <input type="text" id="name" name="Nom complet" placeholder="Votre nom complet" required>
                     </div>
                     <div class="form-group">
                         <label for="email" class="sr-only">Email</label>
-                        <input type="email" id="email" name="email" placeholder="Votre adresse email" required>
+                        <input type="email" id="email" name="Email_Contact" placeholder="Votre adresse email" required>
                     </div>
                     <div class="form-group">
                         <label for="subject" class="sr-only">Sujet</label>
-                        <input type="text" id="subject" name="subject" placeholder="Sujet de votre message" required>
+                        <input type="text" id="subject" name="Sujet" placeholder="Sujet de votre message" required>
                     </div>
                     <div class="form-group">
                         <label for="message" class="sr-only">Message</label>
-                        <textarea id="message" name="message" rows="5" placeholder="Écrivez votre message ici..." required></textarea>
+                        <textarea id="message" name="Message" rows="5" placeholder="Écrivez votre message ici..." required></textarea>
                     </div>
                     <button type="submit" class="btn btn-preorder">Envoyer le message</button>
                     <p id="form-status" class="form-status"></p>
