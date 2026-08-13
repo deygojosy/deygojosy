@@ -216,6 +216,43 @@ const initReadMoreBio = () => {
     }
 };
 
+// Formulaire de contact (Simulation d'envoi)
+const initContactForm = () => {
+    const form = document.getElementById('contactForm');
+    const status = document.getElementById('form-status');
+    
+    if (!form) return;
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault(); // Empêche le rechargement de la page
+        
+        const btn = form.querySelector('button[type="submit"]');
+        const originalText = btn.textContent;
+        
+        // Animation du bouton
+        btn.textContent = 'Envoi en cours...';
+        btn.style.opacity = '0.7';
+        btn.disabled = true;
+
+        // Simulation d'attente (1.5 secondes)
+        setTimeout(() => {
+            btn.textContent = originalText;
+            btn.style.opacity = '1';
+            btn.disabled = false;
+            
+            // Message de succès
+            status.textContent = 'Votre message a bien été envoyé !';
+            status.className = 'form-status success';
+            form.reset(); // Vide les champs
+            
+            // Fait disparaître le message après 5 secondes
+            setTimeout(() => {
+                status.style.display = 'none';
+            }, 5000);
+        }, 1500);
+    });
+};
+
 // Lightbox Galerie
 const initLightbox = () => {
     const galleryItems = document.querySelectorAll('.gallery-item');
@@ -457,6 +494,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initBurgerMenu();
     initReadMoreBio();
     initLightbox();
+    initContactForm(); // <-- On lance le formulaire ici
     initSpotifyPlayer();
 
     const copyrightSmall = document.querySelector('footer .copyright small');
