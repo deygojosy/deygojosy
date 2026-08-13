@@ -125,34 +125,23 @@ const initCountdown = () => {
     }
 };
 
-// Menu Burger corrigé pour mobile
+// Menu Burger
 const initBurgerMenu = () => {
     const burgerBtn = document.querySelector('.burger-btn');
     const mainNav = document.querySelector('.main-nav');
     
     if (!burgerBtn || !mainNav) return;
 
-    let navOverlay = document.querySelector('.nav-overlay');
-    if (!navOverlay) {
-        navOverlay = document.createElement('div');
-        navOverlay.className = 'nav-overlay';
-        document.body.appendChild(navOverlay);
-    }
-
     const openMenu = () => {
         burgerBtn.setAttribute('aria-expanded', 'true');
         mainNav.setAttribute('aria-hidden', 'false'); 
-        navOverlay.classList.add('active');
         document.body.style.overflow = 'hidden';
-        burgerBtn.setAttribute('aria-label', 'Fermer le menu');
     };
 
     const closeMenu = () => {
         burgerBtn.setAttribute('aria-expanded', 'false');
         mainNav.setAttribute('aria-hidden', 'true');
-        navOverlay.classList.remove('active');
         document.body.style.overflow = '';
-        burgerBtn.setAttribute('aria-label', 'Ouvrir le menu');
     };
 
     burgerBtn.addEventListener('click', function(e) {
@@ -168,8 +157,24 @@ const initBurgerMenu = () => {
     document.querySelectorAll('.main-nav a').forEach(link => {
         link.addEventListener('click', closeMenu);
     });
-    
-    navOverlay.addEventListener('click', closeMenu);
+};
+
+// Bio "Afficher tout"
+const initReadMoreBio = () => {
+    const btnReadMore = document.getElementById('btn-read-more');
+    const bioMoreText = document.getElementById('bio-more');
+
+    if (btnReadMore && bioMoreText) {
+        btnReadMore.addEventListener('click', () => {
+            if (bioMoreText.style.display === 'none' || bioMoreText.style.display === '') {
+                bioMoreText.style.display = 'block';
+                btnReadMore.textContent = 'Réduire';
+            } else {
+                bioMoreText.style.display = 'none';
+                btnReadMore.textContent = 'Afficher tout';
+            }
+        });
+    }
 };
 
 // Logique du Lecteur Audio
@@ -191,7 +196,6 @@ const initSpotifyPlayer = () => {
     const miniPlayerPlayPauseBtn = document.getElementById('miniPlayerPlayPauseBtn');
 
     if (!audioElement || !spotifyPlayerContainer || !miniPlayerContainer || !playerPlayPauseBtn || !miniPlayerPlayPauseBtn) {
-        console.error("Un ou plusieurs éléments du lecteur audio sont manquants.");
         return;
     }
     
@@ -213,29 +217,20 @@ const initSpotifyPlayer = () => {
     const updatePlayButtonStates = (trackIsPlaying, trackTitle = "") => {
         const playText = "▶";
         const pauseText = "❚❚";
-        const playLabel = trackTitle ? `Lire ${trackTitle}` : "Lire";
-        const pauseLabel = trackTitle ? `Mettre en pause ${trackTitle}` : "Mettre en pause";
 
         if (trackIsPlaying) {
             playerPlayPauseBtn.textContent = pauseText;
-            playerPlayPauseBtn.setAttribute('aria-label', pauseLabel);
             miniPlayerPlayPauseBtn.textContent = pauseText;
-            miniPlayerPlayPauseBtn.setAttribute('aria-label', pauseLabel);
         } else {
             playerPlayPauseBtn.textContent = playText;
-            playerPlayPauseBtn.setAttribute('aria-label', playLabel);
             miniPlayerPlayPauseBtn.textContent = playText;
-            miniPlayerPlayPauseBtn.setAttribute('aria-label', playLabel);
         }
 
         tracks.forEach((track, index) => {
-            const buttonLabelBase = track.title ? ` ${track.title}` : "";
             if (index === currentTrackIndex && trackIsPlaying) {
                 track.originalButton.innerHTML = `<span aria-hidden="true">${pauseText} Pause</span>`;
-                track.originalButton.setAttribute('aria-label', `Mettre en pause${buttonLabelBase}`);
             } else {
                 track.originalButton.innerHTML = `<span aria-hidden="true">${playText} Écouter</span>`;
-                track.originalButton.setAttribute('aria-label', `Écouter${buttonLabelBase}`);
             }
         });
     };
@@ -249,12 +244,10 @@ const initSpotifyPlayer = () => {
         playerTrackTitleDisplay.textContent = track.title;
         playerTrackArtistDisplay.textContent = track.artist;
         playerTrackImageDisplay.src = track.image;
-        playerTrackImageDisplay.alt = `Pochette de ${track.title}`;
-
+        
         miniPlayerTrackTitleDisplay.textContent = track.title;
         miniPlayerTrackArtistDisplay.textContent = track.artist;
         miniPlayerTrackImageDisplay.src = track.image;
-        miniPlayerTrackImageDisplay.alt = `Mini pochette de ${track.title}`;
 
         updatePlayButtonStates(isPlaying, track.title); 
     };
@@ -266,7 +259,6 @@ const initSpotifyPlayer = () => {
             spotifyPlayerContainer.setAttribute('aria-hidden', 'false');
             miniPlayerContainer.classList.add('active');
         }).catch(error => {
-            console.warn("La lecture automatique a été bloquée. L'utilisateur doit interagir.", error);
             isPlaying = false;
             updatePlayButtonStates(false, tracks[currentTrackIndex].title);
         });
@@ -290,7 +282,7 @@ const initSpotifyPlayer = () => {
     };
 
     document.querySelectorAll('.track-card').forEach((card, index) => {
-        card.addEventListener('click', (e) => { 
+        card.addEventListener('click', () => { 
             if (index === currentTrackIndex) {
                 togglePlayPause();
             } else {
@@ -357,6 +349,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initHeaderScrollEffect();
     initCountdown();
     initBurgerMenu();
+    initReadMoreBio(); // On lance la fonction pour la bio ici !
     initSpotifyPlayer();
 
     const copyrightSmall = document.querySelector('footer .copyright small');
