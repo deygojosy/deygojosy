@@ -216,7 +216,7 @@ const initReadMoreBio = () => {
     }
 };
 
-// Formulaire de contact (Simulation d'envoi)
+// VRAI FORMULAIRE DE CONTACT AVEC FORMSUBMIT
 const initContactForm = () => {
     const form = document.getElementById('contactForm');
     const status = document.getElementById('form-status');
@@ -224,32 +224,52 @@ const initContactForm = () => {
     if (!form) return;
 
     form.addEventListener('submit', (e) => {
-        e.preventDefault(); // Empêche le rechargement de la page
+        e.preventDefault(); // On empêche le rechargement brutal de la page
         
         const btn = form.querySelector('button[type="submit"]');
         const originalText = btn.textContent;
         
-        // Animation du bouton
         btn.textContent = 'Envoi en cours...';
         btn.style.opacity = '0.7';
         btn.disabled = true;
 
-        // Simulation d'attente (1.5 secondes)
-        setTimeout(() => {
+        // On récupère les données du formulaire
+        const formData = new FormData(form);
+
+        // On envoie les données à FormSubmit en arrière-plan
+        fetch(form.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
             btn.textContent = originalText;
             btn.style.opacity = '1';
             btn.disabled = false;
             
-            // Message de succès
             status.textContent = 'Votre message a bien été envoyé !';
+            status.style.display = 'block';
             status.className = 'form-status success';
-            form.reset(); // Vide les champs
+            status.style.color = '#ffcc00'; // Jaune Deygo Josy
+            form.reset(); 
             
-            // Fait disparaître le message après 5 secondes
             setTimeout(() => {
                 status.style.display = 'none';
             }, 5000);
-        }, 1500);
+        })
+        .catch(error => {
+            btn.textContent = originalText;
+            btn.style.opacity = '1';
+            btn.disabled = false;
+            
+            status.textContent = 'Une erreur est survenue. Veuillez réessayer.';
+            status.style.display = 'block';
+            status.className = 'form-status error';
+            status.style.color = 'red';
+        });
     });
 };
 
@@ -494,7 +514,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initBurgerMenu();
     initReadMoreBio();
     initLightbox();
-    initContactForm(); // <-- On lance le formulaire ici
+    initContactForm(); // <-- Cette fois, ça envoie vraiment !
     initSpotifyPlayer();
 
     const copyrightSmall = document.querySelector('footer .copyright small');
