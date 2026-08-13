@@ -366,16 +366,15 @@ header {
     padding: 1.5rem;
     border-radius: var(--border-radius);
     transition: transform 0.3s ease, background-color 0.3s ease; 
-    cursor: pointer;
     display: flex;
     flex-direction: column;
     align-items: center; 
     text-align: center;
 }
 
-.track-card:hover, .track-card:focus-within { 
-    transform: translateY(-5px) scale(1.02); 
-    background: rgba(255, 255, 255, 0.1);
+.track-card:hover { 
+    transform: translateY(-5px); 
+    background: rgba(255, 255, 255, 0.08);
 }
 .track-card .track-number {
     font-size: 1.2rem;
@@ -390,21 +389,24 @@ header {
     color: var(--text-color);
 }
 
-.track-card .play-btn {
-    background: var(--primary-color);
-    color: var(--secondary-color);
-    border: none;
-    padding: 0.7rem 1.8rem; 
-    border-radius: 50px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: opacity 0.3s ease, transform 0.3s ease; 
+/* NOUVEAU : LIENS DE STREAMING DANS LA CARTE */
+.streaming-links {
+    display: flex;
+    gap: 1.2rem;
+    justify-content: center;
     margin-top: auto; 
+    padding-top: 1rem;
 }
 
-.track-card .play-btn:hover, .track-card .play-btn:focus-visible {
-    opacity: 0.85;
-    transform: scale(1.05);
+.streaming-links a {
+    display: inline-block;
+    opacity: 0.7;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.streaming-links a:hover, .streaming-links a:focus-visible {
+    opacity: 1;
+    transform: scale(1.2) translateY(-2px);
 }
 
 /* ===== VIDEOS SECTION ===== */
@@ -711,7 +713,7 @@ header {
     transform: translateY(-2px);
 }
 
-/* ===== CONTACT SECTION (NOUVEAU FORMULAIRE) ===== */
+/* ===== CONTACT SECTION ===== */
 .contact-section {
     padding: 5rem 5%;
     background: linear-gradient(to top, #050505, #111111);
@@ -798,7 +800,7 @@ header {
 
 .form-status.success {
     display: block;
-    color: #4CAF50; /* Vert pour le succès */
+    color: #4CAF50;
 }
 
 /* ===== FOOTER ===== */
@@ -841,162 +843,6 @@ footer {
 .reveal.active {
     opacity: 1;
     transform: translateY(0);
-}
-
-/* --- LECTEURS AUDIO --- */
-.mini-player {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 70px; 
-    background: rgba(10, 10, 10, 0.95); 
-    z-index: 1002;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 1rem; 
-    border-top: 1px solid var(--primary-color);
-    opacity: 0;
-    transform: translateY(100%); 
-    pointer-events: none;
-    cursor: pointer;
-    transition: opacity 0.4s ease, transform 0.4s ease;
-}
-
-.mini-player.active {
-    opacity: 1;
-    transform: translateY(0); 
-    pointer-events: all;
-}
-
-.mini-player .track-info {
-    display: flex; 
-    align-items: center; 
-    flex-grow: 1;
-    gap: 10px;
-    overflow: hidden; 
-}
-
-.mini-player .track-cover {
-    width: 50px; 
-    height: 50px;
-    border-radius: 4px; 
-    object-fit: cover; 
-}
-
-.mini-player h4 {
-    margin: 0;
-    font-size: 0.9em;
-    color: var(--text-color);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.mini-player p {
-    margin: 0;
-    font-size: 0.75em;
-    opacity: 0.7; 
-}
-
-.mini-player .play-pause-btn {
-    background: none;
-    border: none;
-    color: var(--primary-color);
-    font-size: 2rem;
-    cursor: pointer;
-    margin-left: 1rem; 
-}
-
-.spotify-player {
-    position: fixed;
-    top: 0; 
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.97); 
-    padding: 2rem; 
-    z-index: 1003;
-    opacity: 0;
-    transform: scale(1.1); 
-    pointer-events: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    transition: opacity 0.4s ease, transform 0.4s ease;
-}
-
-.spotify-player.active {
-    opacity: 1;
-    transform: scale(1);
-    pointer-events: all;
-}
-
-.spotify-player .player-content {
-    max-width: 500px; 
-    width: 90%; 
-    background: rgba(20, 20, 20, 0.8); 
-    padding: 2rem;
-    border-radius: var(--border-radius);
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    align-items: center;
-    position: relative; 
-}
-
-.spotify-player .close-player {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 2.2rem;
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    cursor: pointer;
-}
-
-.spotify-player .track-cover {
-    width: 150px; 
-    height: 150px;
-    border-radius: var(--border-radius);
-    object-fit: cover; 
-}
-
-.spotify-player .track-info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    text-align: center;
-}
-
-.spotify-player .player-controls {
-    display: flex;
-    justify-content: center;
-    align-items: center; 
-    gap: 2rem; 
-    width: 100%;
-}
-
-.spotify-player .control-btn {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 1.8rem; 
-    cursor: pointer;
-}
-
-.spotify-player .play-pause-btn {  
-    font-size: 3.5rem; 
-    color: var(--primary-color);
-}
-
-#playerAudio { 
-    width: 100%;
-    max-width: 400px; 
 }
 
 /* ===== MEDIA QUERIES MOBILE ===== */
@@ -1099,7 +945,6 @@ footer {
         box-shadow: 0 10px 20px rgba(0,0,0,0.5);
     }
 
-    /* Ajustement formulaire de contact mobile */
     .contact-container {
         grid-template-columns: 1fr;
         gap: 2rem;
