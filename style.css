@@ -26,7 +26,6 @@ html {
 body {
     font-family: var(--font-main);
     background-color: var(--bg-color);
-    /* Motif géométrique discret inspiré du tissage */
     background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffcc00' fill-opacity='0.02'%3E%3Cpath d='M30 30L15 15H0v15h15l15 15H60V30H30zM15 45L0 60v-15h15V45zM45 15l15-15v15H45z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
     color: var(--text-color);
     line-height: 1.7;
@@ -35,7 +34,6 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-/* Réduction des tailles de titres pour un style plus "Livre/Pro" */
 h1, h2, h3 {
     font-weight: 600;
 }
@@ -59,7 +57,6 @@ header {
     border-bottom: 1px solid rgba(255, 204, 0, 0.05);
 }
 
-/* Menu Burger */
 .burger-menu { display: flex; margin-left: auto; align-items: center; }
 .burger-btn {
     background: transparent; border: none; cursor: pointer; display: none; 
@@ -82,7 +79,7 @@ header {
 }
 .hero h1 {
     font-family: var(--font-heading);
-    font-size: clamp(2rem, 5vw, 3.5rem); /* Plus petit et élégant */
+    font-size: clamp(2rem, 5vw, 3.5rem); 
     color: var(--primary-color); 
     margin-bottom: 0.5rem;
     letter-spacing: 2px;
@@ -116,11 +113,12 @@ header {
 .disco-folder.active .disco-folder-content { max-height: 2000px; }
 .disco-folder-content-inner { padding: 0 2rem 2rem 2rem; }
 
-.track-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; }
-.track-card { background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 6px; text-align: center; border: 1px solid rgba(255,255,255,0.05); }
-.track-number { font-size: 0.9rem; color: var(--primary-color); margin-bottom: 0.5rem; }
-.track-card h3 { font-size: 1.1rem; margin-bottom: 1rem; }
-.streaming-links { display: flex; gap: 1rem; justify-content: center; }
+.track-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 1rem; }
+.track-card { background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 6px; text-align: center; border: 1px solid rgba(255,255,255,0.05); }
+.track-number { font-size: 0.85rem; color: var(--primary-color); margin-bottom: 0.2rem; }
+.track-card h3 { font-size: 0.95rem; margin-bottom: 0.5rem; }
+.streaming-links { display: flex; gap: 0.6rem; justify-content: center; padding-top: 0.5rem; }
+.streaming-links img { width: 18px; height: 18px; }
 .streaming-links a { opacity: 0.6; transition: opacity 0.3s; }
 .streaming-links a:hover { opacity: 1; }
 
@@ -143,10 +141,9 @@ header {
     align-items: start;
 }
 
-/* Le Sommaire */
 .wiki-sidebar {
     position: sticky;
-    top: 100px; /* Reste accroché en haut sous le header */
+    top: 100px; 
     background: rgba(255, 255, 255, 0.02);
     padding: 1.5rem;
     border: 1px solid rgba(255, 204, 0, 0.2);
@@ -162,64 +159,24 @@ header {
     padding-bottom: 0.5rem;
 }
 
-.wiki-toc ul {
-    list-style: none;
-}
-
-.wiki-toc li {
-    margin-bottom: 0.8rem;
-}
-
+.wiki-toc ul { list-style: none; }
+.wiki-toc li { margin-bottom: 0.8rem; }
 .wiki-toc a {
-    color: var(--text-color);
-    text-decoration: none;
-    font-size: 0.95rem;
-    transition: color 0.3s ease;
-    display: block;
+    color: var(--text-color); text-decoration: none; font-size: 0.95rem; transition: color 0.3s ease; display: block;
 }
+.wiki-toc a:hover, .wiki-toc a.active { color: var(--primary-color); font-weight: 600; }
 
-.wiki-toc a:hover, .wiki-toc a.active {
-    color: var(--primary-color);
-    font-weight: 600;
-}
-
-/* Le Corpus (Texte) */
 .wiki-content h3 {
-    font-family: var(--font-heading);
-    font-size: 1.8rem;
-    color: var(--primary-color);
-    margin-bottom: 1.5rem;
-    scroll-margin-top: 100px; /* Très important pour que le header ne cache pas le titre au clic */
+    font-family: var(--font-heading); font-size: 1.8rem; color: var(--primary-color); margin-bottom: 1.5rem; scroll-margin-top: 100px; 
 }
 
-.wiki-text p {
-    margin-bottom: 1.2rem;
-    text-align: justify;
-    font-size: 1.05rem;
-}
-
-.wiki-list {
-    list-style-type: square;
-    padding-left: 1.5rem;
-    margin-bottom: 1.5rem;
-}
-
-.wiki-list li {
-    margin-bottom: 0.5rem;
-}
-
-.wiki-list a {
-    color: var(--primary-color);
-    text-decoration: none;
-}
+.wiki-text p { margin-bottom: 1.2rem; text-align: justify; font-size: 1.05rem; }
+.wiki-list { list-style-type: square; padding-left: 1.5rem; margin-bottom: 1.5rem; }
+.wiki-list li { margin-bottom: 0.5rem; }
+.wiki-list a { color: var(--primary-color); text-decoration: none; }
 .wiki-list a:hover { text-decoration: underline; }
 
-.wiki-divider {
-    border: 0;
-    height: 1px;
-    background: rgba(255, 255, 255, 0.1);
-    margin: 3rem 0;
-}
+.wiki-divider { border: 0; height: 1px; background: rgba(255, 255, 255, 0.1); margin: 3rem 0; }
 
 /* ===== GALERIE ===== */
 .gallery-section { padding: 5rem 5%; }
