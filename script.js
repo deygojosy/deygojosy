@@ -89,7 +89,6 @@ const initHeaderScrollEffect = () => {
 const initScrollAnimations = () => {
     const reveals = document.querySelectorAll('.reveal');
     
-    // Déclenche l'animation quand 10% de l'élément est visible
     const revealOptions = {
         threshold: 0.1,
         rootMargin: "0px 0px -50px 0px" 
@@ -99,7 +98,6 @@ const initScrollAnimations = () => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('active');
-                // Optionnel: on arrête d'observer pour que l'animation ne se joue qu'une fois
                 observer.unobserve(entry.target); 
             }
         });
@@ -107,6 +105,22 @@ const initScrollAnimations = () => {
 
     reveals.forEach(reveal => {
         revealObserver.observe(reveal);
+    });
+};
+
+// Accordeon Discographie
+const initDiscographyAccordion = () => {
+    const folders = document.querySelectorAll('.disco-folder');
+    
+    folders.forEach(folder => {
+        const btn = folder.querySelector('.disco-folder-btn');
+        if(!btn) return;
+        
+        btn.addEventListener('click', () => {
+            folder.classList.toggle('active');
+            const isExpanded = folder.classList.contains('active');
+            btn.setAttribute('aria-expanded', isExpanded);
+        });
     });
 };
 
@@ -437,7 +451,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initLoader();
     initSmoothScrolling();
     initHeaderScrollEffect();
-    initScrollAnimations(); // <-- Les animations se lancent ici !
+    initScrollAnimations();
+    initDiscographyAccordion();
     initCountdown();
     initBurgerMenu();
     initReadMoreBio();
