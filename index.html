@@ -65,54 +65,132 @@
         <section id="musique" class="music-section" aria-labelledby="music-heading">
             <h2 id="music-heading" class="reveal">DISCOGRAPHIE</h2>
             
-            <div class="project-header reveal">
-                <h3>Pré-album : SINNO</h3>
+            <!-- CONTENEUR DES ALBUMS (ACCORDÉON) -->
+            <div class="discography-container reveal">
+                
+                <!-- DOSSIER 1 : SINNO -->
+                <div class="disco-folder">
+                    <button class="disco-folder-btn" aria-expanded="false">
+                        <span class="disco-folder-title">SINNO <span class="disco-folder-type">(Pré-album)</span></span>
+                        <span class="disco-folder-icon">+</span>
+                    </button>
+                    <div class="disco-folder-content">
+                        <div class="disco-folder-content-inner">
+                            <div class="track-grid">
+                                <article class="track-card">
+                                    <div class="track-number">01</div>
+                                    <h3>Sinno</h3>
+                                    <button class="play-btn" data-audio="audio/sinno.mp3" data-title="Sinno" data-artist="Deygo Josy" data-cover="images/album-cover.webp" aria-label="Écouter Sinno">
+                                        <span aria-hidden="true">▶ Écouter</span>
+                                    </button>
+                                </article>
+
+                                <article class="track-card">
+                                    <div class="track-number">02</div>
+                                    <h3>Hello Hello</h3>
+                                    <button class="play-btn" data-audio="audio/hello-hello.mp3" data-title="Hello Hello" data-artist="Deygo Josy" data-cover="images/album-cover.webp" aria-label="Écouter Hello Hello">
+                                        <span aria-hidden="true">▶ Écouter</span>
+                                    </button>
+                                </article>
+
+                                <article class="track-card">
+                                    <div class="track-number">03</div>
+                                    <h3>Ndiadene Fouta</h3>
+                                    <button class="play-btn" data-audio="audio/ndiadene-fouta.mp3" data-title="Ndiadene Fouta" data-artist="Deygo Josy" data-cover="images/album-cover.webp" aria-label="Écouter Ndiadene Fouta">
+                                        <span aria-hidden="true">▶ Écouter</span>
+                                    </button>
+                                </article>
+
+                                <article class="track-card">
+                                    <div class="track-number">04</div>
+                                    <h3>Etoile</h3>
+                                    <button class="play-btn" data-audio="audio/etoile.mp3" data-title="Etoile" data-artist="Deygo Josy" data-cover="images/album-cover.webp" aria-label="Écouter Etoile">
+                                        <span aria-hidden="true">▶ Écouter</span>
+                                    </button>
+                                </article>
+
+                                <article class="track-card">
+                                    <div class="track-number">05</div>
+                                    <h3>Sorry Love</h3>
+                                    <button class="play-btn" data-audio="audio/sorry-love.mp3" data-title="Sorry Love" data-artist="Deygo Josy" data-cover="images/album-cover.webp" aria-label="Écouter Sorry Love">
+                                        <span aria-hidden="true">▶ Écouter</span>
+                                    </button>
+                                </article>
+
+                                <article class="track-card">
+                                    <div class="track-number">06</div>
+                                    <h3>Foudori Ko Yitedé</h3>
+                                    <button class="play-btn" data-audio="audio/foudori-ko-yitede.mp3" data-title="Foudori Ko Yitedé" data-artist="Deygo Josy" data-cover="images/album-cover.webp" aria-label="Écouter Foudori Ko Yitedé">
+                                        <span aria-hidden="true">▶ Écouter</span>
+                                    </button>
+                                </article>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DOSSIER 2 : VACCIN -->
+                <div class="disco-folder">
+                    <button class="disco-folder-btn" aria-expanded="false">
+                        <span class="disco-folder-title">VACCIN <span class="disco-folder-type">(Album)</span></span>
+                        <span class="disco-folder-icon">+</span>
+                    </button>
+                    <div class="disco-folder-content">
+                        <div class="disco-folder-content-inner">
+                            <div class="track-grid">
+                                <article class="track-card">
+                                    <div class="track-number">01</div>
+                                    <h3>Titre Vaccin 1</h3>
+                                    <button class="play-btn" data-audio="audio/vaccin1.mp3" data-title="Titre Vaccin 1" data-artist="Deygo Josy" data-cover="images/album-cover.webp" aria-label="Écouter Titre Vaccin 1">
+                                        <span aria-hidden="true">▶ Écouter</span>
+                                    </button>
+                                </article>
+                                <article class="track-card">
+                                    <div class="track-number">02</div>
+                                    <h3>Titre Vaccin 2</h3>
+                                    <button class="play-btn" data-audio="audio/vaccin2.mp3" data-title="Titre Vaccin 2" data-artist="Deygo Josy" data-cover="images/album-cover.webp" aria-label="Écouter Titre Vaccin 2">
+                                        <span aria-hidden="true">▶ Écouter</span>
+                                    </button>
+                                </article>
+                                <article class="track-card">
+                                    <div class="track-number">03</div>
+                                    <h3>Titre Vaccin 3</h3>
+                                    <button class="play-btn" data-audio="audio/vaccin3.mp3" data-title="Titre Vaccin 3" data-artist="Deygo Josy" data-cover="images/album-cover.webp" aria-label="Écouter Titre Vaccin 3">
+                                        <span aria-hidden="true">▶ Écouter</span>
+                                    </button>
+                                </article>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-            <div class="track-grid">
-                <article class="track-card reveal">
-                    <div class="track-number">01</div>
-                    <h3>Sinno</h3>
-                    <button class="play-btn" data-audio="audio/sinno.mp3" data-title="Sinno" data-artist="Deygo Josy" data-cover="images/album-cover.webp" aria-label="Écouter Sinno">
+
+            <!-- SECTION SINGLES (EN DESSOUS DES ALBUMS) -->
+            <div class="project-header reveal" style="margin-top: 5rem;">
+                <h3>Singles</h3>
+            </div>
+            <div class="track-grid reveal">
+                <article class="track-card">
+                    <div class="track-number">-</div>
+                    <h3>Fans</h3>
+                    <button class="play-btn" data-audio="audio/fans.mp3" data-title="Fans" data-artist="Deygo Josy" data-cover="images/album-cover.webp" aria-label="Écouter Fans">
                         <span aria-hidden="true">▶ Écouter</span>
                     </button>
                 </article>
 
-                <article class="track-card reveal">
-                    <div class="track-number">02</div>
-                    <h3>Hello Hello</h3>
-                    <button class="play-btn" data-audio="audio/hello-hello.mp3" data-title="Hello Hello" data-artist="Deygo Josy" data-cover="images/album-cover.webp" aria-label="Écouter Hello Hello">
+                <article class="track-card">
+                    <div class="track-number">-</div>
+                    <h3>Venom I</h3>
+                    <button class="play-btn" data-audio="audio/venom1.mp3" data-title="Venom I" data-artist="Deygo Josy" data-cover="images/album-cover.webp" aria-label="Écouter Venom I">
                         <span aria-hidden="true">▶ Écouter</span>
                     </button>
                 </article>
 
-                <article class="track-card reveal">
-                    <div class="track-number">03</div>
-                    <h3>Ndiadene Fouta</h3>
-                    <button class="play-btn" data-audio="audio/ndiadene-fouta.mp3" data-title="Ndiadene Fouta" data-artist="Deygo Josy" data-cover="images/album-cover.webp" aria-label="Écouter Ndiadene Fouta">
-                        <span aria-hidden="true">▶ Écouter</span>
-                    </button>
-                </article>
-
-                <article class="track-card reveal">
-                    <div class="track-number">04</div>
-                    <h3>Etoile</h3>
-                    <button class="play-btn" data-audio="audio/etoile.mp3" data-title="Etoile" data-artist="Deygo Josy" data-cover="images/album-cover.webp" aria-label="Écouter Etoile">
-                        <span aria-hidden="true">▶ Écouter</span>
-                    </button>
-                </article>
-
-                <article class="track-card reveal">
-                    <div class="track-number">05</div>
-                    <h3>Sorry Love</h3>
-                    <button class="play-btn" data-audio="audio/sorry-love.mp3" data-title="Sorry Love" data-artist="Deygo Josy" data-cover="images/album-cover.webp" aria-label="Écouter Sorry Love">
-                        <span aria-hidden="true">▶ Écouter</span>
-                    </button>
-                </article>
-
-                <article class="track-card reveal">
-                    <div class="track-number">06</div>
-                    <h3>Foudori Ko Yitedé</h3>
-                    <button class="play-btn" data-audio="audio/foudori-ko-yitede.mp3" data-title="Foudori Ko Yitedé" data-artist="Deygo Josy" data-cover="images/album-cover.webp" aria-label="Écouter Foudori Ko Yitedé">
+                <article class="track-card">
+                    <div class="track-number">-</div>
+                    <h3>Venom II</h3>
+                    <button class="play-btn" data-audio="audio/venom2.mp3" data-title="Venom II" data-artist="Deygo Josy" data-cover="images/album-cover.webp" aria-label="Écouter Venom II">
                         <span aria-hidden="true">▶ Écouter</span>
                     </button>
                 </article>
