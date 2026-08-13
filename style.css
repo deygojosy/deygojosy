@@ -464,6 +464,8 @@ header {
     max-height: 90vh; 
     border-radius: 5px; 
     box-shadow: 0 5px 30px rgba(0,0,0,0.5); 
+    position: relative;
+    z-index: 2001;
 }
 
 .lightbox-close {
@@ -476,12 +478,36 @@ header {
     font-size: 3rem; 
     cursor: pointer; 
     transition: color 0.3s ease;
+    z-index: 2002;
 }
 
 .lightbox-close:hover { 
     color: var(--primary-color); 
 }
 
+/* Style des flèches Précédent/Suivant */
+.lightbox-prev, .lightbox-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    font-size: 2.5rem;
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease;
+    z-index: 2002;
+    border-radius: var(--border-radius);
+}
+
+.lightbox-prev { left: 20px; }
+.lightbox-next { right: 20px; }
+
+.lightbox-prev:hover, .lightbox-next:hover {
+    background: var(--primary-color);
+    color: var(--secondary-color);
+}
 
 /* ===== CONCERTS SECTION ===== */
 .concerts-section {
@@ -849,4 +875,12 @@ footer {
     .about-container { flex-direction: column; gap: 2rem; }
     .artist-photo-wrapper { max-width: 250px; margin: 0 auto; }
     .about-content { text-align: center; }
+
+    /* Ajustement des flèches sur mobile */
+    .lightbox-prev, .lightbox-next {
+        font-size: 1.5rem;
+        padding: 0.8rem;
+    }
+    .lightbox-prev { left: 10px; }
+    .lightbox-next { right: 10px; }
 }
