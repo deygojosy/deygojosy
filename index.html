@@ -360,15 +360,43 @@
                 </div>
             </div>
         </section>
+
+        <!-- Section Contact (Nouveau Formulaire) -->
+        <section id="contact" class="contact-section" aria-labelledby="contact-heading">
+            <h2 id="contact-heading" class="reveal">CONTACT</h2>
+            <div class="contact-container reveal">
+                <div class="contact-info-block">
+                    <h3>Management & Booking</h3>
+                    <p>Pour toute demande professionnelle, booking, interview ou collaboration, utilisez le formulaire ci-contre ou contactez-nous directement :</p>
+                    <a href="mailto:contact@deygojosy.com" class="contact-email">contact@deygojosy.com</a>
+                </div>
+                
+                <form id="contactForm" class="contact-form">
+                    <div class="form-group">
+                        <label for="name" class="sr-only">Nom</label>
+                        <input type="text" id="name" name="name" placeholder="Votre nom complet" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="sr-only">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Votre adresse email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject" class="sr-only">Sujet</label>
+                        <input type="text" id="subject" name="subject" placeholder="Sujet de votre message" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message" class="sr-only">Message</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Écrivez votre message ici..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-preorder">Envoyer le message</button>
+                    <p id="form-status" class="form-status"></p>
+                </form>
+            </div>
+        </section>
     </main>
 
-    <!-- Footer & Contact -->
-    <footer id="contact" class="reveal">
-        <div class="contact-info">
-            <h3>Contact</h3>
-            <p><a href="mailto:contact@deygojosy.com">contact@deygojosy.com</a></p>
-        </div>
-        
+    <!-- Footer -->
+    <footer class="reveal">
         <div class="social-links">
             <a href="https://www.instagram.com/deygojosy.officiel" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                 <img src="icons/Instagram.svg" alt="Instagram" width="40" height="40" loading="lazy">
