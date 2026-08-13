@@ -14,8 +14,7 @@ const CONFIG = {
             DEFAULT_HEIGHT: '50px',
             SCROLLED_HEIGHT: '40px'
         }
-    },
-    DEFAULT_COVER: 'images/album-cover.webp'
+    }
 };
 
 // Loader
@@ -216,60 +215,14 @@ const initReadMoreBio = () => {
     }
 };
 
-// VRAI FORMULAIRE DE CONTACT AVEC FORMSUBMIT
+// Formulaire de contact (Activation FormSubmit Temporaire)
 const initContactForm = () => {
     const form = document.getElementById('contactForm');
-    const status = document.getElementById('form-status');
-    
     if (!form) return;
 
-    form.addEventListener('submit', (e) => {
-        e.preventDefault(); // On empêche le rechargement brutal de la page
-        
+    form.addEventListener('submit', () => {
         const btn = form.querySelector('button[type="submit"]');
-        const originalText = btn.textContent;
-        
-        btn.textContent = 'Envoi en cours...';
-        btn.style.opacity = '0.7';
-        btn.disabled = true;
-
-        // On récupère les données du formulaire
-        const formData = new FormData(form);
-
-        // On envoie les données à FormSubmit en arrière-plan
-        fetch(form.action, {
-            method: 'POST',
-            body: formData,
-            headers: {
-                'Accept': 'application/json'
-            }
-        })
-        .then(response => response.json())
-        .then(data => {
-            btn.textContent = originalText;
-            btn.style.opacity = '1';
-            btn.disabled = false;
-            
-            status.textContent = 'Votre message a bien été envoyé !';
-            status.style.display = 'block';
-            status.className = 'form-status success';
-            status.style.color = '#ffcc00'; // Jaune Deygo Josy
-            form.reset(); 
-            
-            setTimeout(() => {
-                status.style.display = 'none';
-            }, 5000);
-        })
-        .catch(error => {
-            btn.textContent = originalText;
-            btn.style.opacity = '1';
-            btn.disabled = false;
-            
-            status.textContent = 'Une erreur est survenue. Veuillez réessayer.';
-            status.style.display = 'block';
-            status.className = 'form-status error';
-            status.style.color = 'red';
-        });
+        btn.textContent = 'Redirection vers FormSubmit...';
     });
 };
 
@@ -338,171 +291,6 @@ const initLightbox = () => {
     });
 };
 
-// Logique du Lecteur Audio
-const initSpotifyPlayer = () => {
-    const spotifyPlayerContainer = document.getElementById('spotifyPlayer');
-    const audioElement = document.getElementById('playerAudio');
-    const closeBtn = spotifyPlayerContainer.querySelector('.close-player');
-    const playerPlayPauseBtn = spotifyPlayerContainer.querySelector('.main-play-pause-btn'); 
-    const prevBtn = spotifyPlayerContainer.querySelector('.prev-btn');
-    const nextBtn = spotifyPlayerContainer.querySelector('.next-btn');
-    const playerTrackTitleDisplay = document.getElementById('playerTrackTitle');
-    const playerTrackArtistDisplay = document.getElementById('playerTrackArtist');
-    const playerTrackImageDisplay = document.getElementById('playerTrackImage');
-
-    const miniPlayerContainer = document.getElementById('miniPlayer');
-    const miniPlayerTrackTitleDisplay = document.getElementById('miniPlayerTrackTitle');
-    const miniPlayerTrackArtistDisplay = document.getElementById('miniPlayerTrackArtist');
-    const miniPlayerTrackImageDisplay = document.getElementById('miniPlayerTrackImage');
-    const miniPlayerPlayPauseBtn = document.getElementById('miniPlayerPlayPauseBtn');
-
-    if (!audioElement || !spotifyPlayerContainer || !miniPlayerContainer || !playerPlayPauseBtn || !miniPlayerPlayPauseBtn) {
-        return;
-    }
-    
-    const tracks = [];
-    document.querySelectorAll('.track-card .play-btn').forEach((btn) => {
-        tracks.push({
-            id: btn.getAttribute('data-audio'), 
-            title: btn.getAttribute('data-title'),
-            audio: btn.getAttribute('data-audio'),
-            image: btn.getAttribute('data-cover') || CONFIG.DEFAULT_COVER,
-            artist: btn.getAttribute('data-artist') || 'Deygo Josy',
-            originalButton: btn 
-        });
-    });
-
-    let currentTrackIndex = -1;
-    let isPlaying = false;
-
-    const updatePlayButtonStates = (trackIsPlaying, trackTitle = "") => {
-        const playText = "▶";
-        const pauseText = "❚❚";
-
-        if (trackIsPlaying) {
-            playerPlayPauseBtn.textContent = pauseText;
-            miniPlayerPlayPauseBtn.textContent = pauseText;
-        } else {
-            playerPlayPauseBtn.textContent = playText;
-            miniPlayerPlayPauseBtn.textContent = playText;
-        }
-
-        tracks.forEach((track, index) => {
-            if (index === currentTrackIndex && trackIsPlaying) {
-                track.originalButton.innerHTML = `<span aria-hidden="true">${pauseText} Pause</span>`;
-            } else {
-                track.originalButton.innerHTML = `<span aria-hidden="true">${playText} Écouter</span>`;
-            }
-        });
-    };
-    
-    const loadTrack = (index) => {
-        if (index < 0 || index >= tracks.length) return;
-        currentTrackIndex = index;
-        const track = tracks[currentTrackIndex];
-
-        audioElement.src = track.audio;
-        playerTrackTitleDisplay.textContent = track.title;
-        playerTrackArtistDisplay.textContent = track.artist;
-        playerTrackImageDisplay.src = track.image;
-        
-        miniPlayerTrackTitleDisplay.textContent = track.title;
-        miniPlayerTrackArtistDisplay.textContent = track.artist;
-        miniPlayerTrackImageDisplay.src = track.image;
-
-        updatePlayButtonStates(isPlaying, track.title); 
-    };
-
-    const playCurrentTrack = () => {
-        audioElement.play().then(() => {
-            isPlaying = true;
-            updatePlayButtonStates(true, tracks[currentTrackIndex].title);
-            spotifyPlayerContainer.setAttribute('aria-hidden', 'false');
-            miniPlayerContainer.classList.add('active');
-        }).catch(error => {
-            isPlaying = false;
-            updatePlayButtonStates(false, tracks[currentTrackIndex].title);
-        });
-    };
-
-    const pauseCurrentTrack = () => {
-        audioElement.pause();
-        isPlaying = false;
-        updatePlayButtonStates(false, tracks[currentTrackIndex].title);
-    };
-    
-    const togglePlayPause = () => {
-        if (currentTrackIndex === -1 && tracks.length > 0) { 
-            loadTrack(0);
-            playCurrentTrack();
-        } else if (audioElement.paused) {
-            playCurrentTrack();
-        } else {
-            pauseCurrentTrack();
-        }
-    };
-
-    document.querySelectorAll('.track-card').forEach((card, index) => {
-        card.addEventListener('click', () => { 
-            if (index === currentTrackIndex) {
-                togglePlayPause();
-            } else {
-                loadTrack(index);
-                playCurrentTrack();
-            }
-            spotifyPlayerContainer.classList.add('active'); 
-            spotifyPlayerContainer.setAttribute('aria-hidden', 'false');
-            miniPlayerContainer.classList.add('active');
-        });
-    });
-
-    closeBtn.addEventListener('click', () => {
-        spotifyPlayerContainer.classList.remove('active');
-        spotifyPlayerContainer.setAttribute('aria-hidden', 'true');
-    });
-
-    playerPlayPauseBtn.addEventListener('click', togglePlayPause);
-    miniPlayerPlayPauseBtn.addEventListener('click', togglePlayPause);
-
-    prevBtn.addEventListener('click', () => {
-        if (tracks.length === 0) return;
-        currentTrackIndex = (currentTrackIndex - 1 + tracks.length) % tracks.length;
-        loadTrack(currentTrackIndex);
-        playCurrentTrack();
-    });
-
-    nextBtn.addEventListener('click', () => {
-        if (tracks.length === 0) return;
-        currentTrackIndex = (currentTrackIndex + 1) % tracks.length;
-        loadTrack(currentTrackIndex);
-        playCurrentTrack();
-    });
-
-    audioElement.addEventListener('ended', () => {
-        if (currentTrackIndex < tracks.length - 1) {
-            nextBtn.click(); 
-        } else {
-            pauseCurrentTrack();
-        }
-    });
-
-    audioElement.addEventListener('play', () => {
-        isPlaying = true;
-        if(currentTrackIndex !== -1) updatePlayButtonStates(true, tracks[currentTrackIndex].title);
-    });
-    audioElement.addEventListener('pause', () => {
-        isPlaying = false;
-        if(currentTrackIndex !== -1) updatePlayButtonStates(false, tracks[currentTrackIndex].title);
-    });
-    
-    miniPlayerContainer.addEventListener('click', (event) => {
-        if (!miniPlayerPlayPauseBtn.contains(event.target) && event.target !== miniPlayerPlayPauseBtn) {
-            spotifyPlayerContainer.classList.add('active');
-            spotifyPlayerContainer.setAttribute('aria-hidden', 'false');
-        }
-    });
-};
-
 // Initialisation globale
 document.addEventListener('DOMContentLoaded', () => {
     initLoader();
@@ -514,8 +302,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initBurgerMenu();
     initReadMoreBio();
     initLightbox();
-    initContactForm(); // <-- Cette fois, ça envoie vraiment !
-    initSpotifyPlayer();
+    initContactForm();
 
     const copyrightSmall = document.querySelector('footer .copyright small');
     if (copyrightSmall) {
