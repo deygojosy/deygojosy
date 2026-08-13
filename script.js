@@ -85,6 +85,31 @@ const initHeaderScrollEffect = () => {
     }, { passive: true });
 };
 
+// Animations au défilement (Scroll Reveal)
+const initScrollAnimations = () => {
+    const reveals = document.querySelectorAll('.reveal');
+    
+    // Déclenche l'animation quand 10% de l'élément est visible
+    const revealOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px" 
+    };
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                // Optionnel: on arrête d'observer pour que l'animation ne se joue qu'une fois
+                observer.unobserve(entry.target); 
+            }
+        });
+    }, revealOptions);
+
+    reveals.forEach(reveal => {
+        revealObserver.observe(reveal);
+    });
+};
+
 // Countdown
 const initCountdown = () => {
     const countdownElement = document.getElementById('countdown');
@@ -177,7 +202,7 @@ const initReadMoreBio = () => {
     }
 };
 
-// Lightbox Galerie AVEC DEFILEMENT
+// Lightbox Galerie
 const initLightbox = () => {
     const galleryItems = document.querySelectorAll('.gallery-item');
     const lightbox = document.getElementById('lightbox');
@@ -210,7 +235,7 @@ const initLightbox = () => {
         lightbox.classList.remove('active');
         lightbox.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = '';
-        setTimeout(() => lightboxImg.src = '', 300); // Vide l'image après la transition
+        setTimeout(() => lightboxImg.src = '', 300); 
     };
 
     const showPrev = (e) => {
@@ -233,7 +258,6 @@ const initLightbox = () => {
         if (e.target === lightbox) closeLightbox();
     });
 
-    // Navigation au clavier (Flèches et Echap)
     document.addEventListener('keydown', (e) => {
         if (lightbox.classList.contains('active')) {
             if (e.key === 'Escape') closeLightbox();
@@ -413,6 +437,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initLoader();
     initSmoothScrolling();
     initHeaderScrollEffect();
+    initScrollAnimations(); // <-- Les animations se lancent ici !
     initCountdown();
     initBurgerMenu();
     initReadMoreBio();
