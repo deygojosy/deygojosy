@@ -377,6 +377,7 @@ header {
 .gallery-section {
     padding: 4rem 5%;
     background: var(--bg-color);
+    overflow: hidden; /* Empêche le débordement horizontal général */
 }
 
 .gallery-section h2 {
@@ -883,4 +884,25 @@ footer {
     }
     .lightbox-prev { left: 10px; }
     .lightbox-next { right: 10px; }
+
+    /* --- NOUVEAU : CAROUSEL MOBILE POUR LA GALERIE --- */
+    .gallery-grid {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 1rem;
+        padding: 1rem 5% 2rem 5%; 
+        margin: 0 -5%; /* Permet aux images d'aller jusqu'au bord de l'écran */
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none; /* Cache la barre sur Firefox */
+    }
+    .gallery-grid::-webkit-scrollbar {
+        display: none; /* Cache la barre sur Chrome/Safari */
+    }
+    .gallery-item {
+        flex: 0 0 85%; /* L'image prend 85% de la largeur, laissant deviner la suivante */
+        scroll-snap-align: center;
+        border-radius: 15px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    }
 }
