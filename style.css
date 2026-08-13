@@ -377,7 +377,7 @@ header {
 .gallery-section {
     padding: 4rem 5%;
     background: var(--bg-color);
-    overflow: hidden; /* Empêche le débordement horizontal général */
+    overflow: hidden; 
 }
 
 .gallery-section h2 {
@@ -388,7 +388,6 @@ header {
     color: var(--primary-color);
 }
 
-/* Indicateur Swipe (invisible par défaut sur PC) */
 .swipe-indicator {
     display: none;
 }
@@ -491,7 +490,6 @@ header {
     color: var(--primary-color); 
 }
 
-/* Style des flèches Précédent/Suivant */
 .lightbox-prev, .lightbox-next {
     position: absolute;
     top: 50%;
@@ -609,7 +607,6 @@ header {
     color: var(--primary-color);
 }
 
-/* --- BOUTON AFFICHER TOUT (BIOGRAPHIE) --- */
 .btn-read-more {
     background: transparent;
     color: var(--primary-color);
@@ -678,7 +675,19 @@ footer {
     opacity: 0.7;
 }
 
-/* --- MINI LECTEUR --- */
+/* --- ANIMATIONS AU DEFILEMENT (REVEAL) --- */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px); /* L'élément commence un peu plus bas */
+    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); /* Transition super douce */
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0); /* L'élément remonte à sa place */
+}
+
+/* --- LECTEURS AUDIO --- */
 .mini-player {
     position: fixed;
     bottom: 0;
@@ -696,6 +705,7 @@ footer {
     transform: translateY(100%); 
     pointer-events: none;
     cursor: pointer;
+    transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
 .mini-player.active {
@@ -743,7 +753,6 @@ footer {
     margin-left: 1rem; 
 }
 
-/* --- LECTEUR SPOTIFY --- */
 .spotify-player {
     position: fixed;
     top: 0; 
@@ -760,6 +769,7 @@ footer {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
 .spotify-player.active {
@@ -882,7 +892,6 @@ footer {
     .artist-photo-wrapper { max-width: 250px; margin: 0 auto; }
     .about-content { text-align: center; }
 
-    /* Ajustement des flèches sur mobile */
     .lightbox-prev, .lightbox-next {
         font-size: 1.5rem;
         padding: 0.8rem;
@@ -890,7 +899,6 @@ footer {
     .lightbox-prev { left: 10px; }
     .lightbox-next { right: 10px; }
 
-    /* Indicateur de swipe (animation) */
     .swipe-indicator {
         display: block;
         text-align: center;
@@ -908,22 +916,21 @@ footer {
         100% { transform: translateX(0); opacity: 0.5; }
     }
 
-    /* --- CAROUSEL MOBILE POUR LA GALERIE --- */
     .gallery-grid {
         display: flex;
         overflow-x: auto;
         scroll-snap-type: x mandatory;
         gap: 1rem;
         padding: 1rem 5% 2rem 5%; 
-        margin: 0 -5%; /* Permet aux images d'aller jusqu'au bord de l'écran */
+        margin: 0 -5%;
         -webkit-overflow-scrolling: touch;
-        scrollbar-width: none; /* Cache la barre sur Firefox */
+        scrollbar-width: none; 
     }
     .gallery-grid::-webkit-scrollbar {
-        display: none; /* Cache la barre sur Chrome/Safari */
+        display: none; 
     }
     .gallery-item {
-        flex: 0 0 85%; /* L'image prend 85% de la largeur, laissant deviner la suivante */
+        flex: 0 0 85%; 
         scroll-snap-align: center;
         border-radius: 15px;
         box-shadow: 0 10px 20px rgba(0,0,0,0.5);
