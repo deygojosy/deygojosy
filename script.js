@@ -349,12 +349,13 @@ document.addEventListener('DOMContentLoaded', () => {
     initHeaderScrollEffect();
     initCountdown();
     initBurgerMenu();
-    initReadMoreBio(); // On lance la fonction pour la bio ici !
+    initReadMoreBio();
     initSpotifyPlayer();
 
+    // ICI EST LA CORRECTION POUR LE FOOTER : innerHTML au lieu de textContent
     const copyrightSmall = document.querySelector('footer .copyright small');
     if (copyrightSmall) {
         const currentYear = new Date().getFullYear();
-        copyrightSmall.textContent = `© ${currentYear} Deygo Josy | Propulsé par Dizame. Tous droits réservés.`;
+        copyrightSmall.innerHTML = `© ${currentYear} Deygo Josy | Propulsé par <a href="https://www.instagram.com/dizame221" target="_blank" style="color: var(--primary-color); font-weight: bold; text-decoration: none;">Dizame</a>. Tous droits réservés.`;
     }
 });
