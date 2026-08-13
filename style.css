@@ -467,6 +467,28 @@ header {
     color: var(--primary-color);
 }
 
+/* --- BOUTON AFFICHER TOUT (BIOGRAPHIE) --- */
+.btn-read-more {
+    background: transparent;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    padding: 0.6rem 1.5rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: var(--font-main);
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-top: 1rem;
+    transition: var(--transition);
+    display: inline-block;
+}
+
+.btn-read-more:hover {
+    background: var(--primary-color);
+    color: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
 /* ===== FOOTER ===== */
 footer {
     background: #050505; 
