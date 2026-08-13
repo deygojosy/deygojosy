@@ -711,29 +711,102 @@ header {
     transform: translateY(-2px);
 }
 
+/* ===== CONTACT SECTION (NOUVEAU FORMULAIRE) ===== */
+.contact-section {
+    padding: 5rem 5%;
+    background: linear-gradient(to top, #050505, #111111);
+}
+
+.contact-section h2 {
+    text-align: center;
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin-bottom: 3rem;
+    color: var(--primary-color);
+}
+
+.contact-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 4rem;
+    background: rgba(255, 255, 255, 0.02);
+    padding: 3rem;
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(255, 204, 0, 0.1);
+}
+
+.contact-info-block h3 {
+    color: var(--primary-color);
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.contact-info-block p {
+    margin-bottom: 1.5rem;
+    opacity: 0.8;
+    line-height: 1.6;
+}
+
+.contact-email {
+    color: var(--text-color);
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-email:hover {
+    color: var(--primary-color);
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: var(--text-color);
+    font-family: var(--font-main);
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.contact-form input:focus, .contact-form textarea:focus {
+    border-color: var(--primary-color);
+    background: rgba(0, 0, 0, 0.5);
+    outline: none;
+}
+
+.contact-form button {
+    align-self: flex-start;
+}
+
+.form-status {
+    margin-top: 1rem;
+    font-weight: bold;
+    display: none;
+}
+
+.form-status.success {
+    display: block;
+    color: #4CAF50; /* Vert pour le succès */
+}
+
 /* ===== FOOTER ===== */
 footer {
     background: #050505; 
     padding: 3rem 5%;
     text-align: center;
     border-top: 1px solid rgba(255,204,0,0.1); 
-}
-
-.contact-info {
-    margin-bottom: 2.5rem;
-}
-
-.contact-info h3 {
-    font-family: var(--font-heading);
-    color: var(--primary-color);
-    font-size: 1.3rem;
-    margin-bottom: 0.5rem;
-}
-
-.contact-info a {
-    color: var(--text-color);
-    text-decoration: none;
-    font-size: 1.1rem;
 }
 
 .social-links {
@@ -1024,5 +1097,16 @@ footer {
         scroll-snap-align: center;
         border-radius: 15px;
         box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    }
+
+    /* Ajustement formulaire de contact mobile */
+    .contact-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 2rem 1.5rem;
+    }
+    .contact-form button {
+        align-self: stretch;
+        width: 100%;
     }
 }
