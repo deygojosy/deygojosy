@@ -1,352 +1,414 @@
 <!DOCTYPE html>
-<html lang="fr" class="no-js">
+<html lang="fr" dir="ltr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Deygo Josy | Site Officiel</title>
-    <meta name="description" content="Site officiel de Deygo Josy, rappeur sénégalais. Biographie, discographie détaillée, presse et archives des tournées.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    
+    <!-- SEO & Meta Tags -->
+    <title>Deygo Josy | L'identité du rap Foutanké</title>
+    <meta name="description" content="Site officiel de Deygo Josy. Découvrez l'univers du rappeur sénégalais originaire de Matam. Rap Foutanké, projets SINNO, VACCIN, clips et booking.">
+    <meta name="keywords" content="Deygo Josy, rap Foutanké, rap sénégalais, Matam, Adama Diop, Josy Family, SINNO, VACCIN">
+    <meta name="author" content="Deygo Josy">
+    <link rel="canonical" href="https://deygojosy.com/">
     <meta name="theme-color" content="#050505">
 
-    <meta property="og:title" content="Deygo Josy | Site Officiel">
-    <meta property="og:description" content="Découvrez le corpus encyclopédique, la discographie et l'univers Halpular de Deygo Josy.">
-    <meta property="og:image" content="https://deygojosy.com/images/partage.jpg"> 
-    <meta property="og:url" content="https://deygojosy.com"> 
+    <!-- Open Graph / Twitter -->
     <meta property="og:type" content="website">
+    <meta property="og:url" content="https://deygojosy.com/">
+    <meta property="og:title" content="Deygo Josy | L'identité du rap Foutanké">
+    <meta property="og:description" content="Découvrez le projet SINNO, la discographie et l'univers Halpular du rappeur Deygo Josy.">
+    <meta property="og:image" content="https://deygojosy.com/images/partage.jpg">
+    <meta name="twitter:card" content="summary_large_image">
 
     <!-- Favicon -->
     <link rel="icon" href="images/favicon.webp" type="image/webp">
+    <link rel="apple-touch-icon" href="images/favicon.webp">
 
+    <!-- Typographie (Optimisée) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- Fichiers CSS -->
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap">
-</head>
-<body>
-    <div class="loader" aria-hidden="false" role="status" aria-live="polite"> 
-        <div class="loader-spinner"></div>
-        <span class="sr-only">Chargement...</span> 
-    </div>
 
-    <header>
-        <div class="burger-menu">
-            <button class="burger-btn" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mainNav">
-                <span class="burger-line"></span>
-                <span class="burger-line"></span>
-                <span class="burger-line"></span>
-            </button>
+    <!-- Schema.org JSON-LD pour les moteurs de recherche -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MusicGroup",
+      "name": "Deygo Josy",
+      "alternateName": "Adama Diop",
+      "url": "https://deygojosy.com/",
+      "genre": ["Rap", "Rap Foutanké", "Hip-Hop Africain"],
+      "origin": {
+        "@type": "Place",
+        "name": "Matam, Sénégal"
+      },
+      "album": [
+        {
+          "@type": "MusicAlbum",
+          "name": "SINNO",
+          "albumReleaseType": "EP"
+        },
+        {
+          "@type": "MusicAlbum",
+          "name": "VACCIN",
+          "datePublished": "2022"
+        }
+      ]
+    }
+    </script>
+</head>
+<body class="loading">
+
+    <!-- Effet de texture cinématographique en fond -->
+    <div class="noise-overlay" aria-hidden="true"></div>
+
+    <!-- Navigation -->
+    <header class="site-header" id="header">
+        <div class="nav-container">
+            <a href="#accueil" class="brand-logo" aria-label="Retour à l'accueil">
+                DEYGO JOSY
+            </a>
             
-            <nav class="main-nav" id="mainNav" aria-label="Navigation principale" aria-hidden="true">
-                <ul>
-                    <li><a href="#accueil">Accueil</a></li>
-                    <li><a href="#ecoute">Écoute</a></li>
-                    <li><a href="#corpus">Corpus</a></li>
-                    <li><a href="#galerie">Galerie</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li><a href="epk.html" style="color: var(--primary-color);">Espace Pro</a></li>
+            <button class="menu-toggle" aria-controls="main-nav" aria-expanded="false" aria-label="Ouvrir le menu">
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
+            </button>
+
+            <nav id="main-nav" class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="#sinno" class="nav-link">Sinno</a></li>
+                    <li><a href="#discographie" class="nav-link">Musique</a></li>
+                    <li><a href="#univers" class="nav-link">Univers</a></li>
+                    <li><a href="#galerie" class="nav-link">Galerie & Vidéos</a></li>
+                    <li><a href="#actualites" class="nav-link">Actualités</a></li>
+                    <li><a href="#espace-pro" class="nav-link">Espace Pro</a></li>
+                    <li><a href="#booking" class="btn btn-outline nav-btn">Booking</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <main>
-        <!-- Section Accueil -->
-        <section id="accueil" class="hero" aria-labelledby="main-heading">
-            <div class="hero-content reveal">
-                <h1 id="main-heading">Deygo Josy</h1>
-                <p class="subtitle">L'identité du rap Foutanké</p>
-                <div class="cta-buttons">
-                    <a href="#corpus" class="btn btn-preorder">Lire la biographie</a>
+        <!-- 1. HERO SECTION -->
+        <section id="accueil" class="hero">
+            <div class="hero-background">
+                <img src="images/background.webp" alt="Deygo Josy portrait" class="hero-img" loading="eager">
+                <div class="hero-vignette"></div>
+            </div>
+            <div class="hero-content fade-up">
+                <h1 class="hero-title">DEYGO JOSY</h1>
+                <p class="hero-subtitle">L'identité du rap Foutanké</p>
+                <div class="hero-actions">
+                    <a href="#" target="_blank" class="btn btn-primary">Écouter SINNO</a>
+                    <a href="#espace-pro" class="btn btn-text">Espace Pro</a>
                 </div>
             </div>
         </section>
 
-        <!-- Section Écoute (Discographie interactive) -->
-        <section id="ecoute" class="music-section" aria-labelledby="music-heading">
-            <h2 id="music-heading" class="reveal">ÉCOUTE</h2>
-            
-            <div class="discography-container reveal">
-                <!-- DOSSIER 1 : SINNO -->
-                <div class="disco-folder">
-                    <button class="disco-folder-btn" aria-expanded="false">
-                        <span class="disco-folder-title">SINNO <span class="disco-folder-type">(Projet)</span></span>
-                        <span class="disco-folder-icon">+</span>
-                    </button>
-                    <div class="disco-folder-content">
-                        <div class="disco-folder-content-inner">
-                            <div class="project-listen-link">
-                                <!-- REMPLACE LE # CI-DESSOUS PAR LE LIEN DE SINNO -->
-                                <a href="#" target="_blank" class="btn-listen-all">▶ Écouter le projet SINNO</a>
-                            </div>
-                            <div class="track-grid">
-                                <article class="track-card">
-                                    <div class="track-number">01</div>
-                                    <h3>Sinno</h3>
-                                </article>
-                                <article class="track-card">
-                                    <div class="track-number">02</div>
-                                    <h3>Hello Hello</h3>
-                                </article>
-                                <article class="track-card">
-                                    <div class="track-number">03</div>
-                                    <h3>Ndiadene Fouta</h3>
-                                </article>
-                                <article class="track-card">
-                                    <div class="track-number">04</div>
-                                    <h3>Etoile</h3>
-                                </article>
-                                <article class="track-card">
-                                    <div class="track-number">05</div>
-                                    <h3>Sorry Love</h3>
-                                </article>
-                                <article class="track-card">
-                                    <div class="track-number">06</div>
-                                    <h3>Code Phare</h3>
-                                </article>
-                            </div>
-                        </div>
+        <!-- 2. PROJET CENTRAL : SINNO -->
+        <section id="sinno" class="section-padding focus-project">
+            <div class="container layout-split">
+                <div class="project-visual fade-up">
+                    <div class="vinyl-wrapper">
+                        <img src="images/album-cover.webp" alt="Pochette SINNO" class="cover-art">
                     </div>
                 </div>
-
-                <!-- DOSSIER 2 : VACCIN -->
-                <div class="disco-folder">
-                    <button class="disco-folder-btn" aria-expanded="false">
-                        <span class="disco-folder-title">VACCIN <span class="disco-folder-type">(Album)</span></span>
-                        <span class="disco-folder-icon">+</span>
-                    </button>
-                    <div class="disco-folder-content">
-                        <div class="disco-folder-content-inner">
-                            <div class="project-listen-link">
-                                <a href="https://share.amuse.io/album/josy-family-vaccin" target="_blank" class="btn-listen-all">▶ Écouter l'album VACCIN</a>
-                            </div>
-                            <div class="track-grid">
-                                <article class="track-card">
-                                    <div class="track-number">01</div>
-                                    <h3>Fouta Coumbalou</h3>
-                                </article>
-                                <article class="track-card">
-                                    <div class="track-number">02</div>
-                                    <h3>Poularam</h3>
-                                </article>
-                                <article class="track-card">
-                                    <div class="track-number">03</div>
-                                    <h3>Léli Léla</h3>
-                                </article>
-                                <article class="track-card">
-                                    <div class="track-number">04</div>
-                                    <h3>Vaccin</h3>
-                                </article>
-                                <article class="track-card">
-                                    <div class="track-number">05</div>
-                                    <h3>Rap Alado feat Bio Josy</h3>
-                                </article>
-                                <article class="track-card">
-                                    <div class="track-number">06</div>
-                                    <h3>Am Sada Wella</h3>
-                                </article>
-                                <article class="track-card">
-                                    <div class="track-number">07</div>
-                                    <h3>Min Ko An Tan Djitmi</h3>
-                                </article>
-                                <article class="track-card">
-                                    <div class="track-number">08</div>
-                                    <h3>Whisky</h3>
-                                </article>
-                            </div>
-                        </div>
+                <div class="project-info fade-up" style="transition-delay: 0.2s;">
+                    <span class="section-label">Le nouveau projet</span>
+                    <h2>SINNO</h2>
+                    <p class="editorial-text">
+                        Une transition majeure vers une exposition internationale. SINNO est l'essence même de la vision de Deygo Josy : un rap enraciné, technique et sans compromis.
+                    </p>
+                    <div class="tracklist-preview">
+                        <span class="track-item">01. Sinno</span><br>
+                        <span class="track-item">02. Hello Hello</span><br>
+                        <span class="track-item">03. Ndiadene Fouta</span><br>
+                        <span class="track-item">04. Etoile</span><br>
+                        <span class="track-item">05. Sorry Love</span><br>
+                        <span class="track-item">06. Code Phare</span>
+                    </div>
+                    <div class="streaming-platforms" style="margin-top: 1.5rem;">
+                        <a href="#" target="_blank" class="btn btn-primary btn-small">▶ Écouter tout le projet</a>
                     </div>
                 </div>
-            </div>
-
-            <!-- SINGLES -->
-            <div class="project-header reveal" style="margin-top: 3rem;">
-                <h3>Singles</h3>
-            </div>
-            <div class="track-grid reveal">
-                <article class="track-card single-card">
-                    <div class="track-number">-</div>
-                    <h3>Fans</h3>
-                    <a href="https://share.amuse.io/track/deygo-josy-fans" target="_blank" class="single-listen-btn">▶ Écouter</a>
-                </article>
-                <article class="track-card single-card">
-                    <div class="track-number">-</div>
-                    <h3>Venom I</h3>
-                    <a href="https://share.amuse.io/track/deygo-josy-venom" target="_blank" class="single-listen-btn">▶ Écouter</a>
-                </article>
-                <article class="track-card single-card">
-                    <div class="track-number">-</div>
-                    <h3>Venom II</h3>
-                    <a href="https://share.amuse.io/track/deygo-josy-venom-ii" target="_blank" class="single-listen-btn">▶ Écouter</a>
-                </article>
-                <article class="track-card single-card">
-                    <div class="track-number">-</div>
-                    <h3>Halloween</h3>
-                    <a href="https://share.amuse.io/track/deygo-josy-halloween" target="_blank" class="single-listen-btn">▶ Écouter</a>
-                </article>
             </div>
         </section>
 
-        <!-- SECTION CORPUS / WIKIPEDIA -->
-        <section id="corpus" class="encyclopedia-section">
-            <div class="wiki-container">
+        <!-- 3. DISCOGRAPHIE -->
+        <section id="discographie" class="section-padding bg-alt">
+            <div class="container">
+                <div class="section-header fade-up">
+                    <h2>Discographie</h2>
+                    <p>L'œuvre complète, de l'album aux singles.</p>
+                </div>
                 
-                <!-- Sommaire -->
-                <aside class="wiki-sidebar reveal">
-                    <div class="wiki-toc">
-                        <div class="toc-title">Sommaire</div>
-                        <nav aria-label="Sommaire de la page">
-                            <ul>
-                                <li><a href="#biographie">Biographie</a></li>
-                                <li><a href="#discographie">Discographie</a></li>
-                                <li><a href="#presse">Presse</a></li>
-                                <li><a href="#tournees">Tournées</a></li>
-                            </ul>
-                        </nav>
-                    </div>
-                </aside>
+                <div class="disco-grid">
+                    <!-- Album VACCIN -->
+                    <article class="disco-card fade-up">
+                        <img src="images/album-cover.webp" alt="VACCIN" class="disco-cover" loading="lazy">
+                        <div class="disco-meta">
+                            <span class="disco-year">2022</span>
+                            <span class="disco-type">Album</span>
+                        </div>
+                        <h3 class="disco-title">VACCIN</h3>
+                        <a href="https://share.amuse.io/album/josy-family-vaccin" target="_blank" class="btn btn-outline btn-small">Écouter</a>
+                    </article>
 
-                <!-- Contenu Corpus -->
-                <div class="wiki-content reveal">
+                    <!-- Single FANS -->
+                    <article class="disco-card fade-up" style="transition-delay: 0.1s;">
+                        <img src="images/album-cover.webp" alt="FANS" class="disco-cover" loading="lazy">
+                        <div class="disco-meta">
+                            <span class="disco-year">Single</span>
+                        </div>
+                        <h3 class="disco-title">Fans</h3>
+                        <a href="https://share.amuse.io/track/deygo-josy-fans" target="_blank" class="btn btn-outline btn-small">Écouter</a>
+                    </article>
+
+                    <!-- Single VENOM I -->
+                    <article class="disco-card fade-up" style="transition-delay: 0.2s;">
+                        <img src="images/album-cover.webp" alt="VENOM I" class="disco-cover" loading="lazy">
+                        <div class="disco-meta">
+                            <span class="disco-year">2024</span>
+                            <span class="disco-type">Single</span>
+                        </div>
+                        <h3 class="disco-title">VENOM I</h3>
+                        <a href="https://share.amuse.io/track/deygo-josy-venom" target="_blank" class="btn btn-outline btn-small">Écouter</a>
+                    </article>
+
+                    <!-- Single Halloween -->
+                    <article class="disco-card fade-up" style="transition-delay: 0.3s;">
+                        <img src="images/album-cover.webp" alt="Halloween" class="disco-cover" loading="lazy">
+                        <div class="disco-meta">
+                            <span class="disco-year">2024</span>
+                            <span class="disco-type">Single</span>
+                        </div>
+                        <h3 class="disco-title">Halloween</h3>
+                        <a href="https://share.amuse.io/track/deygo-josy-halloween" target="_blank" class="btn btn-outline btn-small">Écouter</a>
+                    </article>
+
+                    <!-- Single VENOM II -->
+                    <article class="disco-card fade-up" style="transition-delay: 0.4s;">
+                        <img src="images/album-cover.webp" alt="VENOM II" class="disco-cover" loading="lazy">
+                        <div class="disco-meta">
+                            <span class="disco-year">2025</span>
+                            <span class="disco-type">Single</span>
+                        </div>
+                        <h3 class="disco-title">VENOM II</h3>
+                        <a href="https://share.amuse.io/track/deygo-josy-venom-ii" target="_blank" class="btn btn-outline btn-small">Écouter</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. L'IDENTITÉ AVANT LE RAP (BIOGRAPHIE) -->
+        <section id="univers" class="section-padding editorial-section">
+            <div class="container layout-split reverse">
+                <div class="editorial-content fade-up">
+                    <span class="section-label">L'origine</span>
+                    <h2>L'identité avant le rap.</h2>
+                    <div class="bio-text">
+                        <p>De son vrai nom <strong>Adama Diop</strong>, Deygo Josy est originaire de la région de Matam, au cœur du Fouta sénégalais. Bien plus qu'un genre musical, son art est un manifeste culturel.</p>
+                        <p>D'abord reconnu comme un pilier du collectif <strong>Josy Family</strong>, il porte en lui la responsabilité de transmettre l'héritage Halpular à travers une esthétique urbaine et contemporaine.</p>
+                        <p>Sa force réside dans sa maîtrise linguistique : maniant le Pulaar, le Wolof et le Français avec une technique irréprochable, il construit un pont entre la tradition de ses ancêtres et une ambition résolument internationale.</p>
+                    </div>
+                </div>
+                <div class="editorial-visual fade-up">
+                    <img src="images/deygo-josy.webp" alt="Portrait Deygo Josy" class="portrait-frame" loading="lazy">
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. GALERIE & VIDÉOS -->
+        <section id="galerie" class="section-padding bg-alt">
+            <div class="container">
+                <div class="section-header fade-up">
+                    <h2>Vision Visuelle</h2>
+                </div>
+                
+                <!-- Vidéos -->
+                <div class="video-showcase fade-up">
+                    <div class="video-container">
+                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/QknBESlMKNU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border-radius: var(--radius-sm);"></iframe>
+                    </div>
+                </div>
+
+                <!-- Galerie Grille Asymétrique -->
+                <div class="masonry-gallery fade-up">
+                    <div class="masonry-item tall"><img src="images/galerie-1.webp" alt="Deygo Josy" loading="lazy"></div>
+                    <div class="masonry-item wide"><img src="images/galerie-2.webp" alt="Deygo Josy" loading="lazy"></div>
+                    <div class="masonry-item"><img src="images/galerie-3.webp" alt="Deygo Josy" loading="lazy"></div>
+                    <div class="masonry-item"><img src="images/galerie-4.webp" alt="Deygo Josy" loading="lazy"></div>
+                    <div class="masonry-item tall"><img src="images/galerie-5.webp" alt="Deygo Josy" loading="lazy"></div>
+                    <div class="masonry-item"><img src="images/galerie-6.webp" alt="Deygo Josy" loading="lazy"></div>
+                    <div class="masonry-item"><img src="images/galerie-7.webp" alt="Deygo Josy" loading="lazy"></div>
+                    <div class="masonry-item wide"><img src="images/galerie-8.webp" alt="Deygo Josy" loading="lazy"></div>
+                    <div class="masonry-item"><img src="images/galerie-9.webp" alt="Deygo Josy" loading="lazy"></div>
+                    <div class="masonry-item"><img src="images/galerie-10.webp" alt="Deygo Josy" loading="lazy"></div>
+                    <div class="masonry-item"><img src="images/galerie-11.webp" alt="Deygo Josy" loading="lazy"></div>
+                    <div class="masonry-item"><img src="images/galerie-12.webp" alt="Deygo Josy" loading="lazy"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. ACTUALITÉS -->
+        <section id="actualites" class="section-padding">
+            <div class="container">
+                <div class="section-header fade-up">
+                    <h2>Actualités</h2>
+                </div>
+                <div class="news-feed fade-up">
+                    <p class="empty-state">Restez connectés pour les prochaines annonces, dates de concerts et sorties.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. PRESSE & EPK (ESPACE PRO) -->
+        <section id="espace-pro" class="section-padding bg-alt pro-hub">
+            <div class="container">
+                <div class="pro-header fade-up">
+                    <span class="section-label">Label & Agency</span>
+                    <h2>Espace Professionnel</h2>
+                    <p>Accès réservé aux médias, programmateurs et partenaires.</p>
+                </div>
+                
+                <div class="pro-grid fade-up">
+                    <div class="pro-card">
+                        <h3>Dossier de Presse (EPK)</h3>
+                        <p>Biographie complète, chiffres clés et revue de presse.</p>
+                        <a href="epk.html" class="btn btn-outline">Accéder à l'EPK</a>
+                    </div>
+                    <div class="pro-card">
+                        <h3>Kit Médias</h3>
+                        <p>Photographies officielles en haute définition et logotypes.</p>
+                        <a href="#" class="btn btn-outline" download>Télécharger les assets (.zip)</a>
+                    </div>
+                    <div class="pro-card">
+                        <h3>Fiche Technique</h3>
+                        <p>Rider technique et plan de scène pour les représentations live.</p>
+                        <a href="#" class="btn btn-outline" download>Télécharger le Rider (.pdf)</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. BOOKING & CONTACT -->
+        <section id="booking" class="section-padding form-section">
+            <div class="container layout-split">
+                <div class="form-info fade-up">
+                    <h2>Booking & <br>Management</h2>
+                    <p>Pour toute demande de représentation, d'interview ou de collaboration, veuillez remplir ce formulaire. Notre équipe reviendra vers vous dans les plus brefs délais.</p>
                     
-                    <h3 id="biographie">Biographie</h3>
-                    <div class="wiki-text">
-                        <p>De son vrai nom <strong>Adama Diop</strong>, né le 2 février 1994, Deygo Josy est un rappeur sénégalais originaire de Matam (région du Fouta). Profondément attaché à son identité Halpular, il s'impose d'abord comme un membre éminent du groupe <strong>Josy Family</strong>, un collectif reconnu comme l'un des leaders incontestés du hip-hop dans le nord du Sénégal.</p>
-                        <p>En carrière solo, il se distingue par sa capacité à fusionner habilement des rimes percutantes et une musicalité riche, ancrée dans les réalités sociales et culturelles de son pays. Sa polyvalence s'exprime à travers l'usage de trois langues : le pulaar, le wolof et le français. Cette approche lui permet d'offrir une perspective authentique et engagée qui traverse les frontières linguistiques et géographiques.</p>
+                    <div class="direct-contact">
+                        <strong>Management :</strong><br>
+                        <a href="mailto:contact@deygojosy.com" class="link-hover">contact@deygojosy.com</a>
                     </div>
+                </div>
+                
+                <div class="form-wrapper fade-up">
+                    <form id="booking-form" class="premium-form" action="https://formsubmit.co/contact@deygojosy.com" method="POST">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_next" value="https://deygojosy.com/">
+                        <input type="hidden" name="_subject" value="Nouvelle demande Booking/Pro (Site Web)">
 
-                    <hr class="wiki-divider">
-
-                    <h3 id="discographie">Discographie</h3>
-                    <div class="wiki-text">
-                        <p>L'œuvre de Deygo Josy est structurée autour de projets majeurs et de formats courts :</p>
-                        <ul class="wiki-list">
-                            <li><strong>VACCIN (2022)</strong> : Premier album studio officiel. Il installe les bases de son identité sonore.</li>
-                            <li><strong>VENOM (2024)</strong> : Single marquant une évolution technique et stylistique.</li>
-                            <li><strong>Halloween (2024)</strong> : Titre conceptuel.</li>
-                            <li><strong>VENOM II (2025)</strong> : Suite directe du premier opus, confirmant sa direction artistique.</li>
-                            <li><strong>SINNO (2026)</strong> : Pré-album conçu comme une transition majeure vers une exposition internationale.</li>
-                        </ul>
-                    </div>
-
-                    <hr class="wiki-divider">
-
-                    <h3 id="presse">Presse</h3>
-                    <div class="wiki-text">
-                        <p>Le travail de l'artiste est documenté et répertorié sur plusieurs plateformes professionnelles de l'industrie musicale :</p>
-                        <ul class="wiki-list">
-                            <li><a href="https://musicinafrica.net/node/379558" target="_blank">Music In Africa</a> : Répertoire des professionnels de la musique africaine.</li>
-                            <li><a href="https://www.discogs.com/fr/artist/16291120" target="_blank">Discogs</a> : Base de données recensant ses crédits d'auteur et d'interprète.</li>
-                            <li><a href="https://musicbrainz.org/artist/1d477eb7-228f-4337-887a-02ed4f32bcd5" target="_blank">MusicBrainz</a> : Encyclopédie musicale ouverte.</li>
-                        </ul>
-                    </div>
-
-                    <hr class="wiki-divider">
-
-                    <h3 id="tournees">Tournées</h3>
-                    <div class="wiki-text">
-                        <p>Archives des représentations scéniques et agenda des prochains concerts. L'historique illustre la présence de l'artiste sur la scène nationale et internationale.</p>
+                        <div class="input-group-row">
+                            <div class="input-group">
+                                <label for="nom">Nom / Prénom *</label>
+                                <input type="text" id="nom" name="Nom" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="organisation">Organisation / Média</label>
+                                <input type="text" id="organisation" name="Organisation">
+                            </div>
+                        </div>
                         
-                        <!-- Widget Bandsintown (AVEC HISTORIQUE ACTIVÉ) -->
-                        <div class="concerts-container">
-                            <script charset="utf-8" src="https://widget.bandsintown.com/main.min.js"></script>
-                            <a class="bit-widget-initializer" 
-                               data-artist-name="Deygo Josy" 
-                               data-background-color="transparent" 
-                               data-separator-color="rgba(255, 204, 0, 0.2)" 
-                               data-text-color="#ffffff" 
-                               data-font="Montserrat" 
-                               data-link-color="#ffcc00" 
-                               data-display-local-dates="true" 
-                               data-display-past-dates="true" 
-                               data-auto-style="true" 
-                               data-language="fr">
-                               Tournées
-                            </a>
+                        <div class="input-group-row">
+                            <div class="input-group">
+                                <label for="email">Email professionnel *</label>
+                                <input type="email" id="email" name="Email" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="telephone">Téléphone</label>
+                                <input type="tel" id="telephone" name="Téléphone">
+                            </div>
                         </div>
-                    </div>
 
+                        <div class="input-group-row">
+                            <div class="input-group">
+                                <label for="pays">Pays / Ville *</label>
+                                <input type="text" id="pays" name="Lieu" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="type_event">Type d'événement</label>
+                                <select id="type_event" name="Type d'événement">
+                                    <option value="">Sélectionner...</option>
+                                    <option value="festival">Festival</option>
+                                    <option value="club">Club / Salle</option>
+                                    <option value="interview">Interview / Presse</option>
+                                    <option value="feat">Collaboration artistique</option>
+                                    <option value="autre">Autre</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="date_event">Date estimée de l'événement</label>
+                            <input type="date" id="date_event" name="Date">
+                        </div>
+
+                        <div class="input-group">
+                            <label for="message">Votre message *</label>
+                            <textarea id="message" name="Message" rows="5" required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-submit">Envoyer la demande</button>
+                    </form>
                 </div>
-            </div>
-        </section>
-
-        <!-- Section Galerie Photo -->
-        <section id="galerie" class="gallery-section">
-            <h2 class="reveal" style="text-align: center; color: var(--primary-color); font-family: var(--font-heading); margin-bottom: 2rem; font-size: 1.8rem;">GALERIE VISUELLE</h2>
-            <p class="swipe-indicator reveal" aria-hidden="true">Glissez pour voir ➔</p>
-            <div class="gallery-grid reveal">
-                <div class="gallery-item" tabindex="0"><img src="images/galerie-1.webp" alt="Deygo Josy" loading="lazy"></div>
-                <div class="gallery-item" tabindex="0"><img src="images/galerie-2.webp" alt="Deygo Josy" loading="lazy"></div>
-                <div class="gallery-item" tabindex="0"><img src="images/galerie-3.webp" alt="Deygo Josy" loading="lazy"></div>
-                <div class="gallery-item" tabindex="0"><img src="images/galerie-4.webp" alt="Deygo Josy" loading="lazy"></div>
-                <div class="gallery-item" tabindex="0"><img src="images/galerie-5.webp" alt="Deygo Josy" loading="lazy"></div>
-                <div class="gallery-item" tabindex="0"><img src="images/galerie-6.webp" alt="Deygo Josy" loading="lazy"></div>
-                <div class="gallery-item" tabindex="0"><img src="images/galerie-7.webp" alt="Deygo Josy" loading="lazy"></div>
-                <div class="gallery-item" tabindex="0"><img src="images/galerie-8.webp" alt="Deygo Josy" loading="lazy"></div>
-                <div class="gallery-item" tabindex="0"><img src="images/galerie-9.webp" alt="Deygo Josy" loading="lazy"></div>
-                <div class="gallery-item" tabindex="0"><img src="images/galerie-10.webp" alt="Deygo Josy" loading="lazy"></div>
-                <div class="gallery-item" tabindex="0"><img src="images/galerie-11.webp" alt="Deygo Josy" loading="lazy"></div>
-                <div class="gallery-item" tabindex="0"><img src="images/galerie-12.webp" alt="Deygo Josy" loading="lazy"></div>
-            </div>
-        </section>
-
-        <!-- Section Contact (Formulaire) -->
-        <section id="contact" class="contact-section">
-            <h2 class="reveal" style="text-align: center; color: var(--primary-color); font-family: var(--font-heading); margin-bottom: 2rem; font-size: 1.8rem;">CONTACT PROFESSIONNEL</h2>
-            <div class="contact-container reveal">
-                <div class="contact-info-block">
-                    <h3>Management & Booking</h3>
-                    <p>Pour toute demande professionnelle (booking, presse, management), utilisez ce canal officiel :</p>
-                    <a href="mailto:contact@deygojosy.com" class="contact-email">contact@deygojosy.com</a>
-                </div>
-                
-                <form action="https://formsubmit.co/contact@deygojosy.com" method="POST" id="contactForm" class="contact-form">
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_next" value="https://deygojosy.com/">
-                    <input type="hidden" name="_subject" value="Nouveau message professionnel (Site Web)">
-                    
-                    <div class="form-group">
-                        <label for="name" class="sr-only">Nom</label>
-                        <input type="text" id="name" name="Nom" placeholder="Nom ou Organisation" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email" class="sr-only">Email</label>
-                        <input type="email" id="email" name="Email" placeholder="Adresse email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="subject" class="sr-only">Sujet</label>
-                        <input type="text" id="subject" name="Sujet" placeholder="Objet de la demande" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message" class="sr-only">Message</label>
-                        <textarea id="message" name="Message" rows="4" placeholder="Votre message..." required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-preorder">Transmettre la demande</button>
-                    <p id="form-status" class="form-status"></p>
-                </form>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="reveal">
-        <div class="social-links">
-            <a href="https://www.instagram.com/deygojosy.officiel" target="_blank" rel="noopener noreferrer"><img src="icons/Instagram.svg" alt="Instagram" width="24" height="24"></a>
-            <a href="https://www.youtube.com/@deygojosy.officiel" target="_blank" rel="noopener noreferrer"><img src="icons/Youtube.svg" alt="YouTube" width="24" height="24"></a>
-            <a href="https://open.spotify.com/intl-fr/artist/56LWg6shOK2ZEKnKNmWatl" target="_blank" rel="noopener noreferrer"><img src="icons/Spotify.svg" alt="Spotify" width="24" height="24"></a>
-            <a href="https://www.deezer.com/fr/artist/182358707" target="_blank" rel="noopener noreferrer"><img src="icons/Deezer.svg" alt="Deezer" width="24" height="24"></a>
-            <a href="https://music.apple.com/us/artist/deygo-josy/1643652809" target="_blank" rel="noopener noreferrer"><img src="icons/Apple Music.svg" alt="Apple Music" width="24" height="24"></a>
-            <a href="https://www.tiktok.com/@deygojosy.officiel" target="_blank" rel="noopener noreferrer"><img src="icons/TikTok.svg" alt="TikTok" width="24" height="24"></a>
-        </div>
-        <div class="copyright">
-            <small>© 2026 Deygo Josy | Propulsé par <a href="https://www.instagram.com/dizame221" target="_blank" style="color: var(--primary-color);">Dizame</a>.</small> 
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h2>DEYGO JOSY</h2>
+                    <p>L'identité du rap Foutanké.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Navigation</h3>
+                    <ul>
+                        <li><a href="#sinno">Sinno</a></li>
+                        <li><a href="#discographie">Discographie</a></li>
+                        <li><a href="#univers">Univers</a></li>
+                        <li><a href="#espace-pro">Espace Pro</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-socials">
+                    <h3>Réseaux Sociaux</h3>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/deygojosy.officiel" target="_blank" aria-label="Instagram"><img src="icons/Instagram.svg" alt="IG"></a>
+                        <a href="https://www.tiktok.com/@deygojosy.officiel" target="_blank" aria-label="TikTok"><img src="icons/TikTok.svg" alt="TK"></a>
+                        <a href="https://www.youtube.com/@deygojosy.officiel" target="_blank" aria-label="YouTube"><img src="icons/Youtube.svg" alt="YT"></a>
+                        <a href="https://open.spotify.com/intl-fr/artist/56LWg6shOK2ZEKnKNmWatl" target="_blank" aria-label="Spotify"><img src="icons/Spotify.svg" alt="SP"></a>
+                        <a href="https://music.apple.com/us/artist/deygo-josy/1643652809" target="_blank" aria-label="Apple Music"><img src="icons/Apple Music.svg" alt="AM"></a>
+                        <a href="https://www.deezer.com/fr/artist/182358707" target="_blank" aria-label="Deezer"><img src="icons/Deezer.svg" alt="DZ"></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year"></span> Deygo Josy | Propulsé par <a href="https://www.instagram.com/dizame221" target="_blank" style="color: var(--color-primary);">Dizame</a>. Tous droits réservés.</p>
+            </div>
         </div>
     </footer>
 
-    <!-- Lightbox Galerie -->
-    <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog">
-        <button class="lightbox-close" aria-label="Fermer">×</button>
-        <button class="lightbox-prev" aria-label="Image précédente">❮</button>
-        <img class="lightbox-img" id="lightbox-img" src="" alt="">
-        <button class="lightbox-next" aria-label="Image suivante">❯</button>
-    </div>
-
-    <script src="script.js" defer></script>
+    <!-- Fichier JS -->
+    <script src="script.js"></script>
 </body>
 </html>
