@@ -4,27 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     
-    <!-- SEO & Meta Tags -->
-    <title>Deygo Josy | L'identité du rap Foutanké</title>
-    <meta name="description" content="Site officiel de Deygo Josy. Découvrez l'univers du rappeur sénégalais originaire de Matam. Rap Foutanké, projets SINNO, VACCIN, clips et booking.">
-    <meta name="keywords" content="Deygo Josy, rap Foutanké, rap sénégalais, Matam, Adama Diop, Josy Family, SINNO, VACCIN">
+    <!-- SEO & Meta Tags Avancés -->
+    <title>Deygo Josy | Site Officiel - L'identité du rap Foutanké</title>
+    <meta name="description" content="Découvrez le site officiel de Deygo Josy, rappeur sénégalais originaire de Matam. Écoutez ses projets SINNO et VACCIN, regardez ses clips et réservez ses concerts.">
+    <meta name="keywords" content="Deygo Josy, rap Foutanké, rap sénégalais, Matam, Adama Diop, Josy Family, SINNO, VACCIN, musique sénégalaise, afro-rap, hip-hop africain, concert Deygo Josy">
     <meta name="author" content="Deygo Josy">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <link rel="canonical" href="https://deygojosy.com/">
     <meta name="theme-color" content="#050505">
 
-    <!-- Open Graph / Twitter -->
+    <!-- Open Graph (Facebook/LinkedIn/WhatsApp) -->
+    <meta property="og:locale" content="fr_FR">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://deygojosy.com/">
     <meta property="og:title" content="Deygo Josy | L'identité du rap Foutanké">
-    <meta property="og:description" content="Découvrez le projet SINNO, la discographie et l'univers Halpular du rappeur Deygo Josy.">
+    <meta property="og:description" content="Site officiel. Découvrez le projet SINNO, la discographie et l'univers du rappeur Deygo Josy.">
+    <meta property="og:url" content="https://deygojosy.com/">
+    <meta property="og:site_name" content="Deygo Josy">
     <meta property="og:image" content="https://deygojosy.com/images/partage.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Deygo Josy | L'identité du rap Foutanké">
+    <meta name="twitter:description" content="Découvrez l'univers musical, la discographie et les dates de tournée de Deygo Josy.">
+    <meta name="twitter:image" content="https://deygojosy.com/images/partage.jpg">
 
     <!-- Favicon -->
     <link rel="icon" href="images/favicon.webp" type="image/webp">
     <link rel="apple-touch-icon" href="images/favicon.webp">
 
-    <!-- Typographie (Optimisée) -->
+    <!-- Typographie -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -32,7 +42,7 @@
     <!-- Fichiers CSS -->
     <link rel="stylesheet" href="style.css">
 
-    <!-- Schema.org JSON-LD pour les moteurs de recherche -->
+    <!-- Schema.org JSON-LD (Optimisation Google Knowledge Graph) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -40,11 +50,21 @@
       "name": "Deygo Josy",
       "alternateName": "Adama Diop",
       "url": "https://deygojosy.com/",
-      "genre": ["Rap", "Rap Foutanké", "Hip-Hop Africain"],
+      "image": "https://deygojosy.com/images/partage.jpg",
+      "description": "Deygo Josy est un rappeur sénégalais originaire de Matam, reconnu pour son identité rap Foutanké et son attachement à la culture Halpular.",
+      "genre": ["Rap", "Rap Foutanké", "Hip-Hop Africain", "Afro-Rap"],
       "origin": {
         "@type": "Place",
         "name": "Matam, Sénégal"
       },
+      "sameAs": [
+        "https://www.instagram.com/deygojosy.officiel",
+        "https://www.tiktok.com/@deygojosy.officiel",
+        "https://www.youtube.com/@deygojosy.officiel",
+        "https://open.spotify.com/intl-fr/artist/56LWg6shOK2ZEKnKNmWatl",
+        "https://music.apple.com/us/artist/deygo-josy/1643652809",
+        "https://www.deezer.com/fr/artist/182358707"
+      ],
       "album": [
         {
           "@type": "MusicAlbum",
@@ -62,10 +82,8 @@
 </head>
 <body class="loading">
 
-    <!-- Effet de texture cinématographique en fond -->
     <div class="noise-overlay" aria-hidden="true"></div>
 
-    <!-- Navigation -->
     <header class="site-header" id="header">
         <div class="nav-container">
             <a href="#accueil" class="brand-logo" aria-label="Retour à l'accueil">
@@ -78,13 +96,13 @@
                 <span class="line"></span>
             </button>
 
-            <nav id="main-nav" class="main-nav">
+            <nav id="main-nav" class="main-nav" aria-label="Navigation principale">
                 <ul class="nav-list">
                     <li><a href="#sinno" class="nav-link">Sinno</a></li>
                     <li><a href="#discographie" class="nav-link">Musique</a></li>
                     <li><a href="#univers" class="nav-link">Univers</a></li>
-                    <li><a href="#galerie" class="nav-link">Galerie & Vidéos</a></li>
-                    <li><a href="#actualites" class="nav-link">Actualités</a></li>
+                    <li><a href="#galerie" class="nav-link">Galerie</a></li>
+                    <li><a href="#tournees" class="nav-link">Tournées</a></li>
                     <li><a href="#espace-pro" class="nav-link">Espace Pro</a></li>
                     <li><a href="#booking" class="btn btn-outline nav-btn">Booking</a></li>
                 </ul>
@@ -96,7 +114,7 @@
         <!-- 1. HERO SECTION -->
         <section id="accueil" class="hero">
             <div class="hero-background">
-                <img src="images/background.webp" alt="Deygo Josy portrait" class="hero-img" loading="eager">
+                <img src="images/background.webp" alt="Deygo Josy en portrait sombre" class="hero-img" loading="eager">
                 <div class="hero-vignette"></div>
             </div>
             <div class="hero-content fade-up">
@@ -114,8 +132,7 @@
             <div class="container layout-split">
                 <div class="project-visual fade-up">
                     <div class="vinyl-wrapper">
-                        <!-- Pochette SINNO -->
-                        <img src="images/album-cover.webp" alt="Pochette SINNO" class="cover-art">
+                        <img src="images/album-cover.webp" alt="Pochette du projet SINNO de Deygo Josy" class="cover-art">
                     </div>
                 </div>
                 <div class="project-info fade-up" style="transition-delay: 0.2s;">
@@ -148,9 +165,8 @@
                 </div>
                 
                 <div class="disco-grid">
-                    <!-- Album VACCIN -->
                     <article class="disco-card fade-up">
-                        <img src="images/vaccin.webp" alt="VACCIN" class="disco-cover" loading="lazy">
+                        <img src="images/vaccin.webp" alt="Pochette Album VACCIN" class="disco-cover" loading="lazy">
                         <div class="disco-meta">
                             <span class="disco-year">2022</span>
                             <span class="disco-type">Album</span>
@@ -159,9 +175,8 @@
                         <a href="https://share.amuse.io/album/josy-family-vaccin" target="_blank" class="btn btn-outline btn-small">Écouter</a>
                     </article>
 
-                    <!-- Single FANS -->
                     <article class="disco-card fade-up" style="transition-delay: 0.1s;">
-                        <img src="images/fans.webp" alt="FANS" class="disco-cover" loading="lazy">
+                        <img src="images/fans.webp" alt="Pochette Single Fans" class="disco-cover" loading="lazy">
                         <div class="disco-meta">
                             <span class="disco-year">Single</span>
                         </div>
@@ -169,9 +184,8 @@
                         <a href="https://share.amuse.io/track/deygo-josy-fans" target="_blank" class="btn btn-outline btn-small">Écouter</a>
                     </article>
 
-                    <!-- Single VENOM I -->
                     <article class="disco-card fade-up" style="transition-delay: 0.2s;">
-                        <img src="images/venom1.webp" alt="VENOM I" class="disco-cover" loading="lazy">
+                        <img src="images/venom1.webp" alt="Pochette Single VENOM I" class="disco-cover" loading="lazy">
                         <div class="disco-meta">
                             <span class="disco-year">2024</span>
                             <span class="disco-type">Single</span>
@@ -180,9 +194,8 @@
                         <a href="https://share.amuse.io/track/deygo-josy-venom" target="_blank" class="btn btn-outline btn-small">Écouter</a>
                     </article>
 
-                    <!-- Single Halloween -->
                     <article class="disco-card fade-up" style="transition-delay: 0.3s;">
-                        <img src="images/halloween.webp" alt="Halloween" class="disco-cover" loading="lazy">
+                        <img src="images/halloween.webp" alt="Pochette Single Halloween" class="disco-cover" loading="lazy">
                         <div class="disco-meta">
                             <span class="disco-year">2024</span>
                             <span class="disco-type">Single</span>
@@ -191,9 +204,8 @@
                         <a href="https://share.amuse.io/track/deygo-josy-halloween" target="_blank" class="btn btn-outline btn-small">Écouter</a>
                     </article>
 
-                    <!-- Single VENOM II -->
                     <article class="disco-card fade-up" style="transition-delay: 0.4s;">
-                        <img src="images/venom2.webp" alt="VENOM II" class="disco-cover" loading="lazy">
+                        <img src="images/venom2.webp" alt="Pochette Single VENOM II" class="disco-cover" loading="lazy">
                         <div class="disco-meta">
                             <span class="disco-year">2025</span>
                             <span class="disco-type">Single</span>
@@ -218,52 +230,66 @@
                     </div>
                 </div>
                 <div class="editorial-visual fade-up">
-                    <img src="images/deygo-josy.webp" alt="Portrait Deygo Josy" class="portrait-frame" loading="lazy">
+                    <img src="images/deygo-josy.webp" alt="Portrait Deygo Josy - Culture Foutanké" class="portrait-frame" loading="lazy">
                 </div>
             </div>
         </section>
 
-        <!-- 5. GALERIE & VIDÉOS (Version Interactive Restituée) -->
+        <!-- 5. GALERIE & VIDÉOS -->
         <section id="galerie" class="section-padding bg-alt">
             <div class="container">
                 <div class="section-header fade-up">
                     <h2>Vision Visuelle</h2>
+                    <p>Clips officiels et archives photographiques.</p>
                 </div>
                 
-                <!-- Vidéos -->
                 <div class="video-showcase fade-up">
                     <div class="video-container">
-                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/QknBESlMKNU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border-radius: var(--radius-sm);"></iframe>
+                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/QknBESlMKNU" title="Clip Officiel Deygo Josy" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border-radius: var(--radius-sm);"></iframe>
                     </div>
                 </div>
 
-                <!-- Galerie Interactive (Scroll horizontal sur mobile + Lightbox) -->
                 <p class="swipe-indicator fade-up" aria-hidden="true">Glissez pour voir ➔</p>
                 <div class="gallery-grid fade-up">
-                    <div class="gallery-item" tabindex="0"><img src="images/galerie-1.webp" alt="Deygo Josy" loading="lazy"></div>
-                    <div class="gallery-item" tabindex="0"><img src="images/galerie-2.webp" alt="Deygo Josy" loading="lazy"></div>
-                    <div class="gallery-item" tabindex="0"><img src="images/galerie-3.webp" alt="Deygo Josy" loading="lazy"></div>
-                    <div class="gallery-item" tabindex="0"><img src="images/galerie-4.webp" alt="Deygo Josy" loading="lazy"></div>
-                    <div class="gallery-item" tabindex="0"><img src="images/galerie-5.webp" alt="Deygo Josy" loading="lazy"></div>
-                    <div class="gallery-item" tabindex="0"><img src="images/galerie-6.webp" alt="Deygo Josy" loading="lazy"></div>
-                    <div class="gallery-item" tabindex="0"><img src="images/galerie-7.webp" alt="Deygo Josy" loading="lazy"></div>
-                    <div class="gallery-item" tabindex="0"><img src="images/galerie-8.webp" alt="Deygo Josy" loading="lazy"></div>
-                    <div class="gallery-item" tabindex="0"><img src="images/galerie-9.webp" alt="Deygo Josy" loading="lazy"></div>
-                    <div class="gallery-item" tabindex="0"><img src="images/galerie-10.webp" alt="Deygo Josy" loading="lazy"></div>
-                    <div class="gallery-item" tabindex="0"><img src="images/galerie-11.webp" alt="Deygo Josy" loading="lazy"></div>
-                    <div class="gallery-item" tabindex="0"><img src="images/galerie-12.webp" alt="Deygo Josy" loading="lazy"></div>
+                    <div class="gallery-item" tabindex="0"><img src="images/galerie-1.webp" alt="Concert Deygo Josy 1" loading="lazy"></div>
+                    <div class="gallery-item" tabindex="0"><img src="images/galerie-2.webp" alt="Concert Deygo Josy 2" loading="lazy"></div>
+                    <div class="gallery-item" tabindex="0"><img src="images/galerie-3.webp" alt="Concert Deygo Josy 3" loading="lazy"></div>
+                    <div class="gallery-item" tabindex="0"><img src="images/galerie-4.webp" alt="Concert Deygo Josy 4" loading="lazy"></div>
+                    <div class="gallery-item" tabindex="0"><img src="images/galerie-5.webp" alt="Concert Deygo Josy 5" loading="lazy"></div>
+                    <div class="gallery-item" tabindex="0"><img src="images/galerie-6.webp" alt="Concert Deygo Josy 6" loading="lazy"></div>
+                    <div class="gallery-item" tabindex="0"><img src="images/galerie-7.webp" alt="Concert Deygo Josy 7" loading="lazy"></div>
+                    <div class="gallery-item" tabindex="0"><img src="images/galerie-8.webp" alt="Concert Deygo Josy 8" loading="lazy"></div>
+                    <div class="gallery-item" tabindex="0"><img src="images/galerie-9.webp" alt="Concert Deygo Josy 9" loading="lazy"></div>
+                    <div class="gallery-item" tabindex="0"><img src="images/galerie-10.webp" alt="Concert Deygo Josy 10" loading="lazy"></div>
+                    <div class="gallery-item" tabindex="0"><img src="images/galerie-11.webp" alt="Concert Deygo Josy 11" loading="lazy"></div>
+                    <div class="gallery-item" tabindex="0"><img src="images/galerie-12.webp" alt="Concert Deygo Josy 12" loading="lazy"></div>
                 </div>
             </div>
         </section>
 
-        <!-- 6. ACTUALITÉS -->
-        <section id="actualites" class="section-padding">
+        <!-- 6. TOURNÉES / CONCERTS (Bandsintown) -->
+        <section id="tournees" class="section-padding">
             <div class="container">
                 <div class="section-header fade-up">
-                    <h2>Actualités</h2>
+                    <h2>Live & Tournées</h2>
+                    <p>Retrouvez Deygo Josy sur scène.</p>
                 </div>
-                <div class="news-feed fade-up">
-                    <p class="empty-state">Restez connectés pour les prochaines annonces, dates de concerts et sorties.</p>
+                
+                <div class="concerts-container fade-up" style="max-width: 800px; margin: 0 auto;">
+                    <script charset="utf-8" src="https://widget.bandsintown.com/main.min.js"></script>
+                    <a class="bit-widget-initializer" 
+                       data-artist-name="Deygo Josy" 
+                       data-background-color="transparent" 
+                       data-separator-color="rgba(255, 255, 255, 0.08)" 
+                       data-text-color="#E8E8E8" 
+                       data-font="Inter" 
+                       data-link-color="#C5A059" 
+                       data-display-local-dates="true" 
+                       data-display-past-dates="true" 
+                       data-auto-style="true" 
+                       data-language="fr">
+                       Tournées
+                    </a>
                 </div>
             </div>
         </section>
@@ -383,7 +409,7 @@
                 
                 <div class="footer-links">
                     <h3>Navigation</h3>
-                    <ul>
+                    <ul aria-label="Liens du pied de page">
                         <li><a href="#sinno">Sinno</a></li>
                         <li><a href="#discographie">Discographie</a></li>
                         <li><a href="#univers">Univers</a></li>
@@ -394,18 +420,18 @@
                 <div class="footer-socials">
                     <h3>Réseaux Sociaux</h3>
                     <div class="social-icons">
-                        <a href="https://www.instagram.com/deygojosy.officiel" target="_blank" aria-label="Instagram"><img src="icons/Instagram.svg" alt="IG"></a>
-                        <a href="https://www.tiktok.com/@deygojosy.officiel" target="_blank" aria-label="TikTok"><img src="icons/TikTok.svg" alt="TK"></a>
-                        <a href="https://www.youtube.com/@deygojosy.officiel" target="_blank" aria-label="YouTube"><img src="icons/Youtube.svg" alt="YT"></a>
-                        <a href="https://open.spotify.com/intl-fr/artist/56LWg6shOK2ZEKnKNmWatl" target="_blank" aria-label="Spotify"><img src="icons/Spotify.svg" alt="SP"></a>
-                        <a href="https://music.apple.com/us/artist/deygo-josy/1643652809" target="_blank" aria-label="Apple Music"><img src="icons/Apple Music.svg" alt="AM"></a>
-                        <a href="https://www.deezer.com/fr/artist/182358707" target="_blank" aria-label="Deezer"><img src="icons/Deezer.svg" alt="DZ"></a>
+                        <a href="https://www.instagram.com/deygojosy.officiel" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><img src="icons/Instagram.svg" alt="IG"></a>
+                        <a href="https://www.tiktok.com/@deygojosy.officiel" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><img src="icons/TikTok.svg" alt="TK"></a>
+                        <a href="https://www.youtube.com/@deygojosy.officiel" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><img src="icons/Youtube.svg" alt="YT"></a>
+                        <a href="https://open.spotify.com/intl-fr/artist/56LWg6shOK2ZEKnKNmWatl" target="_blank" rel="noopener noreferrer" aria-label="Spotify"><img src="icons/Spotify.svg" alt="SP"></a>
+                        <a href="https://music.apple.com/us/artist/deygo-josy/1643652809" target="_blank" rel="noopener noreferrer" aria-label="Apple Music"><img src="icons/Apple Music.svg" alt="AM"></a>
+                        <a href="https://www.deezer.com/fr/artist/182358707" target="_blank" rel="noopener noreferrer" aria-label="Deezer"><img src="icons/Deezer.svg" alt="DZ"></a>
                     </div>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; <span id="current-year"></span> Deygo Josy | Propulsé par <a href="https://www.instagram.com/dizame221" target="_blank" style="color: var(--color-primary);">Dizame</a>. Tous droits réservés.</p>
+                <p>&copy; <span id="current-year"></span> Deygo Josy | Propulsé par <a href="https://www.instagram.com/dizame221" target="_blank" rel="noopener" style="color: var(--color-primary);">Dizame</a>. Tous droits réservés.</p>
             </div>
         </div>
     </footer>
@@ -414,7 +440,7 @@
     <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog">
         <button class="lightbox-close" aria-label="Fermer">×</button>
         <button class="lightbox-prev" aria-label="Image précédente">❮</button>
-        <img class="lightbox-img" id="lightbox-img" src="" alt="">
+        <img class="lightbox-img" id="lightbox-img" src="" alt="Image en grand format">
         <button class="lightbox-next" aria-label="Image suivante">❯</button>
     </div>
 
