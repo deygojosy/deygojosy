@@ -144,16 +144,23 @@ ul { list-style: none; }
 .bio-text strong { color: #fff; font-weight: 500; }
 .portrait-frame { width: 100%; aspect-ratio: 3/4; border-radius: var(--radius-sm); border: 1px solid var(--color-border); object-fit: cover; }
 
-/* Vidéos & Galerie (Masonry) */
+/* Vidéos & Galerie Interactive */
 .video-container { width: 100%; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; border: 1px solid var(--color-border); margin-bottom: 4rem; border-radius: var(--radius-sm); overflow: hidden; }
-.masonry-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; grid-auto-rows: 200px; }
-.masonry-item { border: 1px solid var(--color-border); border-radius: var(--radius-sm); overflow: hidden; }
-.masonry-item img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--transition-fast); }
-.masonry-item:hover img { transform: scale(1.05); }
-@media (min-width: 768px) {
-    .masonry-item.tall { grid-row: span 2; }
-    .masonry-item.wide { grid-column: span 2; }
-}
+.swipe-indicator { display: none; }
+.gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+.gallery-item { aspect-ratio: 1; border-radius: var(--radius-sm); overflow: hidden; cursor: pointer; border: 1px solid var(--color-border); }
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--transition-fast); }
+.gallery-item:hover img { transform: scale(1.05); }
+
+/* Lightbox */
+.lightbox { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(5,5,5,0.98); z-index: 2000; display: flex; justify-content: center; align-items: center; opacity: 0; pointer-events: none; transition: opacity var(--transition-fast); }
+.lightbox.active { opacity: 1; pointer-events: all; }
+.lightbox-img { max-width: 90%; max-height: 90vh; border-radius: var(--radius-sm); border: 1px solid var(--color-border); box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+.lightbox-close, .lightbox-prev, .lightbox-next { position: absolute; background: none; border: none; color: #fff; font-size: 2.5rem; cursor: pointer; z-index: 2002; transition: color var(--transition-fast); font-family: var(--font-body); }
+.lightbox-close:hover, .lightbox-prev:hover, .lightbox-next:hover { color: var(--color-primary); }
+.lightbox-close { top: 20px; right: 30px; }
+.lightbox-prev { left: 20px; top: 50%; transform: translateY(-50%); }
+.lightbox-next { right: 20px; top: 50%; transform: translateY(-50%); }
 
 /* Espace Pro */
 .pro-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
@@ -194,11 +201,20 @@ ul { list-style: none; }
 .footer-bottom { border-top: 1px solid var(--color-border); padding-top: 2rem; text-align: center; font-size: 0.75rem; color: var(--color-text-muted); }
 
 /* ==========================================================================
-   ANIMATIONS & UTILITIES
+   ANIMATIONS & MOBILE
    ========================================================================== */
 .empty-state { text-align: center; color: var(--color-text-muted); font-style: italic; padding: 3rem; border: 1px dashed var(--color-border); }
 .fade-up { opacity: 0; transform: translateY(30px); transition: opacity var(--transition-slow), transform var(--transition-slow); will-change: opacity, transform; }
 .fade-up.is-visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 768px) {
+    /* Styles galerie mobile */
+    .swipe-indicator { display: block; text-align: center; color: var(--color-primary); font-size: 0.8rem; margin-bottom: 1rem; animation: pulse 2s infinite; text-transform: uppercase; letter-spacing: 0.1em; }
+    @keyframes pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+    .gallery-grid { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 1rem; gap: 1rem; scrollbar-width: none; }
+    .gallery-grid::-webkit-scrollbar { display: none; }
+    .gallery-item { flex: 0 0 80%; scroll-snap-align: center; }
+}
 
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
