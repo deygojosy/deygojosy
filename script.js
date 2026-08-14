@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     HeaderManager.init();
     MobileMenu.init();
     ScrollObserver.init();
+    LightboxManager.init();
     FooterManager.init();
 });
 
@@ -71,12 +72,10 @@ const MobileMenu = {
 };
 
 /**
- * 3. Observer pour les animations au défilement (Intersection Observer API)
- * Ultra-performant, remplace l'écouteur d'événement au scroll lourd.
+ * 3. Observer pour les animations au défilement
  */
 const ScrollObserver = {
     init() {
-        // Respect de l'accessibilité : désactiver si l'utilisateur préfère réduire les mouvements
         const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         if (prefersReducedMotion) return;
 
@@ -85,7 +84,7 @@ const ScrollObserver = {
 
         const options = {
             root: null,
-            rootMargin: '0px 0px -10% 0px', // Déclenche un peu avant d'apparaître
+            rootMargin: '0px 0px -10% 0px',
             threshold: 0.1
         };
 
@@ -99,7 +98,6 @@ const ScrollObserver = {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('is-visible');
-                // On arrête d'observer une fois l'élément apparu pour gagner en perf
                 observer.unobserve(entry.target);
             }
         });
@@ -107,7 +105,55 @@ const ScrollObserver = {
 };
 
 /**
- * 4. Gestion Footer Dynamique
+ * 4. Gestion Lightbox Galerie (Interactive)
+ */
+const LightboxManager = {
+    init() {
+        this.items = document.querySelectorAll('.gallery-item img');
+        this.lightbox = document.getElementById('lightbox');
+        this.lbImg = document.getElementById('lightbox-img');
+        if (!this.lightbox || this.items.length === 0) return;
+        
+        this.currentIndex = 0;
+        this.bindEvents();
+    },
+    showImg(index) {
+        this.lbImg.src = this.items[index].src;
+        this.currentIndex = index;
+    },
+    bindEvents() {
+        this.items.forEach((img, index) => {
+            img.parentElement.addEventListener('click', () => {
+                this.showImg(index);
+                this.lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        document.querySelector('.lightbox-close').addEventListener('click', () => this.close());
+        
+        document.querySelector('.lightbox-prev').addEventListener('click', (e) => {
+            e.stopPropagation();
+            this.showImg(this.currentIndex > 0 ? this.currentIndex - 1 : this.items.length - 1);
+        });
+        
+        document.querySelector('.lightbox-next').addEventListener('click', (e) => {
+            e.stopPropagation();
+            this.showImg(this.currentIndex < this.items.length - 1 ? this.currentIndex + 1 : 0);
+        });
+        
+        this.lightbox.addEventListener('click', (e) => {
+            if(e.target === this.lightbox) this.close();
+        });
+    },
+    close() {
+        this.lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+};
+
+/**
+ * 5. Gestion Footer Dynamique
  */
 const FooterManager = {
     init() {
