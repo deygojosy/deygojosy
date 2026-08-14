@@ -1,130 +1,119 @@
-document.documentElement.classList.remove('no-js');
-document.documentElement.classList.add('js');
-
-// Loader
-window.addEventListener('load', () => {
-    const loader = document.querySelector('.loader');
-    if (loader) {
-        setTimeout(() => {
-            loader.style.opacity = '0';
-            loader.style.visibility = 'hidden';
-            loader.setAttribute('aria-hidden', 'true'); 
-        }, 800);
-    }
-});
-
-// Scroll Reveal
-const initScrollAnimations = () => {
-    const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries, obs) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-                obs.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
-
-    reveals.forEach(r => observer.observe(r));
-};
-
-// Accordeon Discographie
-const initDiscographyAccordion = () => {
-    document.querySelectorAll('.disco-folder-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const folder = btn.parentElement;
-            folder.classList.toggle('active');
-            btn.setAttribute('aria-expanded', folder.classList.contains('active'));
-        });
-    });
-};
-
-// Menu Burger
-const initBurgerMenu = () => {
-    const btn = document.querySelector('.burger-btn');
-    const nav = document.querySelector('.main-nav');
-    if (!btn || !nav) return;
-
-    const toggleMenu = () => {
-        const isExpanded = btn.getAttribute('aria-expanded') === 'true';
-        btn.setAttribute('aria-expanded', !isExpanded);
-        nav.setAttribute('aria-hidden', isExpanded);
-    };
-
-    btn.addEventListener('click', toggleMenu);
-    nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
-        btn.setAttribute('aria-expanded', 'false');
-        nav.setAttribute('aria-hidden', 'true');
-    }));
-};
-
-// Sommaire (ScrollSpy Wiki)
-const initWikiSpy = () => {
-    const sections = document.querySelectorAll('.wiki-content h3');
-    const navLinks = document.querySelectorAll('.wiki-toc a');
-    
-    if(sections.length === 0 || navLinks.length === 0) return;
-
-    window.addEventListener('scroll', () => {
-        let current = '';
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            if (scrollY >= sectionTop - 150) {
-                current = section.getAttribute('id');
-            }
-        });
-
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href').includes(current)) {
-                link.classList.add('active');
-            }
-        });
-    });
-};
-
-// Lightbox Galerie
-const initLightbox = () => {
-    const items = document.querySelectorAll('.gallery-item img');
-    const lightbox = document.getElementById('lightbox');
-    const lbImg = document.getElementById('lightbox-img');
-    let currentIndex = 0;
-
-    if (!lightbox || items.length === 0) return;
-
-    const showImg = (index) => {
-        lbImg.src = items[index].src;
-        currentIndex = index;
-    };
-
-    items.forEach((img, index) => {
-        img.parentElement.addEventListener('click', () => {
-            showImg(index);
-            lightbox.classList.add('active');
-        });
-    });
-
-    document.querySelector('.lightbox-close').addEventListener('click', () => lightbox.classList.remove('active'));
-    document.querySelector('.lightbox-prev').addEventListener('click', (e) => { e.stopPropagation(); showImg(currentIndex > 0 ? currentIndex - 1 : items.length - 1); });
-    document.querySelector('.lightbox-next').addEventListener('click', (e) => { e.stopPropagation(); showImg(currentIndex < items.length - 1 ? currentIndex + 1 : 0); });
-    lightbox.addEventListener('click', (e) => { if(e.target === lightbox) lightbox.classList.remove('active'); });
-};
-
-// Formulaire FormSubmit temporaire
-const initContact = () => {
-    const form = document.getElementById('contactForm');
-    if(form) {
-        form.addEventListener('submit', () => {
-            form.querySelector('button').textContent = "Redirection...";
-        });
-    }
-};
+/**
+ * DEYGO JOSY - SCRIPT OFFICIEL
+ * Architecture modulaire pour gestion de l'UI et de la Performance.
+ */
 
 document.addEventListener('DOMContentLoaded', () => {
-    initScrollAnimations();
-    initDiscographyAccordion();
-    initBurgerMenu();
-    initWikiSpy();
-    initLightbox();
-    initContact();
+    
+    // Retrait de la classe loading une fois le DOM chargé
+    document.body.classList.remove('loading');
+    
+    // Initialisation des modules
+    HeaderManager.init();
+    MobileMenu.init();
+    ScrollObserver.init();
+    FooterManager.init();
 });
+
+/**
+ * 1. Gestion de l'entête au scroll (Effet Glassmorphism)
+ */
+const HeaderManager = {
+    init() {
+        this.header = document.getElementById('header');
+        if (!this.header) return;
+        this.bindEvents();
+    },
+    bindEvents() {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                this.header.classList.add('scrolled');
+            } else {
+                this.header.classList.remove('scrolled');
+            }
+        }, { passive: true });
+    }
+};
+
+/**
+ * 2. Gestion du Menu Mobile
+ */
+const MobileMenu = {
+    init() {
+        this.toggleBtn = document.querySelector('.menu-toggle');
+        this.nav = document.getElementById('main-nav');
+        this.navLinks = document.querySelectorAll('.nav-link, .nav-btn');
+        
+        if (!this.toggleBtn || !this.nav) return;
+        this.bindEvents();
+    },
+    bindEvents() {
+        this.toggleBtn.addEventListener('click', () => this.toggle());
+        
+        // Fermeture au clic sur un lien
+        this.navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (this.nav.classList.contains('active')) {
+                    this.toggle();
+                }
+            });
+        });
+    },
+    toggle() {
+        const isExpanded = this.toggleBtn.getAttribute('aria-expanded') === 'true';
+        this.toggleBtn.setAttribute('aria-expanded', !isExpanded);
+        this.toggleBtn.classList.toggle('active');
+        this.nav.classList.toggle('active');
+        
+        // Blocage du scroll du body sur mobile
+        document.body.style.overflow = isExpanded ? '' : 'hidden';
+    }
+};
+
+/**
+ * 3. Observer pour les animations au défilement (Intersection Observer API)
+ * Ultra-performant, remplace l'écouteur d'événement au scroll lourd.
+ */
+const ScrollObserver = {
+    init() {
+        // Respect de l'accessibilité : désactiver si l'utilisateur préfère réduire les mouvements
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (prefersReducedMotion) return;
+
+        this.elements = document.querySelectorAll('.fade-up');
+        if (!this.elements.length) return;
+
+        const options = {
+            root: null,
+            rootMargin: '0px 0px -10% 0px', // Déclenche un peu avant d'apparaître
+            threshold: 0.1
+        };
+
+        this.observer = new IntersectionObserver(this.handleIntersection, options);
+        
+        this.elements.forEach(el => {
+            this.observer.observe(el);
+        });
+    },
+    handleIntersection(entries, observer) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                // On arrête d'observer une fois l'élément apparu pour gagner en perf
+                observer.unobserve(entry.target);
+            }
+        });
+    }
+};
+
+/**
+ * 4. Gestion Footer Dynamique
+ */
+const FooterManager = {
+    init() {
+        const yearSpan = document.getElementById('current-year');
+        if (yearSpan) {
+            yearSpan.textContent = new Date().getFullYear();
+        }
+    }
+};
