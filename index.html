@@ -223,7 +223,7 @@
             </div>
         </section>
 
-        <!-- 5. GALERIE & VIDÉOS -->
+        <!-- 5. GALERIE & VIDÉOS (Version Interactive Restituée) -->
         <section id="galerie" class="section-padding bg-alt">
             <div class="container">
                 <div class="section-header fade-up">
@@ -237,20 +237,21 @@
                     </div>
                 </div>
 
-                <!-- Galerie Grille Asymétrique -->
-                <div class="masonry-gallery fade-up">
-                    <div class="masonry-item tall"><img src="images/galerie-1.webp" alt="Deygo Josy" loading="lazy"></div>
-                    <div class="masonry-item wide"><img src="images/galerie-2.webp" alt="Deygo Josy" loading="lazy"></div>
-                    <div class="masonry-item"><img src="images/galerie-3.webp" alt="Deygo Josy" loading="lazy"></div>
-                    <div class="masonry-item"><img src="images/galerie-4.webp" alt="Deygo Josy" loading="lazy"></div>
-                    <div class="masonry-item tall"><img src="images/galerie-5.webp" alt="Deygo Josy" loading="lazy"></div>
-                    <div class="masonry-item"><img src="images/galerie-6.webp" alt="Deygo Josy" loading="lazy"></div>
-                    <div class="masonry-item"><img src="images/galerie-7.webp" alt="Deygo Josy" loading="lazy"></div>
-                    <div class="masonry-item wide"><img src="images/galerie-8.webp" alt="Deygo Josy" loading="lazy"></div>
-                    <div class="masonry-item"><img src="images/galerie-9.webp" alt="Deygo Josy" loading="lazy"></div>
-                    <div class="masonry-item"><img src="images/galerie-10.webp" alt="Deygo Josy" loading="lazy"></div>
-                    <div class="masonry-item"><img src="images/galerie-11.webp" alt="Deygo Josy" loading="lazy"></div>
-                    <div class="masonry-item"><img src="images/galerie-12.webp" alt="Deygo Josy" loading="lazy"></div>
+                <!-- Galerie Interactive (Scroll horizontal sur mobile + Lightbox) -->
+                <p class="swipe-indicator fade-up" aria-hidden="true">Glissez pour voir ➔</p>
+                <div class="gallery-grid fade-up">
+                    <div class="gallery-item" tabindex="0"><img src="images/galerie-1.webp" alt="Deygo Josy" loading="lazy"></div>
+                    <div class="gallery-item" tabindex="0"><img src="images/galerie-2.webp" alt="Deygo Josy" loading="lazy"></div>
+                    <div class="gallery-item" tabindex="0"><img src="images/galerie-3.webp" alt="Deygo Josy" loading="lazy"></div>
+                    <div class="gallery-item" tabindex="0"><img src="images/galerie-4.webp" alt="Deygo Josy" loading="lazy"></div>
+                    <div class="gallery-item" tabindex="0"><img src="images/galerie-5.webp" alt="Deygo Josy" loading="lazy"></div>
+                    <div class="gallery-item" tabindex="0"><img src="images/galerie-6.webp" alt="Deygo Josy" loading="lazy"></div>
+                    <div class="gallery-item" tabindex="0"><img src="images/galerie-7.webp" alt="Deygo Josy" loading="lazy"></div>
+                    <div class="gallery-item" tabindex="0"><img src="images/galerie-8.webp" alt="Deygo Josy" loading="lazy"></div>
+                    <div class="gallery-item" tabindex="0"><img src="images/galerie-9.webp" alt="Deygo Josy" loading="lazy"></div>
+                    <div class="gallery-item" tabindex="0"><img src="images/galerie-10.webp" alt="Deygo Josy" loading="lazy"></div>
+                    <div class="gallery-item" tabindex="0"><img src="images/galerie-11.webp" alt="Deygo Josy" loading="lazy"></div>
+                    <div class="gallery-item" tabindex="0"><img src="images/galerie-12.webp" alt="Deygo Josy" loading="lazy"></div>
                 </div>
             </div>
         </section>
@@ -408,6 +409,14 @@
             </div>
         </div>
     </footer>
+
+    <!-- Lightbox Galerie -->
+    <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog">
+        <button class="lightbox-close" aria-label="Fermer">×</button>
+        <button class="lightbox-prev" aria-label="Image précédente">❮</button>
+        <img class="lightbox-img" id="lightbox-img" src="" alt="">
+        <button class="lightbox-next" aria-label="Image suivante">❯</button>
+    </div>
 
     <!-- Fichier JS -->
     <script src="script.js"></script>
