@@ -34,6 +34,23 @@
     <link rel="icon" href="images/favicon.webp" type="image/webp">
     <link rel="apple-touch-icon" href="images/favicon.webp">
 
+    <!-- Configuration PWA -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Deygo Josy">
+
+    <!-- Activation du Service Worker -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then(reg => console.log('Service Worker actif, PWA prête !'))
+            .catch(err => console.error('Erreur Service Worker:', err));
+        });
+      }
+    </script>
+
     <!-- Typographie -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -316,7 +333,7 @@
                        data-display-past-dates="true" 
                        data-auto-style="true" 
                        data-language="fr">
-                       Tournées
+                        Tournées
                     </a>
                 </div>
             </div>
