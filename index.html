@@ -4,16 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QZ6M04RG4V"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-QZ6M04RG4V');
-    </script>
-    
     <!-- SEO & Meta Tags Avancés -->
     <title>Deygo Josy | Site Officiel - L'identité du rap Foutanké</title>
     <meta name="description" content="Découvrez le site officiel de Deygo Josy, rappeur sénégalais originaire de Matam. Écoutez ses projets SINNO et VACCIN, regardez ses clips et réservez ses concerts.">
@@ -503,6 +493,119 @@
         <img class="lightbox-img" id="lightbox-img" src="" alt="Image en grand format">
         <button class="lightbox-next" aria-label="Image suivante">❯</button>
     </div>
+
+    <!-- === BANNIÈRE DE COOKIES RGPD === -->
+    <style>
+        .cookie-banner {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 9999;
+            max-width: 550px;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 15px 20px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+            transform: translateY(150%);
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .cookie-banner.show {
+            transform: translateY(0);
+        }
+        .cookie-banner p {
+            margin: 0;
+            font-size: 0.85rem;
+            color: #ddd;
+            flex: 1;
+            padding-right: 20px;
+            line-height: 1.4;
+        }
+        .cookie-banner a {
+            color: #C5A059;
+            text-decoration: underline;
+        }
+        .cookie-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        @media (max-width: 600px) {
+            .cookie-banner {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+                right: 20px;
+            }
+            .cookie-banner p {
+                padding-right: 0;
+            }
+        }
+    </style>
+
+    <div id="cookie-banner" class="cookie-banner" aria-hidden="true">
+        <p>Ce site utilise des cookies pour mesurer l'audience (Google Analytics) et améliorer votre expérience. <a href="cookies.html">En savoir plus</a>.</p>
+        <div class="cookie-buttons">
+            <button id="accept-cookies" class="btn btn-primary btn-small">Accepter</button>
+            <button id="decline-cookies" class="btn btn-outline btn-small">Refuser</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const banner = document.getElementById('cookie-banner');
+            const acceptBtn = document.getElementById('accept-cookies');
+            const declineBtn = document.getElementById('decline-cookies');
+
+            // 1. Vérifie si l'utilisateur a déjà fait un choix
+            if (!localStorage.getItem('cookieConsent')) {
+                // Fait apparaître la bannière en douceur après 1,5 seconde
+                setTimeout(() => {
+                    banner.classList.add('show');
+                    banner.setAttribute('aria-hidden', 'false');
+                }, 1500); 
+            } else if (localStorage.getItem('cookieConsent') === 'accepted') {
+                // Si le visiteur avait déjà accepté lors d'une visite précédente, on charge Analytics
+                loadGoogleAnalytics(); 
+            }
+
+            // 2. Action quand on clique sur "Accepter"
+            acceptBtn.addEventListener('click', function() {
+                localStorage.setItem('cookieConsent', 'accepted');
+                banner.classList.remove('show');
+                banner.setAttribute('aria-hidden', 'true');
+                loadGoogleAnalytics();
+            });
+
+            // 3. Action quand on clique sur "Refuser"
+            declineBtn.addEventListener('click', function() {
+                localStorage.setItem('cookieConsent', 'declined');
+                banner.classList.remove('show');
+                banner.setAttribute('aria-hidden', 'true');
+            });
+
+            // 4. Fonction qui active le pistage uniquement si autorisé
+            function loadGoogleAnalytics() {
+                const script1 = document.createElement('script');
+                script1.async = true;
+                script1.src = 'https://www.googletagmanager.com/gtag/js?id=G-QZ6M04RG4V';
+                document.head.appendChild(script1);
+
+                const script2 = document.createElement('script');
+                script2.innerHTML = `
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                  gtag('config', 'G-QZ6M04RG4V');
+                `;
+                document.head.appendChild(script2);
+            }
+        });
+    </script>
+    <!-- === FIN BANNIÈRE DE COOKIES === -->
 
     <!-- Fichier JS -->
     <script src="script.js"></script>
