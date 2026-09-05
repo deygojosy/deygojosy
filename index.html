@@ -129,6 +129,53 @@
       ]
     }
     </script>
+    
+    <!-- Effets d'animations Premium -->
+    <style>
+        /* 1. EFFET PORTRAIT (UNIVERS) : Lévitation et ombre dorée */
+        .portrait-frame {
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.6s ease;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        .editorial-visual:hover .portrait-frame {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(197, 160, 89, 0.25);
+        }
+
+        /* 2. EFFET ACTUALITÉS : Zoom interne fluide */
+        .news-visual {
+            overflow: hidden;
+        }
+        .news-visual img {
+            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: scale(1);
+        }
+        .news-card:hover .news-visual img {
+            transform: scale(1.05);
+        }
+        .news-card {
+            transition: border-color 0.4s ease, transform 0.4s ease;
+        }
+        .news-card:hover {
+            border-color: rgba(197, 160, 89, 0.4);
+        }
+
+        /* 3. EFFET TEXTE HERO (ACCUEIL) : Lueur et espacement */
+        .hero-title {
+            transition: text-shadow 0.6s ease;
+        }
+        .hero-content:hover .hero-title {
+            text-shadow: 0 0 25px rgba(197, 160, 89, 0.6), 0 0 50px rgba(197, 160, 89, 0.3);
+        }
+        .hero-subtitle {
+            transition: letter-spacing 0.6s ease, color 0.6s ease;
+        }
+        .hero-content:hover .hero-subtitle {
+            letter-spacing: 1.5px;
+            color: #C5A059;
+        }
+    </style>
 </head>
 <body class="loading">
 
@@ -318,7 +365,7 @@
             </div>
         </section>
 
-        <!-- 6. ACTUALITÉS (Mise à jour Défilement Horizontal) -->
+        <!-- 6. ACTUALITÉS -->
         <section id="actualites" class="section-padding">
             <div class="container">
                 <div class="section-header fade-up">
