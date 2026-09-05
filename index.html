@@ -59,6 +59,39 @@
     <!-- Fichiers CSS -->
     <link rel="stylesheet" href="style.css">
 
+    <!-- Style additionnel pour le défilement horizontal des actualités -->
+    <style>
+        .news-feed-horizontal {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding-bottom: 20px;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+        }
+        .news-feed-horizontal::-webkit-scrollbar {
+            height: 6px;
+        }
+        .news-feed-horizontal::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+        }
+        .news-feed-horizontal::-webkit-scrollbar-thumb {
+            background: #C5A059;
+            border-radius: 4px;
+        }
+        .news-feed-horizontal .news-card {
+            flex: 0 0 90%;
+            max-width: 400px;
+            scroll-snap-align: start;
+        }
+        @media (min-width: 768px) {
+            .news-feed-horizontal .news-card {
+                flex: 0 0 45%;
+            }
+        }
+    </style>
+
     <!-- Schema.org JSON-LD (Optimisation Google Knowledge Graph) -->
     <script type="application/ld+json">
     {
@@ -285,7 +318,7 @@
             </div>
         </section>
 
-        <!-- 6. ACTUALITÉS -->
+        <!-- 6. ACTUALITÉS (Mise à jour Défilement Horizontal) -->
         <section id="actualites" class="section-padding">
             <div class="container">
                 <div class="section-header fade-up">
@@ -293,7 +326,24 @@
                     <p>Les dernières annonces officielles.</p>
                 </div>
                 
-                <div class="news-feed fade-up">
+                <div class="news-feed-horizontal fade-up">
+                    <!-- NOUVELLE CARTE "221" -->
+                    <article class="news-card">
+                        <div class="news-visual">
+                            <img src="images/partage.jpg" alt="Teaser 221" loading="lazy" style="aspect-ratio: 16/9; object-fit: cover;">
+                        </div>
+                        <div class="news-content">
+                            <span class="section-label" style="color: #C5A059;">Sortie Clip</span>
+                            <h3>221 — LA RÉPONSE DE DEYGO JOSY</h3>
+                            <p>Suite à la sortie récente du rappeur mauritanien Roi Hems ciblant le niveau du rap sénégalais, Deygo Josy prend la parole pour défendre les couleurs du Galsen. Une réponse purement artistique, technique et assumée. Le clip officiel sort ce dimanche 6 septembre, et le teaser est déjà en ligne !</p>
+                            <p style="font-size: 0.85rem; opacity: 0.6; font-style: italic; margin-top: 15px; margin-bottom: 15px;">Publié le 5 septembre 2026</p>
+                            <div class="news-actions">
+                                <a href="https://www.youtube.com/@deygojosy.officiel" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-small">Voir le teaser</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- ANCIENNE CARTE "SINNO" -->
                     <article class="news-card">
                         <div class="news-visual">
                             <img src="images/album-cover.webp" alt="Pochette SINNO" loading="lazy">
@@ -302,9 +352,9 @@
                             <span class="section-label">Sortie Événement</span>
                             <h3>SINNO — DISPONIBLE PARTOUT</h3>
                             <p>Le nouveau projet de Deygo Josy est officiellement disponible sur toutes les plateformes de streaming. Plongez dans l'essence du rap Foutanké.</p>
+                            <p style="font-size: 0.85rem; opacity: 0.6; font-style: italic; margin-top: 15px; margin-bottom: 15px;">Publié récemment</p>
                             <div class="news-actions">
                                 <a href="https://share.amuse.io/album/deygo-josy-sinno" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-small">Écouter le projet</a>
-                                <a href="#galerie" class="btn btn-outline btn-small">Voir le clip</a>
                             </div>
                         </div>
                     </article>
